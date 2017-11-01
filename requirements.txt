@@ -1,2 +1,2 @@
-flask
-redis
+Django>=1.8,<2.0
+psycopg2
