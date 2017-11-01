@@ -1,2 +1,2 @@
-import Navbar from './Navbar'
-export { Navbar }
+import Navigation from './Navigation'
+export { Navigation }
