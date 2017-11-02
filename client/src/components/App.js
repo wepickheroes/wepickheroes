@@ -3,6 +3,7 @@ import {
     BrowserRouter as Router,
     Route,
 } from 'react-router-dom'
+import { withRouter } from 'react-router'
 
 import '../styles/App.css';
 
@@ -11,15 +12,18 @@ import { Navigation } from './layout'
 
 class App extends Component {
     render() {
+        console.log('App', this.props)
         return (
             <Router>
                 <div>
                     <Navigation/>
-                    <Route exact path="/wepickheroes/" component={Index} />
+                    <Route exact path="/" component={Index} />
                 </div>
             </Router>
         );
     }
 }
+
+App = withRouter(App)
 
 export default App;
