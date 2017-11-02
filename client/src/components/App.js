@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import {
-    // BrowserRouter as Router,
+    BrowserRouter as Router,
     Route,
 } from 'react-router-dom'
-import { withRouter } from 'react-router'
 
 import '../styles/App.css';
 
@@ -12,18 +11,16 @@ import { Navigation } from './layout'
 
 class App extends Component {
     render() {
-        console.log('App', this.props)
         return (
-            <div>
+            <Router>
                 <div>
                     <Navigation/>
                     <Route exact path="/" component={Index} />
                 </div>
-            </div>
+            </Router>
         );
     }
 }
 
-App = withRouter(App)
 
 export default App;
