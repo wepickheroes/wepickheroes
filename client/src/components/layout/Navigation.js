@@ -8,16 +8,13 @@ const NavLink = styled(_NavLink)`
     text-transform: uppercase;
     letter-spacing: 1.5px;
 `
-
-const StyledNavLink = styled(NavLink)`
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-`
 const Logo = styled.img`
     height: 50px;
     margin-right: 1rem;
 `
-
+const SteamNavItem = styled(NavItem)`
+    margin-left: 1rem;
+`
 
 class Navigation extends Component {
 
@@ -36,7 +33,7 @@ class Navigation extends Component {
     render() {
         return (
             <div>
-                <Navbar color="red" light expand="md" style={{ backgroundColor: '#e3f2fd' }}>
+                <Navbar light expand="md" style={{ backgroundColor: '#e3f2fd' }}>
                     <NavbarBrand href="/">
                         <Logo src={logo} alt="logo" /><strong>We Pick Heroes</strong>
                     </NavbarBrand>
@@ -53,11 +50,11 @@ class Navigation extends Component {
                                     <NavLink>Leagues</NavLink>
                                 </LinkContainer>
                             </NavItem>
-                            <NavItem>
+                            <SteamNavItem>
                                 <Button color="success" className="text-uppercase">
                                     <i className="fa fa-steam" />&nbsp;Sign In With Steam
                                 </Button>
-                            </NavItem>
+                            </SteamNavItem>
                         </Nav>
                     </Collapse>
                 </Navbar>

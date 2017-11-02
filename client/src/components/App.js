@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import {
     BrowserRouter as Router,
+    Redirect,
     Route,
 } from 'react-router-dom'
-
-import '../styles/App.css';
 
 import Index from './Index'
 import { Navigation } from './layout'
@@ -15,7 +14,8 @@ class App extends Component {
             <Router>
                 <div>
                     <Navigation/>
-                    <Route exact path="/wepickheroes/" component={Index} />
+                    <Route exact path="/" render={() => <Redirect to="/wepickheroes" />} />
+                    <Route path="/wepickheroes" component={Index} />
                 </div>
             </Router>
         );
