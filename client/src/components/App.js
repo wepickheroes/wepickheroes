@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    BrowserRouter as Router,
+    // BrowserRouter as Router,
     Route,
 } from 'react-router-dom'
 import { withRouter } from 'react-router'
@@ -14,12 +14,12 @@ class App extends Component {
     render() {
         console.log('App', this.props)
         return (
-            <Router>
+            <div>
                 <div>
                     <Navigation/>
                     <Route exact path="/" component={Index} />
                 </div>
-            </Router>
+            </div>
         );
     }
 }
