@@ -8,7 +8,6 @@ const Intro = styled(Jumbotron)`
 
 const Index = props => (
     <div className="container">
-        {console.log('Index', props)}
         <Intro>
             <h1 className="display-3">We Pick Heroes</h1>
             <h2>Amateur Dota 2 League</h2>
