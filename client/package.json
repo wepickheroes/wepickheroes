@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "homepage": "http://prattl.github.io/wepickheroes",
   "private": true,
+  "proxy": "http://localhost:8000",
   "dependencies": {
     "bootstrap": "^4.0.0-beta.2",
     "font-awesome": "^4.7.0",
