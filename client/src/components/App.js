@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom'
 
 import Index from './Index'
-import { Navigation } from './layout'
+import { Footer, Navigation } from './layout'
 
 class App extends Component {
     render() {
@@ -14,6 +14,7 @@ class App extends Component {
                 <Navigation/>
                 <Route exact path="/" render={() => <Redirect to="/wepickheroes" />} />
                 <Route path="/wepickheroes" component={Index} />
+                <Footer />
             </div>
         );
     }

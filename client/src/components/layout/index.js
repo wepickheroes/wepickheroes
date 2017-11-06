@@ -1,2 +1,3 @@
+import Footer from './Footer'
 import Navigation from './Navigation'
-export { Navigation }
+export { Footer, Navigation }

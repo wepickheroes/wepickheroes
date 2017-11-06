@@ -7,64 +7,13 @@ import {
     Button, Collapse, DropdownToggle, DropdownMenu, DropdownItem,
     Navbar, NavbarToggler, NavbarBrand, Nav, NavDropdown, NavItem, NavLink,
 } from 'reactstrap';
-import { LinkContainer } from 'react-router-bootstrap'
-import logo from '../../img/logos/logo.png'
 
-const Uppercase = styled.span`
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-`
-const Logo = styled.img`
-    height: 50px;
-    margin-right: 1rem;
-`
-const SteamNavItem = styled(NavItem)`
-    margin-left: 1rem;
-`
 
-class UserMenu extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            isOpen: false,
-        };
-    }
-
-    toggle = () => this.setState({ isOpen: !this.state.isOpen });
+class LeagueList extends Component {
 
     render() {
-        return (
-            <NavDropdown isOpen={this.state.isOpen} toggle={this.toggle}>
-                <DropdownToggle caret nav>
-                    <Uppercase>Settings</Uppercase>
-                </DropdownToggle>
-                <DropdownMenu right>
-                    <DropdownItem>Edit Profile</DropdownItem>
-                    <DropdownItem>Settings</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Logout</DropdownItem>
-                </DropdownMenu>
-            </NavDropdown>
-        )
-    }
-}
-
-class Navigation extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            isOpen: false,
-        };
-    }
-
-    toggle = () => this.setState({ isOpen: !this.state.isOpen });
-
-    render() {
-        console.log('Navigation', this.props)
-        const { user: { data, metadata: { isFinished } } } = this.props
+        console.log('LeagueList', this.props)
+        const { leagues: { data, metadata: { isFinished } } } = this.props
         return (
             <div>
                 <Navbar light expand="md" style={{ backgroundColor: '#e3f2fd' }}>
@@ -102,16 +51,16 @@ class Navigation extends Component {
 }
 
 const query = {
-    url: "/api/0/users/self",
+    url: "/api/0/leagues",
     transform: (json, text) => {
-        return { user: json }
+        return { leagues: json }
     },
     update: {
-        user: (prevUser, user) => user
+        user: (prevLeagues, leagues) => user
     }
 }
 
-Navigation = compose(
+LeagueList = compose(
     connect(state => {
         return {
             user: {
@@ -121,6 +70,6 @@ Navigation = compose(
         }
     }),
     connectRequest(props => ([query]))
-)(Navigation)
+)(LeagueList)
 
 export default Navigation
