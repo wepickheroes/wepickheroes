@@ -5,7 +5,7 @@ services:
     image: postgres
   web:
     build: .
-    command: python3 manage.py runserver 0.0.0.0:8000
+    command: python ./api/manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
@@ -14,7 +14,7 @@ services:
       - migration
   migration:
     build: .
-    command: python manage.py migrate
+    command: python ./api/manage.py migrate
     volumes:
       - .:/code
     links:
