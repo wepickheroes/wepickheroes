@@ -11,4 +11,13 @@ services:
     ports:
       - "8000:8000"
     depends_on:
+      - migration
+  migration:
+    build: .
+    command: python manage.py migrate
+    volumes:
+      - .:/code
+    links:
+      - db
+    depends_on:
       - db
