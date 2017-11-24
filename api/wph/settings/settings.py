@@ -32,8 +32,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nucleus',
-    'wph_auth',
     'social_django',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -118,7 +118,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-AUTH_USER_MODEL = 'wph_auth.WPHUser'
+# AUTH_USER_MODEL = 'wph_auth.WPHUser'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
@@ -126,6 +126,3 @@ AUTH_USER_MODEL = 'wph_auth.WPHUser'
 STATIC_URL = '/static/'
 
 
-# Social Auth
-SOCIAL_AUTH_STEAM_EXTRA_DATA = ['player']
-SOCIAL_AUTH_USER_FIELDS = ['steamid', 'username', ]

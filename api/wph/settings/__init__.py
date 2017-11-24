@@ -1,2 +1,3 @@
-from .settings_local import *
 from .settings import *
+from .third_party import *
+from .settings_local import *
