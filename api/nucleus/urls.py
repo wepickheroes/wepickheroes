@@ -21,5 +21,5 @@ from . import views
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='nucleus/index.html'), name='index'),
     url(r'^require-email/$', views.require_email, name='require_email'),
-
+    url(r'^social-redirect/$', views.social_redirect, name='social_redirect'),
 ]
