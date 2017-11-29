@@ -1,0 +1,14 @@
+{% extends 'nucleus/_base.html' %}
+
+{% block body %}
+    Email is required to finish signup
+    <form action="{% url "social:complete" partial_backend_name %}" method="post" role="form">
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+        <input type="hidden" name="partial_token" value="{{ partial_token }}">
+        <div class="form-group">
+            <label class="control-label" for="email">Email address:</label>
+            <input class="form-control" id="email" type="email" name="email" value="" autofocus />
+        </div>
+        <input type="submit" value="Submit" />
+    </form>
+{% endblock %}

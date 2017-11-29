@@ -17,7 +17,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^', include('nucleus.urls')),
+    url(r'^', include('nucleus.urls', namespace='nucleus')),
     url('', include('social_django.urls', namespace='social')),
     url(r'^admin/', admin.site.urls),
+    url('^', include('django.contrib.auth.urls', namespace='django_auth')),
 ]

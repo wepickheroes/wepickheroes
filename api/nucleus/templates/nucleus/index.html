@@ -1,6 +1,9 @@
-<html>
-<head></head>
-<body>
-    <a href="{% url 'social:begin' 'steam' %}">Log In</a>
-</body>
-</html>
+{% extends 'nucleus/_base.html' %}
+
+{% block body %}
+    {% if request.user and request.user.is_authenticated %}
+        <p>You are logged in. (<a href="{% url 'django_auth:logout' %}?next=/">Log out</a>)</p>
+    {% else %}
+        <a href="{% url 'social:begin' 'steam' %}">Log In</a>
+    {% endif %}
+{% endblock %}

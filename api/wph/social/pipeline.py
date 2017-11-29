@@ -1,3 +1,5 @@
+from django.core.urlresolvers import reverse
+
 from social_core.pipeline.partial import partial
 
 
@@ -12,5 +14,8 @@ def require_email(strategy, details, user=None, is_new=False, *args, **kwargs):
         else:
             current_partial = kwargs.get('current_partial')
             return strategy.redirect(
-                '/email?partial_token={0}'.format(current_partial.token)
+                "{}?partial_token={}".format(
+                    reverse("nucleus:require_email"),
+                    current_partial.token,
+                )
             )
