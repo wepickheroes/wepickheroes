@@ -63,7 +63,6 @@ class Navigation extends Component {
     toggle = () => this.setState({ isOpen: !this.state.isOpen });
 
     render() {
-        console.log('Navigation', this.props)
         const { user: { data, metadata: { isFinished } } } = this.props
         return (
             <div>
