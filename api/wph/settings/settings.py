@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'nucleus',
     'social_django',
     'django_extensions',
+    'graphene_django',
 ]
 
 MIDDLEWARE = [

@@ -1,3 +1,7 @@
+GRAPHENE = {
+    'SCHEMA': 'wph.schema.schema',
+}
+
 SHELL_PLUS = "ipython"
 
 SOCIAL_AUTH_STEAM_EXTRA_DATA = ['player']
