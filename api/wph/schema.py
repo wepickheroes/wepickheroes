@@ -19,7 +19,16 @@ class UserQuery:
         return User.objects.all()
 
 
-class Query(UserQuery, graphene.ObjectType):
+class AuthenticationQuery:
+    is_authenticated = graphene.Field(graphene.String)
+
+    def resolve_is_authenticated(self, info, **kwargs):
+        return info.context.user.is_authenticated()
+
+
+class Query(UserQuery,
+            AuthenticationQuery,
+            graphene.ObjectType):
     pass
 
 schema = graphene.Schema(query=Query)
