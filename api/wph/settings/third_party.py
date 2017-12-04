@@ -1,3 +1,10 @@
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = (
+    'localhost',
+    'localhost:3000',
+    'localhost:8000',
+)
+
 GRAPHENE = {
     'SCHEMA': 'wph.schema.schema',
 }

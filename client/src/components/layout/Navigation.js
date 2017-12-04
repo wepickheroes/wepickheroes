@@ -63,7 +63,7 @@ class Navigation extends Component {
     toggle = () => this.setState({ isOpen: !this.state.isOpen });
 
     render() {
-        const { user: { data, metadata: { isFinished } } } = this.props
+        // const { user: { data, metadata: { isFinished } } } = this.props
         return (
             <div>
                 <Navbar light expand="md" style={{ backgroundColor: '#e3f2fd' }}>
@@ -83,15 +83,15 @@ class Navigation extends Component {
                                     <NavLink><Uppercase>Leagues</Uppercase></NavLink>
                                 </LinkContainer>
                             </NavItem>
-                            {isFinished && data ? (
-                                <UserMenu user={data} />
-                            ) : (
+                            {/*{isFinished && data ? (*/}
+                                {/*<UserMenu user={data} />*/}
+                            {/*) : (*/}
                                 <SteamNavItem>
                                     <Button color="success" className="text-uppercase">
                                         <i className="fa fa-steam" />&nbsp;Sign In With Steam
                                     </Button>
                                 </SteamNavItem>
-                            )}
+                            // )}
                         </Nav>
                     </Collapse>
                 </Navbar>
@@ -100,26 +100,26 @@ class Navigation extends Component {
     }
 }
 
-const query = {
-    url: "/api/0/users/self",
-    transform: (json, text) => {
-        return { user: json }
-    },
-    update: {
-        user: (prevUser, user) => user
-    }
-}
-
-Navigation = compose(
-    connect(state => {
-        return {
-            user: {
-                data: state.entities.user,
-                metadata: { isFinished: querySelectors.isFinished(state.queries, query) },
-            }
-        }
-    }),
-    connectRequest(props => ([query]))
-)(Navigation)
+// const query = {
+//     url: "/api/0/users/self",
+//     transform: (json, text) => {
+//         return { user: json }
+//     },
+//     update: {
+//         user: (prevUser, user) => user
+//     }
+// }
+//
+// Navigation = compose(
+//     connect(state => {
+//         return {
+//             user: {
+//                 data: state.entities.user,
+//                 metadata: { isFinished: querySelectors.isFinished(state.queries, query) },
+//             }
+//         }
+//     }),
+//     connectRequest(props => ([query]))
+// )(Navigation)
 
 export default Navigation
