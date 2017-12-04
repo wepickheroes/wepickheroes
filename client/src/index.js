@@ -13,10 +13,6 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import store from './store'
 
-import gql from 'graphql-tag';
-
-client.query({ query: gql`{ isAuthenticated }` }).then(console.log);
-
 const app = (
     <ApolloProvider client={client}>
         <Provider store={store}>
