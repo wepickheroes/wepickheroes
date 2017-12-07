@@ -1,3 +1,5 @@
+import os
+
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
     'localhost',
@@ -11,6 +13,7 @@ GRAPHENE = {
 
 SHELL_PLUS = "ipython"
 
+SOCIAL_AUTH_STEAM_API_KEY = os.environ.get('SOCIAL_AUTH_STEAM_API_KEY', None)
 SOCIAL_AUTH_STEAM_EXTRA_DATA = ['player']
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/login/error/'
