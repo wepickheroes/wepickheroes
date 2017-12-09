@@ -1,1 +1,1 @@
-web: gunicorn api.wph.wsgi --log-file -
+web: cd api && gunicorn wph.wsgi --log-file -
