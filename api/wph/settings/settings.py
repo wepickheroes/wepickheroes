@@ -20,8 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 ALLOWED_HOSTS = [
-    'localhost',
-    'localhost:8000',
+    '*',
+    # 'localhost',
+    # 'localhost:8000',
 ]
 
 # Application definition
