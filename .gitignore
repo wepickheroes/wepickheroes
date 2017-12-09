@@ -124,3 +124,4 @@ yarn-error.log*
 .idea/
 public/
 db.sqlite3
+api/wph/staticfiles
