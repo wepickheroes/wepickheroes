@@ -82,6 +82,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', None)
 DATABASE_URL = os.environ.get('DATABSE_URL', None)
 DB_HOST = DATABASE_URL or os.environ.get('DB_HOST', None)
 
+print('DB_HOST', DB_HOST)
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
