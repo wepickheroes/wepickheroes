@@ -80,7 +80,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', None)
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASE_URL = os.environ.get('DATABSE_URL', None)
-DB_HOST = os.environ.get('DB_HOST', None) or DATABASE_URL
+DB_HOST = DATABASE_URL or os.environ.get('DB_HOST', None)
 
 DATABASES = {
     'default': {
