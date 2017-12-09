@@ -71,7 +71,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wph.wsgi.application'
 
-DEBUG = bool(os.environ.get('DEBUG', False))
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 SECRET_KEY = os.environ.get('SECRET_KEY', None)
 
 # Database
@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': os.environ.get('DB_NAME', None),
         'USER': os.environ.get('DB_USER', None),
         'HOST': os.environ.get('DB_HOST', None),
-        'PORT': int(os.environ.get('DB_PORT', None)),
+        'PORT': int(os.environ.get('DB_PORT', 0)),
     }
 }
 
