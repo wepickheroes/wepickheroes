@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'social_django',
     'django_extensions',
     'teams',
+    'players',
 ]
 SITE_ID = 1
 

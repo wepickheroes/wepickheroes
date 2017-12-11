@@ -171,7 +171,7 @@ class ApplicationStatusHistoryManager(models.Manager):
 
 
 class ApplicationStatusHistory(JoinableStatusHistory):
-    application = models.ForeignKey('common.Application', on_delete=models.CASCADE)
+    application = models.ForeignKey('nucleus.Application', on_delete=models.CASCADE)
 
     objects = ApplicationStatusHistoryManager()
 
@@ -269,7 +269,7 @@ class InvitationStatusHistoryManager(models.Manager):
 
 
 class InvitationStatusHistory(JoinableStatusHistory):
-    invitation = models.ForeignKey('common.Invitation', on_delete=models.CASCADE)
+    invitation = models.ForeignKey('nucleus.Invitation', on_delete=models.CASCADE)
 
     objects = InvitationStatusHistoryManager()
 
