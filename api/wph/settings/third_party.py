@@ -1,5 +1,19 @@
+import os
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = (
+    'localhost',
+    'localhost:3000',
+    'localhost:8000',
+)
+
+GRAPHENE = {
+    'SCHEMA': 'wph.schema.schema',
+}
+
 SHELL_PLUS = "ipython"
 
+SOCIAL_AUTH_STEAM_API_KEY = os.environ.get('SOCIAL_AUTH_STEAM_API_KEY', None)
 SOCIAL_AUTH_STEAM_EXTRA_DATA = ['player']
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/login/error/'
@@ -16,7 +30,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.user.get_username',
     # 'social_core.pipeline.mail.mail_validation',
     'social_core.pipeline.user.create_user',
-    'social_core.pipeline.social_auth.associate_user',
+    # 'social_core.pipeline.social_auth.associate_user',
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
 )

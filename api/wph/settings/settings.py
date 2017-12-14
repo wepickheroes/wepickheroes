@@ -19,8 +19,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    'localhost',
+    'localhost:8000',
+]
 
 # Application definition
 
@@ -34,11 +36,14 @@ INSTALLED_APPS = [
     'nucleus',
     'social_django',
     'django_extensions',
+    'graphene_django',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -66,6 +71,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wph.wsgi.application'
 
+DEBUG = bool(os.environ.get('DEBUG', False))
+SECRET_KEY = os.environ.get('SECRET_KEY', None)
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
@@ -73,10 +80,10 @@ WSGI_APPLICATION = 'wph.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'HOST': 'db',
-        'PORT': 5432,
+        'NAME': os.environ.get('DB_NAME', None),
+        'USER': os.environ.get('DB_USER', None),
+        'HOST': os.environ.get('DB_HOST', None),
+        'PORT': int(os.environ.get('DB_PORT', None)),
     }
 }
 
