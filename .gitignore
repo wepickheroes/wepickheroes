@@ -122,5 +122,4 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea/
-public/
 db.sqlite3
