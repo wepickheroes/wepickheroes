@@ -145,3 +145,6 @@ STATICFILES_DIRS = (
 
 SECURE_SSL_REDIRECT = os.environ.get('SECURE_SSL_REDIRECT', 'False') == 'True'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+CSRF_COOKIE_DOMAIN = ".wepickheroes.com"
+SESSION_COOKIE_DOMAIN = ".wepickheroes.com"
