@@ -12,8 +12,7 @@ class App extends Component {
         return (
             <div>
                 <Navigation/>
-                <Route exact path="/" render={() => <Redirect to="/wepickheroes" />} />
-                <Route path="/wepickheroes" component={Index} />
+                <Route exact path="/" component={Index} />
                 <Footer />
             </div>
         );

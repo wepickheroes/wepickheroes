@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Button, Col, Container, Jumbotron, Row } from 'reactstrap'
 import theDire from '../img/the_dire.jpg'
+import { createUrl } from '../api/utils'
 
 const Intro = styled(Jumbotron)`
     margin: 2rem 0;
@@ -22,10 +23,6 @@ const MarketingList = styled.ol`
     margin-left: 2rem;
 `
 
-const steamSignInRedirectDomain = process.env.NODE_ENV === 'production' ?
-    'https://wepickheroes.com:8000' :
-    'http://localhost:8000'
-
 const Index = props => (
     <Container fluid>
         <Container>
@@ -41,7 +38,7 @@ const Index = props => (
                         Learn More
                     </Button>{' '}
                     <Button color="success" size="lg"
-                            href={`${steamSignInRedirectDomain}/login/steam/?next=/social-redirect`}>
+                            href={createUrl('/login/steam/?next=/social-redirect')}>
                         <i className="fa fa-steam" />&nbsp;Sign Up
                     </Button>
                 </div>
