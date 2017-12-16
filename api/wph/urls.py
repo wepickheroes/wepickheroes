@@ -20,7 +20,6 @@ from graphene_django.views import GraphQLView
 urlpatterns = [
     url(r'^', include('nucleus.urls', namespace='nucleus')),
     url('', include('social_django.urls', namespace='social')),
-    url('^', include('django.contrib.auth.urls', namespace='django_auth')),
     url(r'^admin/', admin.site.urls),
     url(r'^graphql', GraphQLView.as_view(graphiql=True)),
 ]
