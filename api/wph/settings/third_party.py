@@ -5,6 +5,7 @@ CORS_ORIGIN_WHITELIST = (
     'localhost',
     'localhost:3000',
     'localhost:8000',
+    'wepickheroes.com',
 )
 
 GRAPHENE = {
