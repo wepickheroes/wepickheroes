@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "homepage": "http://wepickheroes.github.io",
+  "homepage": "https://wepickheroes.com",
   "private": true,
   "proxy": "http://localhost:8000",
   "dependencies": {
