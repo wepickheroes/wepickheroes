@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "homepage": "http://prattl.github.io/wepickheroes",
+  "homepage": "http://wepickheroes.github.io",
   "private": true,
   "proxy": "http://localhost:8000",
   "dependencies": {
