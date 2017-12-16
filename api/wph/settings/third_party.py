@@ -7,6 +7,9 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:8000',
     'wepickheroes.com',
 )
+CSRF_TRUSTED_ORIGINS = (
+    'wepickheroes.com',
+)
 
 GRAPHENE = {
     'SCHEMA': 'wph.schema.schema',
