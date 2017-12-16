@@ -12,6 +12,8 @@ export const createUrl = url => (
     isProduction ? `//api.wepickheroes.com${url}` : `//localhost:8000${url}`
 )
 
+console.log('isProduction', isProduction)
+
 export const client = new ApolloClient({
     link: new HttpLink({
         uri: createUrl('/graphql'),
