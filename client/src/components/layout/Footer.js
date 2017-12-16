@@ -13,7 +13,6 @@ const Uppercase = styled.span`
 class Footer extends Component {
 
     render() {
-        console.log('Footer', this.props)
         return (
             <div style={{ marginTop: "2rem" }}>
                 <Navbar light expand="md" style={{ backgroundColor: '#e3f2fd' }}>
