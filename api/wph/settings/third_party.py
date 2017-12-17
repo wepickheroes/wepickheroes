@@ -1,4 +1,5 @@
 import os
+from corsheaders.defaults import default_headers
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
@@ -6,12 +7,16 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:3000',
     'localhost:8000',
     'wepickheroes.com',
+    'local.wepickheroes.com',
 )
 CSRF_TRUSTED_ORIGINS = (
     'localhost',
     'wepickheroes.com',
+    'local.wepickheroes.com',
 )
-
+CORS_ALLOW_HEADERS = default_headers + (
+    'credentials',
+)
 GRAPHENE = {
     'SCHEMA': 'wph.schema.schema',
 }
