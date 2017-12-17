@@ -37,7 +37,12 @@ class RequireCSRFToken extends Component {
     render() {
         const { children } = this.props
         const { attemptedRequest, csrftoken } = this.state
-        return (attemptedRequest || csrftoken) && children
+        return (attemptedRequest || csrftoken) && (
+            <div>
+                <p>RequireCSRFToken: {Object.keys(this.state).map(k => `${k}: ${this.state[k].toString()}; `)}</p>
+                {children}
+            </div>
+        )
     }
 }
 
