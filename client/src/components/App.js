@@ -17,6 +17,7 @@ class RequireCSRFToken extends Component {
     }
     componentDidMount() {
         const { csrftoken } = this.state
+        console.log('RequireCSRFToken mount', this.state)
         if (!csrftoken) {
             fetch(createUrl('/'), {
                 method: 'GET',
@@ -24,10 +25,13 @@ class RequireCSRFToken extends Component {
                 headers: {
                     'Content-Type': 'application/json',
                 }
-            }).then(resp => this.setState({
-                attemptedRequest: true,
-                csrftoken: getCookie('csrftoken'),
-            }))
+            }).then(resp => {
+                console.log('Response:', resp)
+                this.setState({
+                    attemptedRequest: true,
+                    csrftoken: getCookie('csrftoken'),
+                })
+            })
         }
     }
     render() {
