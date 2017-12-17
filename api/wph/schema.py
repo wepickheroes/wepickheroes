@@ -20,7 +20,7 @@ class UserQuery:
 
 
 class AuthenticationQuery:
-    is_authenticated = graphene.Field(graphene.String)
+    is_authenticated = graphene.Field(graphene.Boolean)
 
     def resolve_is_authenticated(self, info, **kwargs):
         return info.context.user.is_authenticated
