@@ -15,7 +15,7 @@ class Footer extends Component {
     render() {
         return (
             <div style={{ marginTop: "2rem" }}>
-                <Navbar light expand="md" style={{ backgroundColor: '#e3f2fd' }}>
+                <Navbar dark color="dark" expand="md">
                     <Nav navbar>
                         <span className="navbar-text">
                             &copy; 2017, We Pick Heroes

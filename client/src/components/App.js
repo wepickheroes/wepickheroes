@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
     Route,
 } from 'react-router-dom'
 
-import Index from './Index'
+import Homepage from './Homepage'
 import { Footer, Navigation } from './layout'
 import { createUrl, getCookie } from '../api/utils'
 
@@ -45,7 +45,7 @@ class App extends Component {
             <RequireCSRFToken>
                 <div>
                     <Navigation/>
-                    <Route exact path="/" component={Index} />
+                    <Route exact path="/" component={Homepage} />
                     <Footer />
                 </div>
             </RequireCSRFToken>
