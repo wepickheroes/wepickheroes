@@ -64,7 +64,7 @@ class Navigation extends Component {
         };
     }
 
-    toggle = () => this.setState({ isOpen: !this.state.isOpen });
+    toggle = () => this.setState({ isOpen: !this.state.isOpen })
 
     render() {
         const { data: { error, loading, isAuthenticated = false } } = this.props
