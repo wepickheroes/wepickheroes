@@ -1,13 +1,15 @@
 {
-  "main.css": "static/css/main.89eda32e.css",
-  "main.css.map": "static/css/main.89eda32e.css.map",
-  "main.js": "static/js/main.09159ae1.js",
-  "main.js.map": "static/js/main.09159ae1.js.map",
+  "main.css": "static/css/main.7b709fed.css",
+  "main.css.map": "static/css/main.7b709fed.css.map",
+  "main.js": "static/js/main.fdbd3d29.js",
+  "main.js.map": "static/js/main.fdbd3d29.js.map",
+  "static/media/Play-Regular.ttf": "static/media/Play-Regular.18e2f68f.ttf",
   "static/media/fontawesome-webfont.eot": "static/media/fontawesome-webfont.674f50d2.eot",
   "static/media/fontawesome-webfont.svg?v=4.7.0": "static/media/fontawesome-webfont.912ec66d.svg",
   "static/media/fontawesome-webfont.ttf?v=4.7.0": "static/media/fontawesome-webfont.b06871f2.ttf",
   "static/media/fontawesome-webfont.woff2?v=4.7.0": "static/media/fontawesome-webfont.af7ae505.woff2",
   "static/media/fontawesome-webfont.woff?v=4.7.0": "static/media/fontawesome-webfont.fee66e71.woff",
+  "static/media/goudytrajan-medium-pro-webfont.ttf": "static/media/goudytrajan-medium-pro-webfont.05675a20.ttf",
   "static/media/logo.png": "static/media/logo.ca6e83b3.png",
   "static/media/the_dire.jpg": "static/media/the_dire.34c977cb.jpg"
 }
