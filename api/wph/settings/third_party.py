@@ -8,11 +8,12 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:8000',
     'wepickheroes.com',
     'local.wepickheroes.com',
+    'local.wepickheroes.com:3000',
 )
 CSRF_TRUSTED_ORIGINS = (
     'localhost',
     'wepickheroes.com',
-    'local.wepickheroes.com',
+    'local.wepickheroes.com:3000',
 )
 CORS_ALLOW_HEADERS = default_headers + (
     'credentials',
