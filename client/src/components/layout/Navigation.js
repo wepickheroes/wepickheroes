@@ -9,6 +9,7 @@ import {
 } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap'
 import logo from '../../img/logos/logo.png'
+import { createUrl } from '../../api/utils'
 
 const NavbarTitle = styled.h1`
     margin: 0;
@@ -93,7 +94,8 @@ class Navigation extends Component {
                             {!loading && (
                                 isAuthenticated ? <UserMenu /> : (
                                 <SteamNavItem>
-                                    <Button color="success" className="text-uppercase">
+                                    <Button color="success" className="text-uppercase"
+                                            href={createUrl('/login/steam/?next=/social-redirect')}>
                                         <i className="fa fa-steam" />&nbsp;Sign In With Steam
                                     </Button>
                                 </SteamNavItem>

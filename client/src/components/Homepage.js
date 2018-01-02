@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button, Col, Container, Jumbotron, Row } from 'reactstrap'
+import { Button, Col, Container, Row } from 'reactstrap'
 import theDire from '../img/the_dire.jpg'
 import { createUrl } from '../api/utils'
 

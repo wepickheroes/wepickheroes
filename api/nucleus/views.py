@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 SITE_PROTOCOL = 'http' if settings.DEBUG else 'https'
-SITE_DOMAIN = 'local.wepickheroes.com' if settings.DEBUG else 'wepickheroes.com'
+SITE_DOMAIN = 'local.wepickheroes.com:3000' if settings.DEBUG else 'wepickheroes.com'
 
 
 @ensure_csrf_cookie
@@ -27,6 +27,5 @@ def social_redirect(request):
         protocol=SITE_PROTOCOL,
         domain=SITE_DOMAIN,
     )
-    print('Redirecting to', return_url)
     return redirect(return_url)
 
