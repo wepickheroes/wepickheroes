@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-import { compose } from 'redux'
-import { connectRequest, querySelectors } from 'redux-query'
-import { connect } from 'react-redux'
 import styled from 'styled-components'
 import {
     Button, Collapse, DropdownToggle, DropdownMenu, DropdownItem,
@@ -50,26 +47,4 @@ class LeagueList extends Component {
     }
 }
 
-const query = {
-    url: "/api/0/leagues",
-    transform: (json, text) => {
-        return { leagues: json }
-    },
-    update: {
-        user: (prevLeagues, leagues) => user
-    }
-}
-
-LeagueList = compose(
-    connect(state => {
-        return {
-            user: {
-                data: state.entities.user,
-                metadata: { isFinished: querySelectors.isFinished(state.queries, query) },
-            }
-        }
-    }),
-    connectRequest(props => ([query]))
-)(LeagueList)
-
-export default Navigation
+export default LeagueList

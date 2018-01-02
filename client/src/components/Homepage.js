@@ -2,15 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import { Button, Col, Container, Jumbotron, Row } from 'reactstrap'
 import theDire from '../img/the_dire.jpg'
+import { createUrl } from '../api/utils'
 
-const Intro = styled(Jumbotron)`
+const Intro = styled.div`
     margin: 2rem 0;
     text-align: center;
 `
 const Description = styled.p`
-    max-width: 550px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 400px;
+    margin: 0 auto 30px auto;
 `
 const Divider = styled.hr`
     margin: 5rem 0;
@@ -22,26 +22,19 @@ const MarketingList = styled.ol`
     margin-left: 2rem;
 `
 
-const steamSignInRedirectDomain = process.env.NODE_ENV === 'production' ?
-    'https://wepickheroes.com:8000' :
-    'http://localhost:8000'
-
-const Index = props => (
+const Homepage = props => (
     <Container fluid>
         <Container>
             <Intro>
-                <h1 className="display-3">We Pick Heroes</h1>
+                <h1 className="display-4">We Pick Heroes</h1>
                 <h2>Amateur Dota 2 League</h2>
                 <Description className="lead">
                     Become a part of the first amateur Dota 2 competitive league. All skill levels are
-                    accepted. Registration is free and easy.
+                    accepted. Registration is free and easy!
                 </Description>
                 <div>
-                    <Button color="info" size="lg" href="#how-it-works">
-                        Learn More
-                    </Button>{' '}
                     <Button color="success" size="lg"
-                            href={`${steamSignInRedirectDomain}/login/steam/?next=/social-redirect`}>
+                            href={createUrl('/login/steam/?next=/social-redirect')}>
                         <i className="fa fa-steam" />&nbsp;Sign Up
                     </Button>
                 </div>
@@ -71,4 +64,4 @@ const Index = props => (
     </Container>
 )
 
-export default Index
+export default Homepage
