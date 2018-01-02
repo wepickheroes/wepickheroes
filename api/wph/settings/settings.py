@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'social_django',
     'django_extensions',
     'teams',
-    'players',
     'graphene_django',
     'corsheaders',
 ]
