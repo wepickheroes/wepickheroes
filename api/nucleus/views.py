@@ -1,16 +1,32 @@
-from django.shortcuts import render
-from social_django.utils import psa, load_strategy
+from django.conf import settings
+from django.shortcuts import redirect, render
+from django.http import JsonResponse
+from django.views.decorators.csrf import ensure_csrf_cookie
+
+SITE_PROTOCOL = 'http' if settings.DEBUG else 'https'
+SITE_DOMAIN = 'local.wepickheroes.com' if settings.DEBUG else 'wepickheroes.com'
+
+
+@ensure_csrf_cookie
+def index(request):
+    return JsonResponse({})
 
 
 def require_email(request):
-    strategy = load_strategy()
     partial_token = request.GET.get('partial_token')
-    partial = strategy.partial_load(partial_token)
-    context = {
-        'email_required': True,
-        'partial_backend_name': partial.backend,
-        'partial_token': partial_token
-    }
-    return render(request, 'nucleus/require_email.html', context)
+    return_url = '{protocol}://{domain}/finish-steam/{token}'.format(
+        protocol=SITE_PROTOCOL,
+        domain=SITE_DOMAIN,
+        token=partial_token
+    )
+    return redirect(return_url)
 
+
+def social_redirect(request):
+    return_url = '{protocol}://{domain}/'.format(
+        protocol=SITE_PROTOCOL,
+        domain=SITE_DOMAIN,
+    )
+    print('Redirecting to', return_url)
+    return redirect(return_url)
 

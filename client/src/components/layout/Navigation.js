@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { compose } from 'redux'
-import { connectRequest, querySelectors } from 'redux-query'
-import { connect } from 'react-redux'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
+
 import styled from 'styled-components'
 import {
     Button, Collapse, DropdownToggle, DropdownMenu, DropdownItem,
@@ -10,6 +10,10 @@ import {
 import { LinkContainer } from 'react-router-bootstrap'
 import logo from '../../img/logos/logo.png'
 
+const NavbarTitle = styled.h1`
+    margin: 0;
+    font-weight: bold;
+`
 const Uppercase = styled.span`
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -60,39 +64,40 @@ class Navigation extends Component {
         };
     }
 
-    toggle = () => this.setState({ isOpen: !this.state.isOpen });
+    toggle = () => this.setState({ isOpen: !this.state.isOpen })
 
     render() {
-        console.log('Navigation', this.props)
-        const { user: { data, metadata: { isFinished } } } = this.props
+        const { data: { error, loading, isAuthenticated = false } } = this.props
         return (
             <div>
-                <Navbar light expand="md" style={{ backgroundColor: '#e3f2fd' }}>
-                    <NavbarBrand href="/">
-                        <Logo src={logo} alt="logo" /><strong>We Pick Heroes</strong>
-                    </NavbarBrand>
+                <Navbar dark color="dark" expand="md">
+                    <NavbarTitle>
+                        <NavbarBrand href="/">
+                            <Logo src={logo} alt="logo" />
+                            We Pick Heroes
+                        </NavbarBrand>
+                    </NavbarTitle>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <LinkContainer to="/">
+                                <LinkContainer to="/tournaments">
                                     <NavLink><Uppercase>Tournaments</Uppercase></NavLink>
                                 </LinkContainer>
                             </NavItem>
                             <NavItem>
-                                <LinkContainer to="/">
+                                <LinkContainer to="/leagues">
                                     <NavLink><Uppercase>Leagues</Uppercase></NavLink>
                                 </LinkContainer>
                             </NavItem>
-                            {isFinished && data ? (
-                                <UserMenu user={data} />
-                            ) : (
+                            {!loading && (
+                                isAuthenticated ? <UserMenu /> : (
                                 <SteamNavItem>
                                     <Button color="success" className="text-uppercase">
                                         <i className="fa fa-steam" />&nbsp;Sign In With Steam
                                     </Button>
                                 </SteamNavItem>
-                            )}
+                            ))}
                         </Nav>
                     </Collapse>
                 </Navbar>
@@ -101,26 +106,5 @@ class Navigation extends Component {
     }
 }
 
-const query = {
-    url: "/api/0/users/self",
-    transform: (json, text) => {
-        return { user: json }
-    },
-    update: {
-        user: (prevUser, user) => user
-    }
-}
-
-Navigation = compose(
-    connect(state => {
-        return {
-            user: {
-                data: state.entities.user,
-                metadata: { isFinished: querySelectors.isFinished(state.queries, query) },
-            }
-        }
-    }),
-    connectRequest(props => ([query]))
-)(Navigation)
-
-export default Navigation
+const query = gql`query { isAuthenticated }`
+export default graphql(query)(props => <Navigation {...props} />)
