@@ -1,0 +1,18 @@
+$body-bg: #395155;
+$body-color: #F4F3F3;
+$dark: #062736;
+$success: #799905;
+
+@font-face {
+  font-family: 'Play';
+  src: local('Play'), url(../../fonts/wph-fonts/Play/Play-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Goudy Trajan';
+  src: local('Goudy Trajan'), url(../../fonts/wph-fonts/DotaFonts/goudytrajan-medium-pro-webfont.ttf) format('truetype');
+}
+
+$font-family-base: 'Play', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$headings-font-family: 'Goudy Trajan', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+
+@import "node_modules/bootstrap/scss/bootstrap";

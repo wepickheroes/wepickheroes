@@ -10,6 +10,10 @@ import {
 import { LinkContainer } from 'react-router-bootstrap'
 import logo from '../../img/logos/logo.png'
 
+const NavbarTitle = styled.h1`
+    margin: 0;
+    font-weight: bold;
+`
 const Uppercase = styled.span`
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -60,26 +64,29 @@ class Navigation extends Component {
         };
     }
 
-    toggle = () => this.setState({ isOpen: !this.state.isOpen });
+    toggle = () => this.setState({ isOpen: !this.state.isOpen })
 
     render() {
         const { data: { error, loading, isAuthenticated = false } } = this.props
         return (
             <div>
-                <Navbar light expand="md" style={{ backgroundColor: '#e3f2fd' }}>
-                    <NavbarBrand href="/">
-                        <Logo src={logo} alt="logo" /><strong>We Pick Heroes</strong>
-                    </NavbarBrand>
+                <Navbar dark color="dark" expand="md">
+                    <NavbarTitle>
+                        <NavbarBrand href="/">
+                            <Logo src={logo} alt="logo" />
+                            We Pick Heroes
+                        </NavbarBrand>
+                    </NavbarTitle>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <LinkContainer to="/">
+                                <LinkContainer to="/tournaments">
                                     <NavLink><Uppercase>Tournaments</Uppercase></NavLink>
                                 </LinkContainer>
                             </NavItem>
                             <NavItem>
-                                <LinkContainer to="/">
+                                <LinkContainer to="/leagues">
                                     <NavLink><Uppercase>Leagues</Uppercase></NavLink>
                                 </LinkContainer>
                             </NavItem>

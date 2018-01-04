@@ -1,39 +1,41 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "homepage": "http://prattl.github.io/wepickheroes",
+  "homepage": "https://wepickheroes.com:8000",
   "private": true,
   "proxy": "http://localhost:8000",
   "dependencies": {
     "apollo-client-preset": "^1.0.4",
+    "bootstrap": "4.0.0-beta.2",
     "font-awesome": "^4.7.0",
     "graphql": "^0.11.7",
     "graphql-tag": "^2.5.0",
     "history": "^4.7.2",
+    "node-sass-chokidar": "^0.0.3",
+    "npm-run-all": "^4.1.2",
     "react": "^16.0.0",
     "react-apollo": "^2.0.1",
     "react-dom": "^16.0.0",
-    "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-bootstrap": "^0.24.4",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.15",
     "reactstrap": "^5.0.0-alpha.3",
-    "redux": "^3.7.2",
-    "redux-logger": "^3.0.6",
-    "redux-query": "^2.1.0",
     "styled-components": "^2.2.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "react-scripts build",
+    "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
-    "gh-pages": "^1.0.0",
-    "redux-devtools": "^3.4.0"
+    "gh-pages": "^1.0.0"
   }
 }
