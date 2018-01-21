@@ -4,7 +4,7 @@ import { Button, Col, Container, Row } from 'reactstrap'
 import theDire from '../img/the_dire.jpg'
 import { createUrl } from '../api/utils'
 
-const Intro = styled.div`
+export const Intro = styled.div`
     margin: 2rem 0;
     text-align: center;
 `

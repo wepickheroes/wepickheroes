@@ -21,7 +21,7 @@ const Uppercase = styled.span`
 `
 const Logo = styled.img`
     height: 50px;
-    margin-right: 1rem;
+    margin-right: 0;
 `
 const SteamNavItem = styled(NavItem)`
     margin-left: 1rem;
