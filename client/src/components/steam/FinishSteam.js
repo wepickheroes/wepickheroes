@@ -16,6 +16,10 @@ const FinishSteam = props => (
                     <FormGroup>
                         <Label for='email'>Email Address</Label>
                         <Input id='email' type='email' name='email' />
+                        <FormText>
+                            Your email is private. You can change your email preferences from your settings. We do
+                            not share or sell your personal information.
+                        </FormText>
                     </FormGroup>
                     <div className='text-center'>
                         <Button color='success'>Submit</Button>
