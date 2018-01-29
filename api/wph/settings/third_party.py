@@ -29,7 +29,7 @@ SOCIAL_AUTH_STEAM_EXTRA_DATA = ['player']
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/social-redirect/'
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/login/error/'
 SOCIAL_AUTH_INACTIVE_USER_URL = '/login/inactive/'
-SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/social-redirect/'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/social-redirect/signup-complete'
 SOCIAL_AUTH_PASSWORDLESS = True
 
 SOCIAL_AUTH_PIPELINE = (

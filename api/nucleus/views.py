@@ -22,10 +22,12 @@ def require_email(request):
     return redirect(return_url)
 
 
-def social_redirect(request):
-    return_url = '{protocol}://{domain}/'.format(
+def social_redirect(request, path=''):
+    # path = request.GET.get('path', '')
+    return_url = '{protocol}://{domain}/{path}'.format(
         protocol=SITE_PROTOCOL,
         domain=SITE_DOMAIN,
+        path=path,
     )
     return redirect(return_url)
 

@@ -5,6 +5,7 @@ import {
 
 import Homepage from './Homepage'
 import FinishSteam from './steam/FinishSteam'
+import SignupComplete from './user/SignupComplete'
 import { Footer, Navigation } from './layout'
 import { createUrl, getCookie } from '../api/utils'
 
@@ -47,6 +48,7 @@ class App extends Component {
                 <div>
                     <Navigation/>
                     <Route exact path="/" component={Homepage} />
+                    <Route path="/signup-complete" component={SignupComplete} />
                     <Route path="/finish-steam/:partial_token" component={FinishSteam} />
                     <Footer />
                 </div>
