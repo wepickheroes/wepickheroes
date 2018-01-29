@@ -16,11 +16,10 @@ class Footer extends Component {
         return (
             <div style={{ marginTop: "2rem" }}>
                 <Navbar dark color="dark" expand="md">
-                    <Nav navbar>
-                        <span className="navbar-text">
-                            &copy; 2017, We Pick Heroes
-                        </span>
-                    </Nav>
+                    <Nav navbar className='ml-auto' />
+                    <span className="navbar-text">
+                        &copy; 2017, We Pick Heroes
+                    </span>
                 </Navbar>
             </div>
         );
