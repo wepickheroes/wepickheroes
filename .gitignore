@@ -124,3 +124,5 @@ yarn-error.log*
 .idea/
 db.sqlite3
 api/wph/staticfiles
+.cloudflarerc
+
