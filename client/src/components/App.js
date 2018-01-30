@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import {
     Route,
 } from 'react-router-dom'
@@ -7,52 +7,19 @@ import Homepage from './Homepage'
 import FinishSteam from './steam/FinishSteam'
 import SignupComplete from './user/SignupComplete'
 import { Footer, Navigation } from './layout'
-import { createUrl, getCookie } from '../api/utils'
-
-class RequireCSRFToken extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            attemptedRequest: false,
-            csrftoken: getCookie('csrftoken'),
-        }
-    }
-    componentDidMount() {
-        const { csrftoken } = this.state
-        if (!csrftoken) {
-            fetch(createUrl('/'), {
-                method: 'GET',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            }).then(resp => {
-                this.setState({
-                    attemptedRequest: true,
-                    csrftoken: getCookie('csrftoken'),
-                })
-            })
-        }
-    }
-    render() {
-        const { children } = this.props
-        const { attemptedRequest, csrftoken } = this.state
-        return (attemptedRequest || csrftoken) && children
-    }
-}
 
 class App extends Component {
     render() {
         return (
-            <RequireCSRFToken>
-                <div>
-                    <Navigation/>
+            <Fragment>
+                <Navigation/>
+                <section className="container-fluid flex-grow">
                     <Route exact path="/" component={Homepage} />
                     <Route path="/signup-complete" component={SignupComplete} />
                     <Route path="/finish-steam/:partial_token" component={FinishSteam} />
-                    <Footer />
-                </div>
-            </RequireCSRFToken>
+                </section>
+                <Footer />
+            </Fragment>
         )
     }
 }

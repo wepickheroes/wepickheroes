@@ -16,7 +16,7 @@ const SignupComplete = props => (
             <Row>
                 <Col sm='12' md={{ size: '6', offset: '3' }} lg={{ size: '8', offset: '2' }}>
                     <h2>
-                        Register your team
+                        Would you like to register a team?
                     </h2>
                     <Form>
                         <FormGroup>
