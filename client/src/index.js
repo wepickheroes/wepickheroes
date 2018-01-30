@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 import 'font-awesome/css/font-awesome.min.css'
 import './styles/bootstrap-theme/wepickheroes.css'
+import './styles/layout.css'
 
 import { client } from './api'
 import App from './components/App'

@@ -4,11 +4,12 @@ import gql from 'graphql-tag'
 
 import styled from 'styled-components'
 import {
-    Button, Collapse, DropdownToggle, DropdownMenu, DropdownItem,
-    Navbar, NavbarToggler, NavbarBrand, Nav, NavDropdown, NavItem, NavLink,
+    Button, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem,
+    Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink,
 } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap'
 import logo from '../../img/logos/logo.png'
+import { createUrl } from '../../api/utils'
 
 const NavbarTitle = styled.h1`
     margin: 0;
@@ -20,7 +21,7 @@ const Uppercase = styled.span`
 `
 const Logo = styled.img`
     height: 50px;
-    margin-right: 1rem;
+    margin-right: 0;
 `
 const SteamNavItem = styled(NavItem)`
     margin-left: 1rem;
@@ -39,7 +40,7 @@ class UserMenu extends Component {
 
     render() {
         return (
-            <NavDropdown isOpen={this.state.isOpen} toggle={this.toggle}>
+            <Dropdown nav isOpen={this.state.isOpen} toggle={this.toggle}>
                 <DropdownToggle caret nav>
                     <Uppercase>Settings</Uppercase>
                 </DropdownToggle>
@@ -49,7 +50,7 @@ class UserMenu extends Component {
                     <DropdownItem divider />
                     <DropdownItem>Logout</DropdownItem>
                 </DropdownMenu>
-            </NavDropdown>
+            </Dropdown>
         )
     }
 }
@@ -93,7 +94,8 @@ class Navigation extends Component {
                             {!loading && (
                                 isAuthenticated ? <UserMenu /> : (
                                 <SteamNavItem>
-                                    <Button color="success" className="text-uppercase">
+                                    <Button color="success" className="text-uppercase"
+                                            href={createUrl('/login/steam/?next=/social-redirect')}>
                                         <i className="fa fa-steam" />&nbsp;Sign In With Steam
                                     </Button>
                                 </SteamNavItem>
