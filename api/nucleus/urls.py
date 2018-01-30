@@ -22,5 +22,5 @@ app_name = 'nucleus'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^require-email/$', views.require_email, name='require_email'),
-    url(r'^social-redirect/$', views.social_redirect, name='social_redirect'),
+    url(r'^social-redirect/(?P<path>.*)$', views.social_redirect, name='social_redirect'),
 ]
