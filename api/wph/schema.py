@@ -31,4 +31,5 @@ class Query(UserQuery,
             graphene.ObjectType):
     pass
 
+
 schema = graphene.Schema(query=Query)
