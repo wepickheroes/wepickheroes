@@ -16,11 +16,42 @@ class Footer extends Component {
         return (
             <div style={{ marginTop: "2rem" }}>
                 <Navbar dark color="dark" expand="md">
-                    <Nav navbar className='ml-auto' />
-                    <span className="navbar-text">
-                        &copy; 2017, We Pick Heroes
-                    </span>
-                </Navbar>
+
+                    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
+                    <ul class="mr-auto navbar-nav">
+                    <a href="https://www.twitch.tv/wepickheroes" class="pr-2 navbar-text">About</a>
+                    <span class="pr-2 navbar-text"> | </span>
+                    <a href="https://www.twitch.tv/wepickheroes" class="pr-2 navbar-text">Blog</a>
+                    <span class="pr-2 navbar-text"> | </span>
+                    <a href="https://www.twitch.tv/wepickheroes" class="navbar-text">Contact Us</a>
+                    </ul>
+
+                    <ul class="pr-3 navbar-nav">
+                    <a href="https://www.twitch.tv/wepickheroes" class="fa fa-2x fa-twitch navbar-text"></a>
+                      </ul>
+
+                    <ul class="pr-3 navbar-nav">
+                    <a href="https://www.twitch.tv/wepickheroes" class="fa fa-2x fa-simplybuilt navbar-text"></a>
+                      </ul>
+
+                    <ul class="pr-3 navbar-nav">
+                    <a href="https://www.twitch.tv/wepickheroes" class="fa fa-2x fa-facebook navbar-text"></a>
+                      </ul>
+
+                    <ul class="pr-3 navbar-nav">
+                    <a href="https://www.twitch.tv/wepickheroes" class="fa fa-2x fa-twitter navbar-text"></a>
+                      </ul>
+
+                    <ul class="pr-3 navbar-nav">
+                    <a href="https://www.twitch.tv/wepickheroes" class="fa fa-2x fa-reddit-square navbar-text"></a>
+                      </ul>
+
+
+
+                    </nav>
+
+                  </Navbar>
             </div>
         );
     }
