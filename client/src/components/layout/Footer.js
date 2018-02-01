@@ -26,7 +26,10 @@ class Footer extends Component {
                     <span class="pr-2 navbar-text"> | </span>
                     <a href="https://www.twitch.tv/wepickheroes" class="navbar-text">Contact Us</a>
                     </ul>
+                    </nav>
+            
 
+                    <Nav navbar className='ml-auto' />
                     <ul class="pr-3 navbar-nav">
                     <a href="https://www.twitch.tv/wepickheroes" class="fa fa-2x fa-twitch navbar-text"></a>
                       </ul>
@@ -46,11 +49,6 @@ class Footer extends Component {
                     <ul class="pr-3 navbar-nav">
                     <a href="https://www.twitch.tv/wepickheroes" class="fa fa-2x fa-reddit-square navbar-text"></a>
                       </ul>
-
-
-
-                    </nav>
-
                   </Navbar>
             </div>
         );
