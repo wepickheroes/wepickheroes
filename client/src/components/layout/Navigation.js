@@ -81,6 +81,11 @@ class Navigation extends Component {
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
+                          <NavItem>
+                              <LinkContainer to="/aboutus">
+                                  <NavLink><Uppercase>About Us</Uppercase></NavLink>
+                              </LinkContainer>
+                          </NavItem>
                             <NavItem>
                                 <LinkContainer to="/tournaments">
                                     <NavLink><Uppercase>Tournaments</Uppercase></NavLink>
