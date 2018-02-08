@@ -19,7 +19,7 @@ const MarketingImage = styled.img`
     max-width: 400px;
     border-radius: 25px;
 `
-const MarketingDescription = styled.ol`
+const MarketingDescription = styled.p`
     margin-left: 2rem;
     color: #062736;
 `
@@ -53,13 +53,15 @@ const Homepage = props => (
                   <Col sm="4" >
                       <MarketingImage src={theDire} />
                   </Col>
-                  <Col sm="8" >
+                  <Col sm="8" className="d-flex align-items-center">
+                    <div >
                       <MarketingDescription>
                           With the beta launch of our site we will soon be commencing our preliminary Season 0 of PUSH League!
                           This season will consist of 4 tiers with 6 qualifying teams in each.
                           The season will run for 4 weeks.
                           We’re starting small so we can identify any potential issues before we advance out of beta and into full launch!
                       </MarketingDescription>
+                    </div>
                   </Col>
               </Row>
 

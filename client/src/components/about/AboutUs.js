@@ -6,10 +6,11 @@ import { createUrl } from '../../api/utils'
 
 export const Intro = styled.div`
     margin: 2rem 0;
-    text-align: center;
+    text-align: left;
 `
+
+
 const Description = styled.p`
-    max-width: 880px;
     margin: 0 auto 30px auto;
 `
 const Divider = styled.hr`
@@ -25,8 +26,8 @@ const MarketingList = styled.ol`
 const AboutUs = props => (
     <Container fluid>
         <Container>
-            <Intro>
-                <h1 className="display-4">About Us</h1>
+          <Intro>
+              <h1 className="display-4">About Us</h1>
                 <Description className="lead">
                     <p>PUSH League is a Dota 2 amateur league focused on players wanting a
                     competitive environment where they can grow and advance to
@@ -38,14 +39,14 @@ const AboutUs = props => (
                     Our league focuses on short 6-week seasons where players are divided into tiers based on team player medal averages.
                     At the end of a season the highest-ranking teams have a chance to get promoted into the tier above theirs for a chance at greater prizes the next season.
                     The highest tier gets to participate in a single-elimination tournament for prizes! </p>
-                    <p>New teams are more than welcome to join when registrations for the next season open. 
+                    <p>New teams are more than welcome to join when registrations for the next season open.
                     All points reset at the beginning of the next season, while promoted teams will start in their new tier.</p>
                     <p>
                     Thank you to everyone that participates in our league and supports us. We would not be able to do this without you!
                     </p>
                 </Description>
 
-            </Intro>
+          </Intro>
         </Container>
         <Divider />
         <Container>

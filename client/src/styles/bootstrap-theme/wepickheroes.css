@@ -110,9 +110,9 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #062736;
+  color: #395155;
   text-align: left;
-  background-color: #f4f3f3; }
+  background-color: #F4F3F3; }
 
 [tabindex="-1"]:focus {
   outline: none !important; }
@@ -457,7 +457,7 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #395155;
+  background-color: #F4F3F3;
   border: 1px solid #ddd;
   border-radius: 0.25rem;
   transition: all 0.2s ease-in-out;
@@ -1102,7 +1102,7 @@ pre {
   .table tbody + tbody {
     border-top: 2px solid #e9ecef; }
   .table .table {
-    background-color: #395155; }
+    background-color: #F4F3F3; }
 
 .table-sm th,
 .table-sm td {
@@ -1223,7 +1223,7 @@ pre {
     background-color: rgba(0, 0, 0, 0.075); }
 
 .table .thead-dark th {
-  color: #395155;
+  color: #F4F3F3;
   background-color: #212529;
   border-color: #32383e; }
 
@@ -1233,7 +1233,7 @@ pre {
   border-color: #e9ecef; }
 
 .table-dark {
-  color: #395155;
+  color: #F4F3F3;
   background-color: #212529; }
   .table-dark th,
   .table-dark td,
@@ -2050,7 +2050,7 @@ tbody.collapse.show {
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 1rem;
-  color: #F4F3F3;
+  color: #395155;
   text-align: left;
   list-style: none;
   background-color: #fff;
@@ -2358,7 +2358,7 @@ tbody.collapse.show {
     color: #fff;
     background-color: #007bff; }
   .custom-control-input:focus ~ .custom-control-indicator {
-    box-shadow: 0 0 0 1px #395155, 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }
+    box-shadow: 0 0 0 1px #F4F3F3, 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }
   .custom-control-input:active ~ .custom-control-indicator {
     color: #fff;
     background-color: #b3d7ff; }
@@ -2521,8 +2521,8 @@ tbody.collapse.show {
   .nav-tabs .nav-link.active,
   .nav-tabs .nav-item.show .nav-link {
     color: #495057;
-    background-color: #395155;
-    border-color: #ddd #ddd #395155; }
+    background-color: #F4F3F3;
+    border-color: #ddd #ddd #F4F3F3; }
   .nav-tabs .dropdown-menu {
     margin-top: -1px;
     border-top-left-radius: 0;
@@ -3334,7 +3334,7 @@ tbody.collapse.show {
     text-decoration: none;
     background-color: #f8f9fa; }
   .list-group-item-action:active {
-    color: #F4F3F3;
+    color: #395155;
     background-color: #e9ecef; }
 
 .list-group-item {
@@ -3843,7 +3843,7 @@ button.close {
 
 .popover-body {
   padding: 0.5rem 0.75rem;
-  color: #F4F3F3; }
+  color: #395155; }
 
 .carousel {
   position: relative; }
