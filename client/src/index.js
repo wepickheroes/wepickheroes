@@ -3,7 +3,6 @@ import { ApolloProvider } from 'react-apollo'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
-import 'font-awesome/css/font-awesome.min.css'
 import './styles/bootstrap-theme/wepickheroes.css'
 import './styles/layout.css'
 
