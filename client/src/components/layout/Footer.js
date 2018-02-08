@@ -12,17 +12,17 @@ class Footer extends Component {
                 <Navbar dark color="dark" expand="md">
                     <Nav navbar>
                         <NavItem>
-                            <LinkContainer to='about'>
+                            <LinkContainer to='/about-us'>
                                 <NavLink>About</NavLink>
                             </LinkContainer>
                         </NavItem>
                         <NavItem>
-                            <LinkContainer to='blog'>
+                            <LinkContainer to='/blog'>
                                 <NavLink>Blog</NavLink>
                             </LinkContainer>
                         </NavItem>
                         <NavItem>
-                            <LinkContainer to='contact'>
+                            <LinkContainer to='/contact'>
                                 <NavLink>Contact</NavLink>
                             </LinkContainer>
                         </NavItem>
