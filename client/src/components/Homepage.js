@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button, Col, Container, Row } from 'reactstrap'
-import theDire from '../img/the_dire.jpg'
+import { Button, Col, Container, Row, Jumbotron } from 'reactstrap'
+import theDire from '../img/keyboard.jpg'
 import { createUrl } from '../api/utils'
 
 export const Intro = styled.div`
@@ -17,20 +17,22 @@ const Divider = styled.hr`
 `
 const MarketingImage = styled.img`
     max-width: 400px;
+    border-radius: 25px;
 `
-const MarketingList = styled.ol`
+const MarketingDescription = styled.p`
     margin-left: 2rem;
+    color: #062736;
 `
 
 const Homepage = props => (
     <Container fluid>
         <Container>
             <Intro>
-                <h1 className="display-4">We Pick Heroes</h1>
-                <h2>Amateur Dota 2 League</h2>
+                <h1 className="display-4">PUSH League</h1>
+                <h2>Competitive Amateur Dota 2 League</h2>
                 <Description className="lead">
-                    Become a part of the first amateur Dota 2 competitive league. All skill levels are
-                    accepted. Registration is free and easy!
+                  Registration is free and easy!
+                  To get started, sign in with your Steam account, create a team page, and invite your teammates to join!
                 </Description>
                 <div>
                     <Button color="success" size="lg"
@@ -41,25 +43,30 @@ const Homepage = props => (
             </Intro>
         </Container>
         <Divider />
-        <Container>
-            <h2 id="how-it-works" className="display-4">
-                How it works
-            </h2>
-            <Row>
-                <Col sm="4">
-                    <MarketingImage src={theDire} />
-                </Col>
-                <Col sm="8">
-                    <MarketingList>
-                        <li>Assemble a team</li>
-                        <li>Sign up for a league</li>
-                        <li>Get matched against teams with a similar skill level</li>
-                        <li>Play a round-robin tournament match once per week</li>
-                        <li>Compete to move up to the next bracket, or for cash prizes!</li>
-                    </MarketingList>
-                </Col>
-            </Row>
-        </Container>
+        <Jumbotron>
+          <Container>
+
+              <h2 id="how-it-works" className="display-4">
+                   Season 0 coming soon!
+              </h2>
+              <Row >
+                  <Col sm="4" >
+                      <MarketingImage src={theDire} />
+                  </Col>
+                  <Col sm="8" className="d-flex align-items-center">
+                    <div >
+                      <MarketingDescription>
+                          With the beta launch of our site we will soon be commencing our preliminary Season 0 of PUSH League!
+                          This season will consist of 4 tiers with 6 qualifying teams in each.
+                          The season will run for 4 weeks.
+                          We’re starting small so we can identify any potential issues before we advance out of beta and into full launch!
+                      </MarketingDescription>
+                    </div>
+                  </Col>
+              </Row>
+
+          </Container>
+        </Jumbotron>
         <Divider />
     </Container>
 )
