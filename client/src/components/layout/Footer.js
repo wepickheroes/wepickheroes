@@ -35,7 +35,7 @@ class Footer extends Component {
                         </NavItem>
                         <NavItem>
                             <NavLink href='https://www.twitch.tv/wepickheroes'>
-                                <i className='fab fa-2x fa-simplybuilt' />
+                                <i className='fab fa-2x fa-discord' />
                             </NavLink>
                         </NavItem>
                         <NavItem>
