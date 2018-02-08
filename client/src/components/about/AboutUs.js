@@ -10,7 +10,7 @@ export const Intro = styled.div`
 `
 
 
-const Description = styled.p`
+const Description = styled.div`
     margin: 0 auto 30px auto;
 `
 const Divider = styled.hr`
