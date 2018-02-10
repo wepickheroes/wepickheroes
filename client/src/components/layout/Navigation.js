@@ -101,7 +101,7 @@ class Navigation extends Component {
                                 <SteamNavItem>
                                     <Button color="success" className="text-uppercase"
                                             href={createUrl('/login/steam/?next=/social-redirect')}>
-                                        <i className="fa fa-steam" />&nbsp;Sign In With Steam
+                                        <i className="fab fa-steam" />&nbsp;Sign In With Steam
                                     </Button>
                                 </SteamNavItem>
                             ))}

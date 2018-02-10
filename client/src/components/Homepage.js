@@ -37,7 +37,7 @@ const Homepage = props => (
                 <div>
                     <Button color="success" size="lg"
                             href={createUrl('/login/steam/?next=/social-redirect')}>
-                        <i className="fa fa-steam" />&nbsp;Sign Up
+                        <i className="fab fa-steam" />&nbsp;Sign Up
                     </Button>
                 </div>
             </Intro>
