@@ -7,6 +7,7 @@ import Homepage from './Homepage'
 import FinishSteam from './steam/FinishSteam'
 import SignupComplete from './user/SignupComplete'
 import AboutUs from './about/AboutUs'
+import FAQs from './faq/FreqAsk'
 import { Footer, Navigation } from './layout'
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
                 <section className="container-fluid flex-grow">
                     <Route exact path="/" component={Homepage} />
                     <Route exact path="/about-us" component={AboutUs} />
+                    <Route exact path="/faqs" component={FAQs} />
                     <Route path="/signup-complete" component={SignupComplete} />
                     <Route path="/finish-steam/:partial_token" component={FinishSteam} />
                 </section>

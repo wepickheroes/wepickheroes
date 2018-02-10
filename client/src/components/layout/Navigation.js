@@ -86,6 +86,11 @@ class Navigation extends Component {
                                   <NavLink><Uppercase>About Us</Uppercase></NavLink>
                               </LinkContainer>
                           </NavItem>
+                          <NavItem>
+                              <LinkContainer to="/faqs">
+                                  <NavLink><Uppercase>F.A.Qs</Uppercase></NavLink>
+                              </LinkContainer>
+                          </NavItem>
                             <NavItem>
                                 <LinkContainer to="/tournaments">
                                     <NavLink><Uppercase>Tournaments</Uppercase></NavLink>
