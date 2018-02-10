@@ -43,7 +43,7 @@ const Homepage = props => (
             </Intro>
         </Container>
         <Divider />
-        <Jumbotron style={{ backgroundColor: '#efefef' },{borderStyle: 'solid'}}>
+        <Jumbotron style={{ backgroundColor: '#efefef' },{border: 'solid 2px #757575'}}>
           <Container>
 
               <h2 id="how-it-works" className="display-4">
