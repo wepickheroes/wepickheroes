@@ -1,23 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button, Col, Container, Row } from 'reactstrap'
+import {  Card, CardBody, CardTitle, Col, Container, Row } from 'reactstrap'
 import theDire from '../../img/the_dire.jpg'
 import { createUrl } from '../../api/utils'
+import {
+    Divider,
+    MarketingImage,
+} from '../utils'
 
 export const Intro = styled.div`
     margin: 2rem 0;
     text-align: left;
 `
-
-
 const Description = styled.div`
     margin: 0 auto 30px auto;
-`
-const Divider = styled.hr`
-    margin: 5rem 0;
-`
-const MarketingImage = styled.img`
-    max-width: 400px;
 `
 const MarketingList = styled.ol`
     margin-left: 2rem;
@@ -50,23 +46,29 @@ const AboutUs = props => (
         </Container>
         <Divider />
         <Container>
-            <h2 id="how-it-works" className="display-4">
-                How it works
-            </h2>
-            <Row>
-                <Col sm="4">
-                    <MarketingImage src={theDire} />
-                </Col>
-                <Col sm="8">
-                    <MarketingList>
-                        <li>Assemble a team</li>
-                        <li>Sign up for a league</li>
-                        <li>Get matched against teams with a similar skill level</li>
-                        <li>Play a round-robin tournament match once per week</li>
-                        <li>Compete to move up to the next bracket, or for cash prizes!</li>
-                    </MarketingList>
-                </Col>
-            </Row>
+            <Card>
+                <CardBody>
+                    <CardTitle>
+                        <span id="how-it-works" className="display-4">
+                            How it works
+                        </span>
+                    </CardTitle>
+                    <Row>
+                        <Col sm="4">
+                            <MarketingImage className='img-fluid' src={theDire} />
+                        </Col>
+                        <Col sm="8">
+                            <MarketingList>
+                                <li>Assemble a team</li>
+                                <li>Sign up for a league</li>
+                                <li>Get matched against teams with a similar skill level</li>
+                                <li>Play a round-robin tournament match once per week</li>
+                                <li>Compete to move up to the next bracket, or for cash prizes!</li>
+                            </MarketingList>
+                        </Col>
+                    </Row>
+                </CardBody>
+            </Card>
         </Container>
         <Divider />
     </Container>

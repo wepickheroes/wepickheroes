@@ -1,8 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button, Col, Container, Row, Jumbotron } from 'reactstrap'
+import { Button, Card, CardBody, CardTitle, Col, Container, Row } from 'reactstrap'
+
 import theDire from '../img/keyboard.jpg'
 import { createUrl } from '../api/utils'
+import {
+    Divider,
+    MarketingImage,
+} from './utils'
 
 export const Intro = styled.div`
     margin: 2rem 0;
@@ -12,13 +17,7 @@ const Description = styled.p`
     max-width: 400px;
     margin: 0 auto 30px auto;
 `
-const Divider = styled.hr`
-    margin: 5rem 0;
-`
-const MarketingImage = styled.img`
-    max-width: 400px;
-    border-radius: 25px;
-`
+
 const MarketingDescription = styled.p`
     margin-left: 2rem;
     color: #062736;
@@ -43,30 +42,32 @@ const Homepage = props => (
             </Intro>
         </Container>
         <Divider />
-        <Jumbotron>
-          <Container>
-
-              <h2 id="how-it-works" className="display-4">
-                   Season 0 coming soon!
-              </h2>
-              <Row >
-                  <Col sm="4" >
-                      <MarketingImage src={theDire} />
-                  </Col>
-                  <Col sm="8" className="d-flex align-items-center">
-                    <div >
-                      <MarketingDescription>
-                          With the beta launch of our site we will soon be commencing our preliminary Season 0 of PUSH League!
-                          This season will consist of 4 tiers with 6 qualifying teams in each.
-                          The season will run for 4 weeks.
-                          We’re starting small so we can identify any potential issues before we advance out of beta and into full launch!
-                      </MarketingDescription>
-                    </div>
-                  </Col>
-              </Row>
-
-          </Container>
-        </Jumbotron>
+        <Container>
+            <Card>
+                <CardBody>
+                    <CardTitle>
+                        <span id="how-it-works" className="display-4">
+                            Season 0 coming soon!
+                        </span>
+                    </CardTitle>
+                    <Row>
+                        <Col sm="4" >
+                            <MarketingImage className='img-fluid' src={theDire} />
+                        </Col>
+                        <Col sm="8" className="d-flex align-items-center">
+                            <div >
+                                <MarketingDescription>
+                                    With the beta launch of our site we will soon be commencing our preliminary Season 0
+                                    of PUSH League! This season will consist of 4 tiers with 6 qualifying teams in each.
+                                    The season will run for 4 weeks. We’re starting small so we can identify any potential
+                                    issues before we advance out of beta and into full launch!
+                                </MarketingDescription>
+                            </div>
+                        </Col>
+                    </Row>
+                </CardBody>
+            </Card>
+        </Container>
         <Divider />
     </Container>
 )
