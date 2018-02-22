@@ -1,9 +1,9 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "homepage": "https://wepickheroes.com:8000",
+  "homepage": "https://push.gg:8000",
   "private": true,
-  "proxy": "http://localhost:8000",
+  "proxy": "http://push.gg:8000",
   "dependencies": {
     "apollo-client-preset": "^1.0.4",
     "bootstrap": "4.0.0-beta.2",

@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.http import JsonResponse
 
 SITE_PROTOCOL = 'http' if settings.DEBUG else 'https'
-SITE_DOMAIN = 'local.wepickheroes.com:3000' if settings.DEBUG else 'wepickheroes.com'
+SITE_DOMAIN = 'local.push.gg:3000' if settings.DEBUG else 'push.gg'
 
 
 def index(request):
