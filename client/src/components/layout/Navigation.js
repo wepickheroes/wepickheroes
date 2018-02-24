@@ -82,7 +82,7 @@ class Navigation extends Component {
                           </NavItem>
                           <NavItem>
                               <LinkContainer to="/faqs">
-                                  <NavLink><Uppercase>F.A.Qs</Uppercase></NavLink>
+                                  <NavLink><Uppercase>FAQ</Uppercase></NavLink>
                               </LinkContainer>
                           </NavItem>
                             <NavItem>
