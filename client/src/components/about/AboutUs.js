@@ -23,7 +23,7 @@ const AboutUs = props => (
     <Container fluid>
         <Container>
           <Intro>
-              <h1 className="display-4">About Us</h1>
+              <h1 className="display-4">About</h1>
                 <Description className="lead">
                     <p>PUSH League is a Dota 2 amateur league focused on players wanting a
                     competitive environment where they can grow and advance to

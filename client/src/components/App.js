@@ -17,7 +17,7 @@ class App extends Component {
                 <Navigation/>
                 <section className="container-fluid flex-grow">
                     <Route exact path="/" component={Homepage} />
-                    <Route exact path="/about-us" component={AboutUs} />
+                    <Route exact path="/about" component={AboutUs} />
                     <Route exact path="/faqs" component={FAQs} />
                     <Route path="/signup-complete" component={SignupComplete} />
                     <Route path="/finish-steam/:partial_token" component={FinishSteam} />
