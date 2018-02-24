@@ -7,6 +7,7 @@ import gql from 'graphql-tag'
 import theDire from '../img/keyboard.jpg'
 import { createUrl } from '../api/utils'
 import {
+    ContentContainer,
     Divider,
     MarketingImage,
 } from './utils'
@@ -28,7 +29,7 @@ const MarketingDescription = styled.p`
 const Homepage = props => {
     const { data: { loading, isAuthenticated = false } } = props
     return (
-        <Container fluid>
+        <ContentContainer>
             <Container>
                 <Intro>
                     <h1 className="display-4">PUSH League</h1>
@@ -79,7 +80,7 @@ const Homepage = props => {
                 </Card>
             </Container>
             <Divider/>
-        </Container>
+        </ContentContainer>
     )
 }
 

@@ -3,6 +3,7 @@ import {
     Route,
 } from 'react-router-dom'
 
+import { CreateTeam } from './teams'
 import Homepage from './Homepage'
 import FinishSteam from './steam/FinishSteam'
 import SignupComplete from './user/SignupComplete'
@@ -15,12 +16,13 @@ class App extends Component {
         return (
             <Fragment>
                 <Navigation/>
-                <section className="container-fluid flex-grow">
+                <section className="flex-grow">
                     <Route exact path="/" component={Homepage} />
                     <Route exact path="/about" component={AboutUs} />
                     <Route exact path="/faqs" component={FAQs} />
                     <Route path="/signup-complete" component={SignupComplete} />
                     <Route path="/finish-steam/:partial_token" component={FinishSteam} />
+                    <Route path="/teams/create" component={CreateTeam} />
                 </section>
                 <Footer />
             </Fragment>
