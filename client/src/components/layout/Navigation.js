@@ -63,21 +63,28 @@ class Navigation extends Component {
     toggle = () => this.setState({ isOpen: !this.state.isOpen })
 
     render() {
-        const { data: { error, loading, isAuthenticated = false } } = this.props
+        const { data: { loading, isAuthenticated = false } } = this.props
         return (
             <div>
                 <Navbar dark color="dark" expand="md">
                     <NavbarTitle>
-                        <NavbarBrand href="/">
-                            PUSH
-                        </NavbarBrand>
+                        <LinkContainer to='/'>
+                            <NavbarBrand>
+                                PUSH
+                            </NavbarBrand>
+                        </LinkContainer>
                     </NavbarTitle>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                           <NavItem>
-                              <LinkContainer to="/about-us">
-                                  <NavLink><Uppercase>About Us</Uppercase></NavLink>
+                              <LinkContainer to="/about">
+                                  <NavLink><Uppercase>About</Uppercase></NavLink>
+                              </LinkContainer>
+                          </NavItem>
+                          <NavItem>
+                              <LinkContainer to="/faqs">
+                                  <NavLink><Uppercase>FAQ</Uppercase></NavLink>
                               </LinkContainer>
                           </NavItem>
                             <NavItem>
