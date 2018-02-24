@@ -12,16 +12,11 @@ import logo from '../../img/logos/logo.png'
 import { createUrl } from '../../api/utils'
 
 const NavbarTitle = styled.h1`
-    margin: 0;
     font-weight: bold;
 `
 const Uppercase = styled.span`
     text-transform: uppercase;
     letter-spacing: 1.5px;
-`
-const Logo = styled.img`
-    height: 50px;
-    margin-right: 0;
 `
 const SteamNavItem = styled(NavItem)`
     margin-left: 1rem;
@@ -74,8 +69,7 @@ class Navigation extends Component {
                 <Navbar dark color="dark" expand="md">
                     <NavbarTitle>
                         <NavbarBrand href="/">
-                            <Logo src={logo} alt="logo" />
-                            We Pick Heroes
+                            PUSH
                         </NavbarBrand>
                     </NavbarTitle>
                     <NavbarToggler onClick={this.toggle} />
