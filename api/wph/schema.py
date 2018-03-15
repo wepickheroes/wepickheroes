@@ -1,15 +1,28 @@
 import graphene
 
+from django.contrib.auth import get_user_model
 from graphene_django.types import DjangoObjectType
 
-from django.contrib.auth import get_user_model
+from teams.models import Team
 
 User = get_user_model()
+
+
+class TeamType(DjangoObjectType):
+    class Meta:
+        model = Team
 
 
 class UserType(DjangoObjectType):
     class Meta:
         model = User
+
+
+class TeamQuery:
+    all_teams = graphene.List(TeamType)
+
+    def resolve_all_teams(self, info, **kwargs):
+        return Team.objects.all()
 
 
 class UserQuery:
@@ -26,7 +39,8 @@ class AuthenticationQuery:
         return info.context.user.is_authenticated
 
 
-class Query(UserQuery,
+class Query(TeamQuery,
+            UserQuery,
             AuthenticationQuery,
             graphene.ObjectType):
     pass
