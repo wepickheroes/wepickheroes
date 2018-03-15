@@ -4,6 +4,8 @@ from django.contrib.auth import get_user_model
 from graphene_django.types import DjangoObjectType
 
 from teams.models import Team
+from django.contrib.auth import get_user_model
+from schedule.models import Match
 
 User = get_user_model()
 
@@ -18,6 +20,11 @@ class UserType(DjangoObjectType):
         model = User
 
 
+class MatchType(DjangoObjectType):
+    class Meta:
+        model = Match
+
+
 class TeamQuery:
     all_teams = graphene.List(TeamType)
 
@@ -30,6 +37,13 @@ class UserQuery:
 
     def resolve_all_users(self, info, **kwargs):
         return User.objects.all()
+
+
+class MatchQuery:
+    all_matches = graphene.List(MatchType)
+
+    def resolve_all_matches(self, info, **kwargs):
+        return Match.objects.all()
 
 
 class AuthenticationQuery:
