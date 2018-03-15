@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import { Collapse, Button, CardBody, Card, Table } from 'reactstrap';
 import { createUrl } from '../../api/utils'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
+
+const ScheduleStyle = styled.div`
+    margin: 50px auto auto auto;
+`
 
 
 class Schedule extends Component {
@@ -25,19 +29,37 @@ class Schedule extends Component {
 
   render(){
     return (
-     <div>
-       <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Week 1</Button>
-       <Collapse isOpen={this.state.collapse}>
-         <Card>
-           <CardBody>
-           Anim pariatur cliche reprehenderit,
-            enim eiusmod high life accusamus terry richardson ad squid. Nihil
-            anim keffiyeh helvetica, craft beer labore wes anderson cred
-            nesciunt sapiente ea proident.
-           </CardBody>
-         </Card>
-       </Collapse>
-     </div>
+
+       <div>
+       <ScheduleStyle>
+       </ScheduleStyle>
+         <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem', cursor: 'pointer' }}>Week 1</Button>
+         <Collapse isOpen={this.state.collapse}>
+           <Card>
+             <CardBody>
+             <Table>
+               <thead>
+                 <tr>
+                   <th>Match #</th>
+                   <th>Team A</th>
+                   <th>Team B</th>
+                   <th>Score</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr>
+                   <th scope="row">1</th>
+                   <td>A TEAM</td>
+                   <td>B TEAM</td>
+                   <td>2:1</td>
+                 </tr>
+               </tbody>
+             </Table>
+             </CardBody>
+           </Card>
+         </Collapse>
+       </div>
+
    );
   }
 }
