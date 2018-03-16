@@ -50,13 +50,16 @@ class Schedule extends Component {
                       </tr>
                     </thead>
 
-                    {allMatches.map((match, idx) => (
+                    {allLeagueSeries.map((match, idx) => (
                       <tbody>
                         <tr>
                           <th scope="row">{idx}</th>
                           <td>{match.team_a}</td>
                           <td>{match.team_b}</td>
-                          <td>2:1</td>
+                          <td>{ match.
+                            0:0
+                          }
+                            </td>
                         </tr>
                       </tbody>
 
