@@ -23,11 +23,8 @@ class Schedule extends Component {
   this.setState({ collapse: !this.state.collapse });
   }
 
-  const { data: { loading, allMatches }} = this.props
+  const { data: { loading, allMatches, allLeagueSeries, allLeagueSeason }} = this.props
 
-  const matches = allMatches.map((match)=>{
-
-  })
 
   render(){
     return (
@@ -35,31 +32,40 @@ class Schedule extends Component {
        <div>
        <ScheduleStyle>
        </ScheduleStyle>
-         <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem', cursor: 'pointer' }}>Week 1</Button>
-         <Collapse isOpen={this.state.collapse}>
-           <Card>
-             <CardBody>
-             <Table>
-               <thead>
-                 <tr>
-                   <th>Match #</th>
-                   <th>Team A</th>
-                   <th>Team B</th>
-                   <th>Score</th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <th scope="row">1</th>
-                   <td>A TEAM</td>
-                   <td>B TEAM</td>
-                   <td>2:1</td>
-                 </tr>
-               </tbody>
-             </Table>
-             </CardBody>
-           </Card>
-         </Collapse>
+        {allLeagueSeries.map((series) =>(
+
+            <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem', cursor: 'pointer' }}>
+            {series.start_date} </Button>
+            <Collapse isOpen={this.state.collapse}>
+
+                <Card>
+                  <CardBody>
+                  <Table>
+                    <thead>
+                      <tr>
+                        <th>Match #</th>
+                        <th>Team A</th>
+                        <th>Team B</th>
+                        <th>Score</th>
+                      </tr>
+                    </thead>
+
+                    {allMatches.map((match, idx) => (
+                      <tbody>
+                        <tr>
+                          <th scope="row">{idx}</th>
+                          <td>{match.team_a}</td>
+                          <td>{match.team_b}</td>
+                          <td>2:1</td>
+                        </tr>
+                      </tbody>
+
+                    ))}
+              </Table>
+              </CardBody>
+            </Card>
+            </Collapse>
+        ))}
        </div>
 
    );
@@ -67,5 +73,5 @@ class Schedule extends Component {
 }
 
 
-const query= gql`query { allMatches }`
+const query= gql`query { allMatches, allLeagueSeries, allLeagueSeason }`
 export default Schedule;
