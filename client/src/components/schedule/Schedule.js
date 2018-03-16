@@ -23,9 +23,11 @@ class Schedule extends Component {
   this.setState({ collapse: !this.state.collapse });
   }
 
-  // const matchItem = allMatches.map((match) => {
-  //     //return matchDetail =
-  // });
+  const { data: { loading, allMatches }} = this.props
+
+  const matches = allMatches.map((match)=>{
+
+  })
 
   render(){
     return (
