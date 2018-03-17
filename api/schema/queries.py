@@ -12,6 +12,16 @@ User = get_user_model()
 
 
 class TeamQuery:
+    team = graphene.Field(types.TeamType, id=graphene.UUID())
+
+    def resolve_team(self, info, **kwargs):
+        id = kwargs.get('id')
+        if id is not None:
+            return Team.objects.get(pk=id)
+        return None
+
+
+class TeamsQuery:
     all_teams = graphene.List(types.TeamType)
 
     def resolve_all_teams(self, info, **kwargs):
@@ -40,6 +50,7 @@ class AuthenticationQuery:
 
 
 class Query(TeamQuery,
+            TeamsQuery,
             UserQuery,
             AuthenticationQuery,
             graphene.ObjectType):
