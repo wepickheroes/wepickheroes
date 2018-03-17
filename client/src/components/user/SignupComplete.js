@@ -15,7 +15,7 @@ const SignupComplete = props => (
                         Would you like to register a team?
                     </h2>
                     <div className='text-center'>
-                        <LinkContainer to='/'>
+                        <LinkContainer to='/' exact>
                             <Button color="secondary" size="lg">No</Button>
                         </LinkContainer>
                         {' '}
