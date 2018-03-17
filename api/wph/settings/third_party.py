@@ -19,7 +19,7 @@ CORS_ALLOW_HEADERS = default_headers + (
     'credentials',
 )
 GRAPHENE = {
-    'SCHEMA': 'wph.schema.schema',
+    'SCHEMA': 'schema.schema',
 }
 
 SHELL_PLUS = "ipython"
