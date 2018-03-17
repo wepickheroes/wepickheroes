@@ -10,7 +10,6 @@ class MyTeams extends Component {
     render() {
         console.log('MyTeams', this.props)
         const { data: { loading, myTeams } } = this.props
-        const { location: { host, protocol } } = window
         return (
             <ContentContainer>
                 <Container>
