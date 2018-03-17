@@ -42,7 +42,7 @@ const Homepage = props => {
                     <div>
                         {!loading && !isAuthenticated && (
                             <Button color="success" size="lg"
-                                    href={createUrl('/login/steam/?next=/social-redirect')}>
+                                    href={createUrl('/login/steam/?next=/social-redirect/signup-complete')}>
                                 <i className="fab fa-steam"/>&nbsp;Sign Up
                             </Button>
                         )}

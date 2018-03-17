@@ -8,6 +8,11 @@ import {createUrl} from "../../api/utils";
 
 class AcceptTeamInvite extends Component {
 
+    componentDidMount() {
+        const { match: { params: { id } } } = this.props
+        localStorage.setItem('acceptInvite', id)
+    }
+
     render() {
         const { data: { loading, team } } = this.props
         return (
@@ -18,12 +23,12 @@ class AcceptTeamInvite extends Component {
                         <Fragment>
                             <p>
                                 You've been invited to join <strong>{team.name}</strong> by{' '}
-                                <strong>{team.captain.username}</strong>.
+                                <strong>{team.captain && team.captain.username}</strong>.
                             </p>
                             <p>Click below to sign up and accept this team invite:</p>
                             <div>
                                 <Button color="success" size="lg"
-                                        href={createUrl(`/login/steam/?next=/accept-invite/finish/${team.id}`)}>
+                                        href={createUrl('/login/steam/')}>
                                     <i className="fab fa-steam"/>&nbsp;Accept Invite
                                 </Button>
                             </div>
