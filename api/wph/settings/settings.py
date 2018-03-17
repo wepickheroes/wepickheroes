@@ -148,4 +148,10 @@ STATICFILES_DIRS = (
 SECURE_SSL_REDIRECT = os.environ.get('SECURE_SSL_REDIRECT', 'False') == 'True'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-SESSION_COOKIE_DOMAIN = ".wepickheroes.com"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', None)
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', None)
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'admin@wepickheroes.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

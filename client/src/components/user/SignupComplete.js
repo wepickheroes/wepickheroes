@@ -1,31 +1,30 @@
 import React from 'react'
+import { LinkContainer } from 'react-router-bootstrap'
 import styled from 'styled-components'
-import { Button, Col, Container, Form, FormGroup, FormText, Label, Input, Row } from 'reactstrap'
-import { createUrl } from '../../api/utils'
+import { Button, Col, Container, Row } from 'reactstrap'
 
-const ContentContainer = styled.div`
-    margin: 2rem 0;
-`
+import { ContentContainer} from '../utils'
 
 const SignupComplete = props => (
     <ContentContainer>
         <Container>
             <h1 className='text-center'>Signup Complete!</h1>
-
-
             <Row>
                 <Col sm='12' md={{ size: '6', offset: '3' }} lg={{ size: '8', offset: '2' }}>
-                    <h2>
+                    <h2 className='text-center'>
                         Would you like to register a team?
                     </h2>
-                    <Form>
-                        <FormGroup>
-                            <Label>Do you already have a team?</Label>
-                        </FormGroup>
-                    </Form>
+                    <div className='text-center'>
+                        <LinkContainer to='/' exact>
+                            <Button color="secondary" size="lg">No</Button>
+                        </LinkContainer>
+                        {' '}
+                        <LinkContainer to='/teams/create'>
+                            <Button color="primary" size="lg">Yes</Button>
+                        </LinkContainer>
+                    </div>
                 </Col>
             </Row>
-
         </Container>
     </ContentContainer>
 )
