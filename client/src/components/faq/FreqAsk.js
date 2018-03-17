@@ -16,13 +16,12 @@ const Description = styled.div`
 
 const faqs = [
     {
-        question: 'What is PUSH League?',
+        question: 'What is WPH League?',
         answer: <Fragment>
-            PUSH League is a competitive amateur league focused on growth.
-            Teams are divided into tiers and play against other teams in a round robin format to earn as
-            many points as possible.
-            The highest-ranked team win a reward and the get to play a promotional series against the
-            lowest-scoring teams from the next-highest tier for a chance to advance for next season.
+        The WPH League is a competitive amateur league focused on growth.
+        Teams are divided into tiers and play against other teams in a round robin format to earn as many points as possible.
+        The highest-ranked team win a reward and the get to play a promotional series against the lowest-scoring
+        teams from the next-highest tier for a chance to advance for next season.
         </Fragment>,
     },
     {
@@ -89,7 +88,7 @@ const faqs = [
             In the event that a 5th player is needed and neither sub can make it, permission for a stand-in can be
             requested.
             A stand-in must have approval from an admin.
-            Stand-ins must be registered to the PUSH League website and must be eligible for the division they’re
+            Stand-ins must be registered to the WPH League website and must be eligible for the division they’re
             playing in.
         </Fragment>,
     },
