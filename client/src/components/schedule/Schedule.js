@@ -35,39 +35,40 @@ class Schedule extends Component {
         {allLeagueSeries.map((series) =>(
 
             <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem', cursor: 'pointer' }}>
-            {series.start_date} </Button>
-            <Collapse isOpen={this.state.collapse}>
+            {series.start_date}
+            </Button>
+              <Collapse isOpen={this.state.collapse}>
 
-                <Card>
-                  <CardBody>
-                  <Table>
-                    <thead>
-                      <tr>
-                        <th>Match #</th>
-                        <th>Team A</th>
-                        <th>Team B</th>
-                        <th>Score</th>
-                      </tr>
-                    </thead>
-
-                    {allLeagueSeries.map((match, idx) => (
-                      <tbody>
+                  <Card>
+                    <CardBody>
+                    <Table>
+                      <thead>
                         <tr>
-                          <th scope="row">{idx}</th>
-                          <td>{match.team_a}</td>
-                          <td>{match.team_b}</td>
-                          <td>{ match.
-                            0:0
-                          }
-                            </td>
+                          <th>Match #</th>
+                          <th>Team A</th>
+                          <th>Team B</th>
+                          <th>Score</th>
                         </tr>
-                      </tbody>
+                      </thead>
 
-                    ))}
-              </Table>
-              </CardBody>
-            </Card>
-            </Collapse>
+                      {allLeagueSeries.map((match, idx) => (
+                        <tbody>
+                          <tr>
+                            <th scope="row">{idx}</th>
+                            <td>{match.team_a}</td>
+                            <td>{match.team_b}</td>
+                            <td>{ // Match Scores, probably should be ternary?
+                              0:0
+                            }
+                              </td>
+                          </tr>
+                        </tbody>
+
+                      ))}
+                </Table>
+                </CardBody>
+              </Card>
+              </Collapse>
         ))}
        </div>
 
