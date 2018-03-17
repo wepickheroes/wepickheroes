@@ -23,9 +23,14 @@ class TeamQuery:
 
 class TeamsQuery:
     all_teams = graphene.List(types.TeamType)
+    my_teams = graphene.List(types.TeamType)
 
     def resolve_all_teams(self, info, **kwargs):
         return Team.objects.all()
+
+    def resolve_my_teams(self, info, **kwargs):
+        request = info.context
+        return Team.objects.filter(teammember__player=request.user).distinct()
 
 
 class UserQuery:

@@ -7,6 +7,7 @@ import {
     AcceptTeamInvite,
     CreateTeam,
     ManageTeam,
+    MyTeams,
 } from './teams'
 import Homepage from './Homepage'
 import FinishSteam from './steam/FinishSteam'
@@ -28,6 +29,7 @@ class App extends Component {
                     <Route path="/finish-steam/:partial_token" component={FinishSteam} />
                     <Route path="/teams/create" component={CreateTeam} />
                     <Route path="/accept-invite/:id" component={AcceptTeamInvite} />
+                    <Route exact path="/my-teams" component={MyTeams} />
                     <Route path="/my-teams/:id" component={ManageTeam} />
                 </section>
                 <Footer />
