@@ -123,7 +123,7 @@ class Navigation extends Component {
                     </Collapse>
                 </Navbar>
             </div>
-        );
+        )
     }
 }
 

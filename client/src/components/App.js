@@ -3,7 +3,11 @@ import {
     Route,
 } from 'react-router-dom'
 
-import { CreateTeam } from './teams'
+import {
+    AcceptTeamInvite,
+    CreateTeam,
+    ManageTeam,
+} from './teams'
 import Homepage from './Homepage'
 import FinishSteam from './steam/FinishSteam'
 import SignupComplete from './user/SignupComplete'
@@ -23,6 +27,8 @@ class App extends Component {
                     <Route path="/signup-complete" component={SignupComplete} />
                     <Route path="/finish-steam/:partial_token" component={FinishSteam} />
                     <Route path="/teams/create" component={CreateTeam} />
+                    <Route path="/accept-invite/:id" component={AcceptTeamInvite} />
+                    <Route path="/my-teams/:id" component={ManageTeam} />
                 </section>
                 <Footer />
             </Fragment>

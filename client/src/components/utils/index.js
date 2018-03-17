@@ -10,3 +10,10 @@ export const Divider = styled.div`
 export const MarketingImage = styled.img`
     border-radius: 25px;
 `
+
+export const Loading = ({ size = 2 }) => (
+    <div className='text-center'>
+        <i className={`fa fa-cog fa-spin fa-${size}x`} />
+        <span style={{ fontSize: '20px' }}>&nbsp;Loading...</span>
+    </div>
+)
