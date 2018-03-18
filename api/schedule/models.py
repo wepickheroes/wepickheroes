@@ -4,8 +4,16 @@ from nucleus.models import AbstractBaseModel
 
 
 class LeagueSeason(AbstractBaseModel):
+    number = models.PositiveIntegerField(unique=True, null=True)
     start_date = models.DateField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if self._state.adding:
+            latest_season = LeagueSeason.objects.aggregate(largest=models.Max('number'))['largest'] or 0
+            self.number = latest_season + 1
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         dateformat = "%d/%m/%y"
