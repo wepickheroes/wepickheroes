@@ -24,12 +24,13 @@ const AboutUs = props => (
           <Intro>
               <h1 className="display-4">About</h1>
                 <Description className="lead">
-                    <p>PUSH League is a Dota 2 amateur league focused on players wanting a
+                    <p>The WPH League is a Dota 2 amateur league focused on players wanting a
                     competitive environment where they can grow and advance to
                     higher tiers for greater challenges and rewards.</p>
-                    <p>We previously flew under the banner We Pick Heroes back in April of 2017 and ran a small amateur tournament with a $1k prize pool.
+                    <p>Back in April of 2017 we ran a small amateur tournament with a $1k prize pool.
                     Our experience was eye-opening and made us want to continue working within amateur Dota,
-                    but running tournament after tournament was not self-sustaining and we quickly realized we had to develop another strategy. </p>
+                    but running tournament after tournament was not self-sustaining and we quickly realized we had to develop another strategy.
+                    </p>
                     <p>There are many great leagues currently active in the amateur scene and we want to add to that.
                     Our league focuses on short 6-week seasons where players are divided into tiers based on team player medal averages.
                     At the end of a season the highest-ranking teams have a chance to get promoted into the tier above theirs for a chance at greater prizes the next season.

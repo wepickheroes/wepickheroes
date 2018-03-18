@@ -27,7 +27,7 @@ const MarketingDescription = styled.p`
 `
 
 const Homepage = props => {
-    const { data: { loading, isAuthenticated = false } } = props
+    const {data: {loading, isAuthenticated = false}} = props
     return (
         <ContentContainer>
             <Container>
@@ -66,12 +66,11 @@ const Homepage = props => {
                                 <div>
                                     <MarketingDescription>
                                         With the beta launch of our site we will soon be commencing our preliminary
-                                        Season 0
-                                        of PUSH League! This season will consist of 4 tiers with 6 qualifying teams in
-                                        each.
-                                        The season will run for 4 weeks. We’re starting small so we can identify any
-                                        potential
-                                        issues before we advance out of beta and into full launch!
+                                        Season 0 of the We Pick Heroes League!
+                                        This season will consist of 4 tiers with 6 qualifying teams in each. The season
+                                        will run for 4 weeks.
+                                        We’re starting small so we can identify any potential issues before we advance
+                                        out of beta and into full launch!
                                     </MarketingDescription>
                                 </div>
                             </Col>
@@ -79,7 +78,6 @@ const Homepage = props => {
                     </CardBody>
                 </Card>
             </Container>
-            <Divider/>
         </ContentContainer>
     )
 }
