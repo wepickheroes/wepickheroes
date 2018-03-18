@@ -7,6 +7,7 @@ import {
     Button, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem,
     Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink,
 } from 'reactstrap';
+import { Link } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
 import logo from '../../img/logos/logo.png'
 import { createUrl } from '../../api/utils'
@@ -40,10 +41,22 @@ class UserMenu extends Component {
                     <Uppercase>Settings</Uppercase>
                 </DropdownToggle>
                 <DropdownMenu right>
-                    <DropdownItem>Edit Profile</DropdownItem>
-                    <DropdownItem>Settings</DropdownItem>
+                    <LinkContainer to='/profile'>
+                        <DropdownItem>Edit Profile</DropdownItem>
+                    </LinkContainer>
+                    <LinkContainer to='/my-teams'>
+                        <DropdownItem>My Teams</DropdownItem>
+                    </LinkContainer>
+                    <LinkContainer to='/teams/create'>
+                        <DropdownItem>Register a Team</DropdownItem>
+                    </LinkContainer>
+                    <LinkContainer to='/settings'>
+                        <DropdownItem>Settings</DropdownItem>
+                    </LinkContainer>
                     <DropdownItem divider />
-                    <DropdownItem>Logout</DropdownItem>
+                    <LinkContainer to='/logout'>
+                        <DropdownItem>Logout</DropdownItem>
+                    </LinkContainer>
                 </DropdownMenu>
             </Dropdown>
         )
@@ -97,11 +110,16 @@ class Navigation extends Component {
                                     <NavLink><Uppercase>Leagues</Uppercase></NavLink>
                                 </LinkContainer>
                             </NavItem>
+                            <NavItem>
+                                <LinkContainer to="/schedule">
+                                    <NavLink><Uppercase>Schedule</Uppercase></NavLink>
+                                </LinkContainer>
+                            </NavItem>
                             {!loading && (
                                 isAuthenticated ? <UserMenu /> : (
                                 <SteamNavItem>
                                     <Button color="success" className="text-uppercase"
-                                            href={createUrl('/login/steam/?next=/social-redirect')}>
+                                            href={createUrl('/login/steam/?next=/social-redirect/signup-complete')}>
                                         <i className="fab fa-steam" />&nbsp;Sign In With Steam
                                     </Button>
                                 </SteamNavItem>
@@ -110,7 +128,7 @@ class Navigation extends Component {
                     </Collapse>
                 </Navbar>
             </div>
-        );
+        )
     }
 }
 
