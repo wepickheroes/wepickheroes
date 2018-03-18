@@ -39,8 +39,14 @@ class LeagueSeries(AbstractBaseModel):
     class Meta:
         verbose_name_plural = 'League series'
 
+    def get_matchup_str(self):
+        return '{} vs. {}'.format(
+            self.team_a.name if self.team_a else '?',
+            self.team_b.name if self.team_b else '?'
+        )
+
     def __str__(self):
-        return 'Series: {} vs. {}'.format(self.team_a.name, self.team_b.name)
+        return 'Series: {}'.format(self.get_matchup_str())
 
 
 class Match(AbstractBaseModel):
@@ -53,4 +59,4 @@ class Match(AbstractBaseModel):
         verbose_name_plural = 'Matches'
 
     def __str__(self):
-        return 'Match: {} vs. {}'.format(self.series.team_a.name, self.series.team_b.name)
+        return 'Match: {}'.format(self.series.get_matchup_str())
