@@ -27,12 +27,12 @@ const MarketingDescription = styled.p`
 `
 
 const Homepage = props => {
-    const {data: {loading, isAuthenticated = false}} = props
+    const { data: {loading, isAuthenticated = false } } = props
     return (
         <ContentContainer>
             <Container>
                 <Intro>
-                    <h1 className="display-4">PUSH League</h1>
+                    <h1 className="display-4">We Pick Heroes</h1>
                     <h2>Competitive Amateur Dota 2 League</h2>
                     <Description className="lead">
                         Registration is free and easy!
