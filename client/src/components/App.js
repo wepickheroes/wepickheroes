@@ -14,7 +14,7 @@ import FinishSteam from './steam/FinishSteam'
 import SignupComplete from './user/SignupComplete'
 import AboutUs from './about/AboutUs'
 import FAQs from './faq/FreqAsk'
-import Schedule from './schedule/Schedule'
+import { Schedule } from './schedule'
 import { Footer, Navigation } from './layout'
 
 class App extends Component {
@@ -31,7 +31,7 @@ class App extends Component {
                     <Route path="/finish-steam/:partial_token" component={FinishSteam} />
                     <Route path="/teams/create" component={CreateTeam} />
                     <Route path="/accept-invite/:id" component={AcceptTeamInvite} />
-                    <Route exact path="/my-teams" component={MyTeams} />
+                    <Route path="/my-teams" exact component={MyTeams} />
                     <Route path="/my-teams/:id" component={ManageTeam} />
                 </section>
                 <Footer />

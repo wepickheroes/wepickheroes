@@ -6,10 +6,8 @@ import styled from 'styled-components'
 import {
     Button, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem,
     Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink,
-} from 'reactstrap';
-import { Link } from 'react-router-dom'
+} from 'reactstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import logo from '../../img/logos/logo.png'
 import { createUrl } from '../../api/utils'
 
 const NavbarTitle = styled.h1`
@@ -25,7 +23,7 @@ const SteamNavItem = styled(NavItem)`
 
 class UserMenu extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
             isOpen: false,

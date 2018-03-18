@@ -1,6 +1,5 @@
 import React from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
-import styled from 'styled-components'
 import { Button, Col, Container, Row } from 'reactstrap'
 
 import { ContentContainer} from '../utils'

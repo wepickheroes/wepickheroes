@@ -1,18 +1,8 @@
 import React, { Fragment } from 'react'
-import styled from 'styled-components'
-import { Container, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap'
 import {
-    Divider,
-} from '../utils'
+    Container, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText,
+} from 'reactstrap'
 
-const Question = styled.div`
-    font-weight: bold;
-`
-const Answer = styled.p`
-`
-const Description = styled.div`
-    margin: 0 auto 30px auto;
-`
 
 const faqs = [
     {

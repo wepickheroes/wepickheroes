@@ -7,6 +7,7 @@ from nucleus.models import (
     AbstractBaseModel,
     EmailMixin,
     EmailRecord,
+    TeamMember,
 )
 
 User = get_user_model()
@@ -20,6 +21,16 @@ class Team(AbstractBaseModel):
                                 on_delete=models.SET_NULL)
     creator = models.ForeignKey(User, null=True, blank=True, related_name='teams_created',
                                 on_delete=models.SET_NULL)
+
+    def save(self, *args, **kwargs):
+        adding = self._state.adding
+        super().save(*args, **kwargs)
+
+        if adding:
+            if self.captain:
+                TeamMember.objects.create(team=self, player=self.captain)
+            elif self.creator:
+                TeamMember.objects.create(team=self, player=self.creator)
 
     def __str__(self):
         return self.name
