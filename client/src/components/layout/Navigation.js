@@ -27,7 +27,7 @@ class UserMenu extends Component {
 
         this.state = {
             isOpen: false,
-        };
+        }
     }
 
     toggle = () => this.setState({ isOpen: !this.state.isOpen });
@@ -39,18 +39,18 @@ class UserMenu extends Component {
                     <Uppercase>Settings</Uppercase>
                 </DropdownToggle>
                 <DropdownMenu right>
-                    <LinkContainer to='/profile'>
-                        <DropdownItem>Edit Profile</DropdownItem>
-                    </LinkContainer>
+                    {/*<LinkContainer to='/profile'>*/}
+                        {/*<DropdownItem>Edit Profile</DropdownItem>*/}
+                    {/*</LinkContainer>*/}
                     <LinkContainer to='/my-teams'>
                         <DropdownItem>My Teams</DropdownItem>
                     </LinkContainer>
                     <LinkContainer to='/teams/create'>
                         <DropdownItem>Register a Team</DropdownItem>
                     </LinkContainer>
-                    <LinkContainer to='/settings'>
-                        <DropdownItem>Settings</DropdownItem>
-                    </LinkContainer>
+                    {/*<LinkContainer to='/settings'>*/}
+                        {/*<DropdownItem>Settings</DropdownItem>*/}
+                    {/*</LinkContainer>*/}
                     <DropdownItem divider />
                     <LinkContainer to='/logout'>
                         <DropdownItem>Logout</DropdownItem>
@@ -64,11 +64,11 @@ class UserMenu extends Component {
 class Navigation extends Component {
 
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
             isOpen: false,
-        };
+        }
     }
 
     toggle = () => this.setState({ isOpen: !this.state.isOpen })
@@ -81,33 +81,33 @@ class Navigation extends Component {
                     <NavbarTitle>
                         <LinkContainer to='/'>
                             <NavbarBrand>
-                                PUSH
+                                We Pick Heroes
                             </NavbarBrand>
                         </LinkContainer>
                     </NavbarTitle>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
-                          <NavItem>
-                              <LinkContainer to="/about">
-                                  <NavLink><Uppercase>About</Uppercase></NavLink>
-                              </LinkContainer>
-                          </NavItem>
-                          <NavItem>
-                              <LinkContainer to="/faqs">
-                                  <NavLink><Uppercase>FAQ</Uppercase></NavLink>
-                              </LinkContainer>
-                          </NavItem>
                             <NavItem>
-                                <LinkContainer to="/tournaments">
-                                    <NavLink><Uppercase>Tournaments</Uppercase></NavLink>
+                                <LinkContainer to="/about">
+                                    <NavLink><Uppercase>About</Uppercase></NavLink>
                                 </LinkContainer>
                             </NavItem>
                             <NavItem>
-                                <LinkContainer to="/leagues">
-                                    <NavLink><Uppercase>Leagues</Uppercase></NavLink>
+                                <LinkContainer to="/faqs">
+                                    <NavLink><Uppercase>FAQ</Uppercase></NavLink>
                                 </LinkContainer>
                             </NavItem>
+                            {/*<NavItem>*/}
+                                {/*<LinkContainer to="/tournaments">*/}
+                                    {/*<NavLink><Uppercase>Tournaments</Uppercase></NavLink>*/}
+                                {/*</LinkContainer>*/}
+                            {/*</NavItem>*/}
+                            {/*<NavItem>*/}
+                                {/*<LinkContainer to="/leagues">*/}
+                                    {/*<NavLink><Uppercase>Leagues</Uppercase></NavLink>*/}
+                                {/*</LinkContainer>*/}
+                            {/*</NavItem>*/}
                             <NavItem>
                                 <LinkContainer to="/schedule">
                                     <NavLink><Uppercase>Schedule</Uppercase></NavLink>
