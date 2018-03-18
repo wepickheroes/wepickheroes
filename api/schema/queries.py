@@ -43,13 +43,6 @@ class UserQuery:
         return User.objects.all()
 
 
-class MatchQuery:
-    all_matches = graphene.List(types.MatchType)
-
-    def resolve_all_matches(self, info, **kwargs):
-        return Match.objects.all()
-
-
 class AuthenticationQuery:
     is_authenticated = graphene.Field(graphene.Boolean)
 
@@ -58,17 +51,24 @@ class AuthenticationQuery:
 
 
 class LeagueSeriesQuery:
-    all_matches = graphene.List(types.LeagueSeriesType)
+    all_series = graphene.List(types.LeagueSeriesType)
 
     def resolve_all_league_series(self, info, **kwargs):
         return LeagueSeries.objects.all()
 
 
 class LeagueSeasonQuery:
-    all_matches = graphene.List(types.LeagueSeasonType)
+    all_seasons = graphene.List(types.LeagueSeasonType)
 
     def resolve_all_league_season(self, info, **kwargs):
         return LeagueSeason.objects.all()
+
+
+class MatchQuery:
+    all_matches = graphene.List(types.MatchType)
+
+    def resolve_all_matches(self, info, **kwargs):
+        return Match.objects.all()
 
 
 class Query(
