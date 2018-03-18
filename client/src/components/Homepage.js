@@ -54,15 +54,15 @@ const Homepage = props => {
                 <Card>
                     <CardBody>
                         <CardTitle>
-                        <span id="how-it-works" className="display-4">
-                            Season 0 coming soon!
-                        </span>
+                            <span id="how-it-works" className="display-4">
+                                Season 0 coming soon!
+                            </span>
                         </CardTitle>
                         <Row>
-                            <Col sm="4">
+                            <Col md="4" xs="12">
                                 <MarketingImage className='img-fluid' src={theDire}/>
                             </Col>
-                            <Col sm="8" className="d-flex align-items-center">
+                            <Col md="8" xs="12" className="d-flex align-items-center">
                                 <div>
                                     <MarketingDescription>
                                         With the beta launch of our site we will soon be commencing our preliminary
