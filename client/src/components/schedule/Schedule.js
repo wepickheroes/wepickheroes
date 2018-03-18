@@ -6,7 +6,6 @@ import { Container,Table } from 'reactstrap'
 import { ContentContainer, Loading } from '../utils'
 
 const SeriesTable = props => {
-    console.log('SeriesTable', props)
     const { seasonSeries } = props
     return (
         <Table>
@@ -39,7 +38,6 @@ const SeriesTable = props => {
 class Schedule extends Component {
 
     render() {
-        console.log(this.props)
         const {
             data: { loading, allSeasons }
         } = this.props
@@ -77,6 +75,7 @@ const query = gql`query {
         startDate
         endDate
         leagueseriesSet {
+          id
           teamA {
             id
             name
