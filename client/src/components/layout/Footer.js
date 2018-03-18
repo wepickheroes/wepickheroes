@@ -29,27 +29,27 @@ class Footer extends Component {
                     </Nav>
                     <Nav className='ml-auto' navbar>
                         <NavItem>
-                            <NavLink href='https://www.twitch.tv/wepickheroes'>
+                            <NavLink href='https://www.twitch.tv/wepickheroes' target='_blank'>
                                 <i className='fab fa-2x fa-twitch' />
                             </NavLink>
                         </NavItem>
+                        {/*<NavItem>*/}
+                            {/*<NavLink href='https://www.twitch.tv/wepickheroes' target='_blank'>*/}
+                                {/*<i className='fab fa-2x fa-discord' />*/}
+                            {/*</NavLink>*/}
+                        {/*</NavItem>*/}
+                        {/*<NavItem>*/}
+                            {/*<NavLink href='https://www.twitch.tv/wepickheroes' target='_blank'>*/}
+                                {/*<i className='fab fa-2x fa-facebook' />*/}
+                            {/*</NavLink>*/}
+                        {/*</NavItem>*/}
                         <NavItem>
-                            <NavLink href='https://www.twitch.tv/wepickheroes'>
-                                <i className='fab fa-2x fa-discord' />
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href='https://www.twitch.tv/wepickheroes'>
-                                <i className='fab fa-2x fa-facebook' />
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href='https://www.twitch.tv/wepickheroes'>
+                            <NavLink href='https://twitter.com/wepickheroes' target='_blank'>
                                 <i className='fab fa-2x fa-twitter' />
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href='https://www.twitch.tv/wepickheroes'>
+                            <NavLink href='https://www.reddit.com/user/WePickHeroes/' target='_blank'>
                                 <i className='fab fa-2x fa-reddit-square' />
                             </NavLink>
                         </NavItem>
