@@ -110,11 +110,6 @@ class Navigation extends Component {
                                     <NavLink><Uppercase>Leagues</Uppercase></NavLink>
                                 </LinkContainer>
                             </NavItem>
-                            <NavItem>
-                                <LinkContainer to="/schedule">
-                                    <NavLink><Uppercase>Schedule</Uppercase></NavLink>
-                                </LinkContainer>
-                            </NavItem>
                             {!loading && (
                                 isAuthenticated ? <UserMenu /> : (
                                 <SteamNavItem>
