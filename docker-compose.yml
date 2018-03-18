@@ -20,6 +20,7 @@ services:
       - DB_USER
       - DB_HOST
       - DB_PORT
+      - EMAIL_HOST_PASSWORD
   migration:
     build: .
     command: ["scripts/wait-for-it.sh", "db:5432", "--", "python", "./api/manage.py", "migrate"]
@@ -37,3 +38,4 @@ services:
       - DB_USER
       - DB_HOST
       - DB_PORT
+      - EMAIL_HOST_PASSWORD
