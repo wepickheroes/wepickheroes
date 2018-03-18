@@ -1,75 +1,97 @@
 import React, { Component, Fragment } from 'react'
-import styled from 'styled-components'
-import { Collapse, Button, CardBody, Card, Table } from 'reactstrap';
-import { createUrl } from '../../api/utils'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import { Container,Table } from 'reactstrap'
 
+import { ContentContainer, Loading } from '../utils'
 
-const ScheduleStyle = styled.div`
-    margin: 50px auto auto auto;
-`
+const SeriesTable = props => {
+    console.log('SeriesTable', props)
+    const { seasonSeries } = props
+    return (
+        <Table>
+            <thead>
+                <tr>
+                    <th>Team A</th>
+                    <th>Team B</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th># Games</th>
+                    <th>Results</th>
+                </tr>
+            </thead>
+            <tbody>
+                {seasonSeries.map(series => (
+                    <tr key={`series-row-${series.id}`}>
+                        <td>{series.teamA.name}</td>
+                        <td>{series.teamB.name}</td>
+                        <td>{series.startDate}</td>
+                        <td>{series.endDate}</td>
+                        <td>{series.numGames}</td>
+                        <td>TDB</td>
+                    </tr>
+                ))}
+            </tbody>
+        </Table>
+    )
+}
 
 class Schedule extends Component {
 
-    constructor(props) {
-        super(props)
-        this.toggle = this.toggle.bind(this)
-        this.state = { collapse: false }
-    }
-
-    toggle() {
-        this.setState({ collapse: !this.state.collapse });
-    }
-
     render() {
+        console.log(this.props)
         const {
-            data: { loading, allMatches, allLeagueSeries, allLeagueSeason }
+            data: { loading, allSeasons }
         } = this.props
 
         return (
-            <ScheduleStyle>
-                {allLeagueSeries.map((series) =>(
-                    <Fragment>
-                        <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem', cursor: 'pointer' }}>
-                            {series.start_date}
-                        </Button>
-                          <Collapse isOpen={this.state.collapse}>
-                              <Card>
-                                <CardBody>
-                                <Table>
-                                  <thead>
-                                    <tr>
-                                      <th>Match #</th>
-                                      <th>Team A</th>
-                                      <th>Team B</th>
-                                      <th>Score</th>
-                                    </tr>
-                                  </thead>
-
-                                  {/*{allLeagueSeries.map((match, idx) => (*/}
-                                    {/*<tbody>*/}
-                                      {/*<tr>*/}
-                                        {/*<th scope="row">{idx}</th>*/}
-                                        {/*<td>{match.team_a}</td>*/}
-                                        {/*<td>{match.team_b}</td>*/}
-                                        {/*<td>0:0</td>*/}
-                                      {/*</tr>*/}
-                                    {/*</tbody>*/}
-                                  {/*))}*/}
-                            </Table>
-                            </CardBody>
-                          </Card>
-                      </Collapse>
-                    </Fragment>
-                ))}
-            </ScheduleStyle>
+            <ContentContainer>
+                <Container>
+                    <h1>Schedule</h1>
+                    {loading ? <Loading /> : (
+                        <Fragment>
+                            {allSeasons.map(season => (
+                                <Fragment key={`season-${season.id}`}>
+                                    <h2>
+                                        Season {season.number}{' '}
+                                        <small className='text-muted'>
+                                            {season.startDate}&mdash;{season.endDate}
+                                        </small>
+                                    </h2>
+                                    <SeriesTable seasonSeries={season.leagueseriesSet} />
+                                </Fragment>
+                            ))}
+                        </Fragment>
+                    )}
+                </Container>
+            </ContentContainer>
         )
     }
 }
 
 
-const query = gql`query { allMatches, allLeagueSeries, allLeagueSeason }`
+const query = gql`query {
+    allSeasons {
+        id
+        number
+        startDate
+        endDate
+        leagueseriesSet {
+          teamA {
+            id
+            name
+          }
+          teamB {
+            id
+            name
+          }
+          startDate
+          endDate
+          numGames
+        }
+      }
+    }
+`
 Schedule = graphql(query)(Schedule)
 
 export default Schedule

@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import {  Card, CardBody, CardTitle, Col, Container, Row } from 'reactstrap'
 import theDire from '../../img/the_dire.jpg'
-import { createUrl } from '../../api/utils'
 import {
     Divider,
     MarketingImage,

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
 import { Button, Col, Container, Form, FormGroup, FormText, Label, Input, Row } from 'reactstrap'
 import { createUrl } from '../../api/utils'
 import { Intro } from '../Homepage'

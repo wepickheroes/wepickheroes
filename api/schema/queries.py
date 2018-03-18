@@ -53,14 +53,14 @@ class AuthenticationQuery:
 class LeagueSeriesQuery:
     all_series = graphene.List(types.LeagueSeriesType)
 
-    def resolve_all_league_series(self, info, **kwargs):
+    def resolve_all_series(self, info, **kwargs):
         return LeagueSeries.objects.all()
 
 
 class LeagueSeasonQuery:
     all_seasons = graphene.List(types.LeagueSeasonType)
 
-    def resolve_all_league_season(self, info, **kwargs):
+    def resolve_all_seasons(self, info, **kwargs):
         return LeagueSeason.objects.all()
 
 
@@ -71,8 +71,7 @@ class MatchQuery:
         return Match.objects.all()
 
 
-class Query(
-            LeagueSeasonQuery,
+class Query(LeagueSeasonQuery,
             LeagueSeriesQuery,
             MatchQuery,
             TeamQuery,
