@@ -1,1 +1,1 @@
-export SignupComplete from './SignupComplete'
+export { default as SignupComplete } from './SignupComplete'

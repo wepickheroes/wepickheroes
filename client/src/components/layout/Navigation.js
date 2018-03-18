@@ -52,9 +52,9 @@ class UserMenu extends Component {
                         {/*<DropdownItem>Settings</DropdownItem>*/}
                     {/*</LinkContainer>*/}
                     <DropdownItem divider />
-                    <LinkContainer to='/logout'>
+                    <a href={createUrl('/logout')}>
                         <DropdownItem>Logout</DropdownItem>
-                    </LinkContainer>
+                    </a>
                 </DropdownMenu>
             </Dropdown>
         )
