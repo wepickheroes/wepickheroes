@@ -1,11 +1,14 @@
 import graphene
 
 from django.contrib.auth import get_user_model
-from graphene_django.types import DjangoObjectType
 
 from teams.models import Team
 from django.contrib.auth import get_user_model
-from schedule.models import Match
+from schedule.models import (
+    LeagueSeason,
+    LeagueSeries,
+    Match,
+)
 from schema import types
 
 User = get_user_model()
@@ -54,7 +57,25 @@ class AuthenticationQuery:
         return info.context.user.is_authenticated
 
 
-class Query(TeamQuery,
+class LeagueSeriesQuery:
+    all_matches = graphene.List(types.LeagueSeriesType)
+
+    def resolve_all_league_series(self, info, **kwargs):
+        return LeagueSeries.objects.all()
+
+
+class LeagueSeasonQuery:
+    all_matches = graphene.List(types.LeagueSeasonType)
+
+    def resolve_all_league_season(self, info, **kwargs):
+        return LeagueSeason.objects.all()
+
+
+class Query(
+            LeagueSeasonQuery,
+            LeagueSeriesQuery,
+            MatchQuery,
+            TeamQuery,
             TeamsQuery,
             UserQuery,
             AuthenticationQuery,
