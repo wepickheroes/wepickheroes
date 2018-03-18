@@ -11,7 +11,9 @@ import {
 } from './teams'
 import Homepage from './Homepage'
 import FinishSteam from './steam/FinishSteam'
-import SignupComplete from './user/SignupComplete'
+import {
+    SignupComplete
+} from './user'
 import AboutUs from './about/AboutUs'
 import FAQs from './faq/FreqAsk'
 import { Schedule } from './schedule'

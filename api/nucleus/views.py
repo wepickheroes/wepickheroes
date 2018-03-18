@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib.auth import logout as auth_logout
 from django.shortcuts import redirect
 from django.http import JsonResponse
 
@@ -8,6 +9,11 @@ SITE_DOMAIN = 'local.wepickheroes.com:3000' if settings.DEBUG else 'wepickheroes
 
 def index(request):
     return JsonResponse({})
+
+
+def logout(request):
+    auth_logout(request)
+    return social_redirect(request)
 
 
 def require_email(request):
