@@ -4,6 +4,7 @@ import { Button, Card, CardBody, CardTitle, Col, Container, Row } from 'reactstr
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
+import logoLarge from '../img/logos/WPHlogo5.svg'
 import theDire from '../img/keyboard.jpg'
 import { createUrl } from '../api/utils'
 import {
@@ -26,13 +27,20 @@ const MarketingDescription = styled.p`
     color: #062736;
 `
 
+const MainLogo = styled.img`
+    width: auto;
+    max-height: 300px;
+`
+
 const Homepage = props => {
     const { data: {loading, isAuthenticated = false } } = props
     return (
         <ContentContainer>
             <Container>
                 <Intro>
-                    <h1 className="display-4">We Pick Heroes</h1>
+                    <MainLogo src={logoLarge} alt="We Pick Heroes" />
+                    {/*<h1 className="display-4">We Pick Heroes</h1>*/}
+                    <p></p>
                     <h2>Competitive Amateur Dota 2 League</h2>
                     <Description className="lead">
                         Registration is free and easy!

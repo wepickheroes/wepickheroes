@@ -9,6 +9,11 @@ import {
 } from 'reactstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { createUrl } from '../../api/utils'
+import {
+    Divider,
+    BrandImage,
+} from '../utils'
+import logoImg from '../../img/logos/WPHlogo1.svg'
 
 const NavbarTitle = styled.h1`
     font-weight: bold;
@@ -81,7 +86,7 @@ class Navigation extends Component {
                     <NavbarTitle>
                         <LinkContainer to='/'>
                             <NavbarBrand>
-                                We Pick Heroes
+                                <BrandImage src={logoImg} />
                             </NavbarBrand>
                         </LinkContainer>
                     </NavbarTitle>
