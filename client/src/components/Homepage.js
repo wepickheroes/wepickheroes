@@ -4,7 +4,7 @@ import { Button, Card, CardBody, CardTitle, Col, Container, Row } from 'reactstr
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
-import logoLarge from '../img/logos/WPHlogo5.svg'
+import logoLarge from '../img/logos/WPHlogo5sgcolors.svg'
 import theDire from '../img/keyboard.jpg'
 import { createUrl } from '../api/utils'
 import {
