@@ -10,6 +10,9 @@ export const Divider = styled.div`
 export const MarketingImage = styled.img`
     border-radius: 25px;
 `
+export const BrandImage = styled.img`
+    max-height:100%;
+`
 
 export const Loading = ({ size = 2 }) => (
     <div className='text-center'>
