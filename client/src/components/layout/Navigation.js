@@ -9,6 +9,10 @@ import {
 } from 'reactstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { createUrl } from '../../api/utils'
+import {
+    Divider
+} from '../utils'
+import BrandImage from '../../img/logos/WPHlogo2sgcolors.svg'
 
 const NavbarTitle = styled.h1`
     font-weight: bold;
@@ -19,6 +23,11 @@ const Uppercase = styled.span`
 `
 const SteamNavItem = styled(NavItem)`
     margin-left: 1rem;
+`
+
+const BrandLogo = styled.img`
+    max-width: 75px;
+    height: 50px;
 `
 
 class UserMenu extends Component {
@@ -81,7 +90,7 @@ class Navigation extends Component {
                     <NavbarTitle>
                         <LinkContainer to='/'>
                             <NavbarBrand>
-                                We Pick Heroes
+                                <BrandLogo src={BrandImage} alt="We Pick Heroes" />
                             </NavbarBrand>
                         </LinkContainer>
                     </NavbarTitle>
