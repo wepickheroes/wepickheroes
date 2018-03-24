@@ -17,7 +17,7 @@ class UUIDModel(models.Model):
 
 
 class CreatableModel(models.Model):
-    created = models.DateTimeField(default=timezone.now)
+    created = models.DateTimeField(default=timezone.now, editable=False)
 
     class Meta:
         abstract = True

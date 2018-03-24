@@ -34,13 +34,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'nucleus',
+
     'social_django',
     'django_extensions',
-    'teams',
-    'schedule',
     'graphene_django',
     'corsheaders',
+
+    'nucleus',
+    'teams',
+    'schedule',
+    'league',
 ]
 SITE_ID = 1
 
