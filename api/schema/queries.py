@@ -4,10 +4,14 @@ from django.contrib.auth import get_user_model
 
 from teams.models import Team
 from django.contrib.auth import get_user_model
-from schedule.models import (
-    LeagueSeason,
-    LeagueSeries,
-    Match,
+from league.schema.queries import (
+    SeasonQuery,
+    LeagueQuery,
+    LeagueRegistrationQuery,
+    DivisionQuery,
+    DivisionSeasonQuery,
+    SeriesQuery,
+    MatchQuery,
 )
 from schema import types
 
@@ -50,33 +54,37 @@ class AuthenticationQuery:
         return info.context.user.is_authenticated
 
 
-class LeagueSeriesQuery:
-    all_series = graphene.List(types.LeagueSeriesType)
+# class LeagueSeriesQuery:
+#     all_series = graphene.List(types.LeagueSeriesType)
+#
+#     def resolve_all_series(self, info, **kwargs):
+#         return LeagueSeries.objects.all()
+#
+#
+# class LeagueSeasonQuery:
+#     all_seasons = graphene.List(types.LeagueSeasonType)
+#
+#     def resolve_all_seasons(self, info, **kwargs):
+#         return LeagueSeason.objects.all()
+#
+#
+# class MatchQuery:
+#     all_matches = graphene.List(types.MatchType)
+#
+#     def resolve_all_matches(self, info, **kwargs):
+#         return Match.objects.all()
 
-    def resolve_all_series(self, info, **kwargs):
-        return LeagueSeries.objects.all()
 
-
-class LeagueSeasonQuery:
-    all_seasons = graphene.List(types.LeagueSeasonType)
-
-    def resolve_all_seasons(self, info, **kwargs):
-        return LeagueSeason.objects.all()
-
-
-class MatchQuery:
-    all_matches = graphene.List(types.MatchType)
-
-    def resolve_all_matches(self, info, **kwargs):
-        return Match.objects.all()
-
-
-class Query(LeagueSeasonQuery,
-            LeagueSeriesQuery,
-            MatchQuery,
-            TeamQuery,
+class Query(TeamQuery,
             TeamsQuery,
             UserQuery,
+            SeasonQuery,
+            LeagueQuery,
+            LeagueRegistrationQuery,
+            DivisionQuery,
+            DivisionSeasonQuery,
+            SeriesQuery,
+            MatchQuery,
             AuthenticationQuery,
             graphene.ObjectType):
     pass

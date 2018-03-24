@@ -5,7 +5,7 @@ from teams.models import Team
 from schedule.models import (
     LeagueSeason,
     LeagueSeries,
-    Match,
+    # Match,
 )
 
 User = get_user_model()
@@ -21,9 +21,9 @@ class UserType(DjangoObjectType):
         model = User
 
 
-class MatchType(DjangoObjectType):
-    class Meta:
-        model = Match
+# class MatchType(DjangoObjectType):
+#     class Meta:
+#         model = Match
 
 
 class LeagueSeriesType(DjangoObjectType):
