@@ -54,27 +54,6 @@ class AuthenticationQuery:
         return info.context.user.is_authenticated
 
 
-# class LeagueSeriesQuery:
-#     all_series = graphene.List(types.LeagueSeriesType)
-#
-#     def resolve_all_series(self, info, **kwargs):
-#         return LeagueSeries.objects.all()
-#
-#
-# class LeagueSeasonQuery:
-#     all_seasons = graphene.List(types.LeagueSeasonType)
-#
-#     def resolve_all_seasons(self, info, **kwargs):
-#         return LeagueSeason.objects.all()
-#
-#
-# class MatchQuery:
-#     all_matches = graphene.List(types.MatchType)
-#
-#     def resolve_all_matches(self, info, **kwargs):
-#         return Match.objects.all()
-
-
 class Query(TeamQuery,
             TeamsQuery,
             UserQuery,

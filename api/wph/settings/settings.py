@@ -42,7 +42,6 @@ INSTALLED_APPS = [
 
     'nucleus',
     'teams',
-    'schedule',
     'league',
 ]
 SITE_ID = 1
