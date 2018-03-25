@@ -97,7 +97,8 @@ class League extends Component {
                 <div style={{ marginBottom: '1rem '}}>
                     <Link to='/leagues'>&larr;&nbsp;All Leagues</Link>
                 </div>
-                {loading ? <Loading /> : (
+                {loading && <Loading />}
+                {(!loading && league) ? (
                     <div>
                         <h1 style={{ marginBottom: '2rem' }}>{league.name} League</h1>
                         <LeagueDetails league={league} />
@@ -109,6 +110,10 @@ class League extends Component {
                         <h2>Seasons</h2>
                         <Seasons seasonSet={league.seasonSet} />
                     </div>
+                ) : (
+                    <div>
+                        <h1>404: Not Found</h1>
+                    </div>
                 )}
             </Container>
         )
@@ -116,7 +121,7 @@ class League extends Component {
 }
 
 const query = gql`
-query getLeague($id: UUID!) {
+query ($id: UUID!) {
     league(id: $id) {
         id
         name
