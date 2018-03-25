@@ -36,15 +36,23 @@ class TeamsQuery:
         return Team.objects.all()
 
     def resolve_my_teams(self, info, **kwargs):
-        request = info.context
-        return Team.objects.filter(teammember__player=request.user).distinct()
+        user = info.context.user
+        if user.is_authenticated:
+            return Team.objects.filter(teammember__player=user).distinct()
+        return Team.objects.none()
 
 
 class UserQuery:
     all_users = graphene.List(types.UserType)
+    self = graphene.Field(types.UserType)
 
     def resolve_all_users(self, info, **kwargs):
         return User.objects.all()
+
+    def resolve_self(self, info, **kwargs):
+        if info.context.user.is_authenticated:
+            return info.context.user
+        return None
 
 
 class AuthenticationQuery:

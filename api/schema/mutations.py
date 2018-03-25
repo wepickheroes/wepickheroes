@@ -1,5 +1,6 @@
 import graphene
 
+from league.models import LeagueRegistration
 from teams.models import Team
 from schema import types
 
@@ -29,6 +30,10 @@ class CreateTeam(graphene.Mutation):
             ok = True
 
         return CreateTeam(team=team, ok=ok)
+
+
+# class CreateLeagueRegistration(graphene.Mutation):
+#     pass
 
 
 class Mutations(graphene.ObjectType):

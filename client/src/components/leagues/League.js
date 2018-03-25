@@ -3,20 +3,13 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
-import styled, { css } from 'styled-components'
-import { LinkContainer } from 'react-router-bootstrap'
+import styled  from 'styled-components'
 import {
-    Button,
-    Card,
-    CardBody,
-    CardTitle,
-    CardText,
-    Col,
     Container,
-    Row,
     Table,
 } from 'reactstrap'
 
+import { RegisterButton } from '.'
 import { Loading } from '../utils'
 import { media } from '../../styles'
 
@@ -89,7 +82,8 @@ class League extends Component {
     render() {
         const {
             data: {
-                loading, league,
+                loading,
+                league,
             }
         } = this.props
         return (
@@ -103,11 +97,16 @@ class League extends Component {
                         <h1 style={{ marginBottom: '2rem' }}>{league.name} League</h1>
                         <LeagueDetails league={league} />
                         <div className='text-center' style={{ marginBottom: '1rem' }}>
-                            <Button color='success' size='lg'>Register Now</Button>
+                            <RegisterButton leagueId={league.id} />
                         </div>
-                        <h2>Divisions</h2>
+                        <h1>Registration: <small className='text-muted'>OPEN</small></h1>
+                        <RegisterButton leagueId={league.id} />
+                        <p style={{ marginTop: '1rem' }}>
+                            Note: Only captains of teams with 5 or more players are able to register for leagues.
+                        </p>
+                        <h2 style={{ marginTop: '2rem' }}>Divisions</h2>
                         <Divisions divisionSet={league.divisionSet} />
-                        <h2>Seasons</h2>
+                        <h2 style={{ marginTop: '2rem' }}>Seasons</h2>
                         <Seasons seasonSet={league.seasonSet} />
                     </div>
                 ) : (
@@ -140,8 +139,7 @@ query ($id: UUID!) {
             name
         }
     }
-}
-`
+}`
 
 League = graphql(query, {
     options: ({ match: { params: { id } } }) => ({ variables: { id }})

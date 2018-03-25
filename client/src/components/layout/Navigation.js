@@ -9,9 +9,6 @@ import {
 } from 'reactstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { createUrl } from '../../api/utils'
-import {
-    Divider
-} from '../utils'
 import BrandImage from '../../img/logos/WPHlogo2sgcolors.svg'
 
 const NavbarTitle = styled.h1`
@@ -54,7 +51,7 @@ class UserMenu extends Component {
                         <DropdownItem>My Teams</DropdownItem>
                     </LinkContainer>
                     <LinkContainer to='/teams/create'>
-                        <DropdownItem>Register a Team</DropdownItem>
+                        <DropdownItem>Create a Team</DropdownItem>
                     </LinkContainer>
                     {/*<LinkContainer to='/settings'>*/}
                         {/*<DropdownItem>Settings</DropdownItem>*/}
