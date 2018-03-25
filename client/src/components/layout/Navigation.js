@@ -26,8 +26,7 @@ const SteamNavItem = styled(NavItem)`
 `
 
 const BrandLogo = styled.img`
-    max-width: 75px;
-    height: 50px;
+    height: 30px;
 `
 
 class UserMenu extends Component {
@@ -98,6 +97,11 @@ class Navigation extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
+                                <LinkContainer to="/leagues">
+                                    <NavLink><Uppercase>Leagues</Uppercase></NavLink>
+                                </LinkContainer>
+                            </NavItem>
+                            <NavItem>
                                 <LinkContainer to="/about">
                                     <NavLink><Uppercase>About</Uppercase></NavLink>
                                 </LinkContainer>
@@ -117,11 +121,11 @@ class Navigation extends Component {
                                     {/*<NavLink><Uppercase>Leagues</Uppercase></NavLink>*/}
                                 {/*</LinkContainer>*/}
                             {/*</NavItem>*/}
-                            <NavItem>
-                                <LinkContainer to="/schedule">
-                                    <NavLink><Uppercase>Schedule</Uppercase></NavLink>
-                                </LinkContainer>
-                            </NavItem>
+                            {/*<NavItem>*/}
+                                {/*<LinkContainer to="/schedule">*/}
+                                    {/*<NavLink><Uppercase>Schedule</Uppercase></NavLink>*/}
+                                {/*</LinkContainer>*/}
+                            {/*</NavItem>*/}
                             {!loading && (
                                 isAuthenticated ? <UserMenu /> : (
                                 <SteamNavItem>

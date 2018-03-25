@@ -4,31 +4,37 @@ from nucleus.models import AbstractBaseModel
 
 
 class Season(AbstractBaseModel):
-    number = models.IntegerField(unique=True, editable=False)
+    number = models.IntegerField(editable=False)
     start_date = models.DateField()
     end_date = models.DateField()
+    league = models.ForeignKey('league.League', on_delete=models.CASCADE, null=True)
 
     class Meta:
         ordering = ('number', )
+        unique_together = ('number', 'league', )
 
     def save(self, *args, **kwargs):
         if self._state.adding:
-            latest_season = Season.objects.aggregate(largest=models.Max('number'))['largest'] or 0
+            latest_season = Season.objects.filter(league=self.league).aggregate(
+                largest=models.Max('number')
+            )['largest'] or 0
             self.number = latest_season + 1
 
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return "Season {}".format(self.number)
+        return "Season {} for {}".format(self.number, str(self.league))
 
 
 class League(AbstractBaseModel):
     name = models.CharField(max_length=256)
     num_series_per_season = models.IntegerField()
     num_games_per_series = models.IntegerField()
-    seasons = models.ManyToManyField('league.Season',
-                                     related_name='leagues',
-                                     blank=True)
+    # seasons = models.ManyToManyField('league.Season',
+    #                                  related_name='leagues',
+    #                                  blank=True)
+    description = models.CharField(max_length=512, null=True, blank=True,
+                                   help_text='A short description about this league.')
 
     def __str__(self):
         return "{} League".format(self.name)

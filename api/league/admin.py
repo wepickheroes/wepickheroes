@@ -19,6 +19,12 @@ class BaseAdmin(admin.ModelAdmin):
         )
 
 
+class SeasonInline(admin.TabularInline):
+    model = Season
+    extra = 0
+    show_change_link = True
+
+
 class LeagueAdmin(BaseAdmin):
     model = League
     list_display = (
@@ -26,18 +32,23 @@ class LeagueAdmin(BaseAdmin):
         'num_series_per_season',
         'num_games_per_series',
     )
+    inlines = (SeasonInline, )
 
 
 class SeasonAdmin(BaseAdmin):
     model = Season
     list_display = (
         '__str__',
+        'number',
+        'league',
         'start_date',
         'end_date',
     )
     list_filter = (
         'start_date',
         'end_date',
+        'league',
+        'number',
     )
 
 
