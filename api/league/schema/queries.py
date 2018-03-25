@@ -20,7 +20,15 @@ class SeasonQuery:
 
 
 class LeagueQuery:
+    league = graphene.Field(types.LeagueType, id=graphene.UUID())
     all_leagues = graphene.List(types.LeagueType)
+
+    def resolve_league(self, info, **kwargs):
+        id = kwargs.get('id')
+        if id is not None:
+            return League.objects.get(pk=id)
+        return None
+
 
     def resolve_all_leagues(self, info, **kwargs):
         return League.objects.all()

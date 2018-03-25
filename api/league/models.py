@@ -30,9 +30,6 @@ class League(AbstractBaseModel):
     name = models.CharField(max_length=256)
     num_series_per_season = models.IntegerField()
     num_games_per_series = models.IntegerField()
-    # seasons = models.ManyToManyField('league.Season',
-    #                                  related_name='leagues',
-    #                                  blank=True)
     description = models.CharField(max_length=512, null=True, blank=True,
                                    help_text='A short description about this league.')
 

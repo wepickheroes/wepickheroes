@@ -4,6 +4,7 @@ import {
 } from 'react-router-dom'
 
 import {
+    League,
     Leagues,
 } from './leagues'
 import {
@@ -35,6 +36,7 @@ class App extends Component {
                         <Route exact path="/faqs" component={FAQs} />
                         <Route exact path="/schedule" component={Schedule} />
                         <Route exact path="/leagues" component={Leagues} />
+                        <Route exact path="/leagues/:id" component={League} />
                         <Route path="/signup-complete" component={SignupComplete} />
                         <Route path="/finish-steam/:partial_token" component={FinishSteam} />
                         <Route path="/teams/create" component={CreateTeam} />
