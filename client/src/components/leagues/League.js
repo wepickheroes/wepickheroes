@@ -91,28 +91,26 @@ class League extends Component {
                 <div style={{ marginBottom: '1rem '}}>
                     <Link to='/leagues'>&larr;&nbsp;All Leagues</Link>
                 </div>
-                {loading && <Loading />}
-                {(!loading && league) ? (
-                    <div>
-                        <h1 style={{ marginBottom: '2rem' }}>{league.name} League</h1>
-                        <LeagueDetails league={league} />
-                        <div className='text-center' style={{ marginBottom: '1rem' }}>
+                {loading ? <Loading /> : (
+                    league ? (
+                        <div>
+                            <h1 style={{ marginBottom: '2rem' }}>{league.name} League</h1>
+                            <LeagueDetails league={league} />
+                            <h1>Registration: <small className='text-muted'>OPEN</small></h1>
                             <RegisterButton leagueId={league.id} />
+                            <p style={{ marginTop: '1rem' }}>
+                                Note: Only captains of teams with 5 or more players are able to register for leagues.
+                            </p>
+                            <h2 style={{ marginTop: '2rem' }}>Divisions</h2>
+                            <Divisions divisionSet={league.divisionSet} />
+                            <h2 style={{ marginTop: '2rem' }}>Seasons</h2>
+                            <Seasons seasonSet={league.seasonSet} />
                         </div>
-                        <h1>Registration: <small className='text-muted'>OPEN</small></h1>
-                        <RegisterButton leagueId={league.id} />
-                        <p style={{ marginTop: '1rem' }}>
-                            Note: Only captains of teams with 5 or more players are able to register for leagues.
-                        </p>
-                        <h2 style={{ marginTop: '2rem' }}>Divisions</h2>
-                        <Divisions divisionSet={league.divisionSet} />
-                        <h2 style={{ marginTop: '2rem' }}>Seasons</h2>
-                        <Seasons seasonSet={league.seasonSet} />
-                    </div>
-                ) : (
-                    <div>
-                        <h1>404: Not Found</h1>
-                    </div>
+                    ) : (
+                        <div>
+                            <h1>404: Not Found</h1>
+                        </div>
+                    )
                 )}
             </Container>
         )
@@ -120,7 +118,7 @@ class League extends Component {
 }
 
 const query = gql`
-query ($id: UUID!) {
+query q1($id: UUID!) {
     league(id: $id) {
         id
         name
@@ -139,7 +137,8 @@ query ($id: UUID!) {
             name
         }
     }
-}`
+}
+`
 
 League = graphql(query, {
     options: ({ match: { params: { id } } }) => ({ variables: { id }})

@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react'
-import { graphql } from 'react-apollo'
+import { compose, graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { LinkContainer } from 'react-router-bootstrap'
 import {
+    Alert,
     Button,
     DropdownItem,
     DropdownMenu,
@@ -22,6 +23,9 @@ class RegisterButton extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            error: null,
+            ok: false,
+            submitted: false,
             noTeamsModal: false,
         }
     }
@@ -52,6 +56,23 @@ class RegisterButton extends Component {
 
     handleRegisterTeamClick = teamId => () => {
         console.log('handleRegisterTeam', teamId)
+        const { leagueId, mutate } = this.props
+        mutate({
+            variables: {
+                teamId, leagueId,
+            },
+        }).then(({ data, data: { createLeagueRegistration: { ok, error, leagueRegistration } } }) => {
+            this.setState({
+                ok, error, submitted: true,
+            })
+        }).catch(error => {
+            console.error('error', error)
+            this.setState({
+                ok: false,
+                error,
+                submitted: true,
+            })
+        })
     }
 
     render() {
@@ -63,6 +84,7 @@ class RegisterButton extends Component {
             },
             leagueId,
         } = this.props
+        const { error, ok, submitted } = this.state
         const baseButtonProps = {
             size: 'lg',
             color: 'success',
@@ -93,32 +115,38 @@ class RegisterButton extends Component {
         }
 
         return (
-            <UncontrolledButtonDropdown>
-                <DropdownToggle {...baseButtonProps} caret />
-                <DropdownMenu>
-                    <DropdownItem header>Select a team to register:</DropdownItem>
-                    {teamsCaptainOf.map(team => {
-                        const teamAlreadyRegistered = Boolean(
-                            team.leagueregistrationSet.find(leagueRegistration => (
-                                leagueRegistration.league.id === leagueId
-                            ))
-                        )
-                        const teamHasEnoughPlayers = team.players.length >= 5
-                        let errorMessage = teamAlreadyRegistered ? ' (already registered)' : null
-                        errorMessage = !errorMessage && !teamHasEnoughPlayers
-                            ? ' (not enough players)'
-                            : errorMessage
-                        return (
-                            <DropdownItem key={`register-team-${team.id}`}
-                                          disabled={teamAlreadyRegistered || !teamHasEnoughPlayers}
-                                          onClick={this.handleRegisterTeamClick(team.id)}>
-                                {team.name}{errorMessage}
-
-                            </DropdownItem>
-                        )
-                    })}
-                </DropdownMenu>
-            </UncontrolledButtonDropdown>
+            <Fragment>
+                <UncontrolledButtonDropdown>
+                    <DropdownToggle {...baseButtonProps} caret />
+                    <DropdownMenu>
+                        <DropdownItem header>Select a team to register:</DropdownItem>
+                        {teamsCaptainOf.map(team => {
+                            const teamAlreadyRegistered = Boolean(
+                                team.leagueregistrationSet.find(leagueRegistration => (
+                                    leagueRegistration.league.id === leagueId
+                                ))
+                            )
+                            const teamHasEnoughPlayers = team.players.length >= 5
+                            let errorMessage = teamAlreadyRegistered ? ' (already registered)' : null
+                            errorMessage = !errorMessage && !teamHasEnoughPlayers
+                                ? ' (not enough players)'
+                                : errorMessage
+                            return (
+                                <DropdownItem key={`register-team-${team.id}`}
+                                              disabled={teamAlreadyRegistered || !teamHasEnoughPlayers}
+                                              onClick={this.handleRegisterTeamClick(team.id)}>
+                                    {team.name}{errorMessage}
+                                </DropdownItem>
+                            )
+                        })}
+                    </DropdownMenu>
+                </UncontrolledButtonDropdown>
+                {submitted && (
+                    <Alert color={ok ? 'success' : 'danger'} style={{ marginTop: '1rem' }}>
+                        {ok ? 'Your team has been registered.' : error}
+                    </Alert>
+                )}
+            </Fragment>
         )
     }
 
@@ -150,7 +178,39 @@ query {
     }
     isAuthenticated
 }`
+const mutation = gql`
+mutation ($teamId: UUID!, $leagueId: UUID!) {
+    createLeagueRegistration(leagueId: $leagueId, teamId: $teamId) {
+        ok
+        error
+        leagueRegistration {
+            id
+        }
+    }
+}`
+const mutationUpdate = gql`
+query {
+    self {
+        id
+        teamsCaptainOf {
+            id
+            leagueregistrationSet {
+                id
+                league {
+                    id
+                }
+            }
+        }
+    }
+}`
 
-RegisterButton = graphql(query)(RegisterButton)
+RegisterButton = compose(
+    graphql(query),
+    graphql(mutation, {
+        options: {
+            refetchQueries: [{ query: mutationUpdate }],
+        }
+    }),
+)(RegisterButton)
 
 export default RegisterButton

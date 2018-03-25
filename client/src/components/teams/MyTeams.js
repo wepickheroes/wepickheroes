@@ -8,7 +8,6 @@ import { Loading } from '../utils'
 class MyTeams extends Component {
 
     render() {
-        console.log('MyTeams', this.props)
         const { data: { loading, myTeams } } = this.props
         return (
             <Container>
@@ -16,7 +15,7 @@ class MyTeams extends Component {
                 {loading ? <Loading /> : (
                     <Fragment>
                         {myTeams.map(team => (
-                            <Card key={`team-${team.id}`}>
+                            <Card key={`team-${team.id}`} style={{ marginTop: '2rem' }}>
                                 <CardBody>
                                     <CardTitle>{team.name}</CardTitle>
                                     <CardText>

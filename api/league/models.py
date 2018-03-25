@@ -1,6 +1,9 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 
 from nucleus.models import AbstractBaseModel
+
+User = get_user_model()
 
 
 class Season(AbstractBaseModel):
@@ -40,9 +43,9 @@ class League(AbstractBaseModel):
 class LeagueRegistration(AbstractBaseModel):
     league = models.ForeignKey('league.League', on_delete=models.CASCADE)
     team = models.ForeignKey('teams.Team', on_delete=models.CASCADE)
-    registered_by = models.ForeignKey('nucleus.TeamMember',
+    registered_by = models.ForeignKey(User,
                                       on_delete=models.SET_NULL,
-                                      null=True, blank=True)
+                                      null=True, blank=True,)
 
     def __str__(self):
         return "Registration for {} by {}".format(self.league.name, self.team.name)
