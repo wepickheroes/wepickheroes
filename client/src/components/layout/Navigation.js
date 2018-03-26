@@ -127,7 +127,7 @@ class Navigation extends Component {
                                 isAuthenticated ? <UserMenu /> : (
                                 <SteamNavItem>
                                     <Button color="success" className="text-uppercase"
-                                            href={createUrl('/login/steam/?next=/social-redirect/signup-complete')}>
+                                            href={createUrl('/login/steam/')}>
                                         <i className="fab fa-steam" />&nbsp;Sign In With Steam
                                     </Button>
                                 </SteamNavItem>

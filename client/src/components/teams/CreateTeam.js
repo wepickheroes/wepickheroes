@@ -48,7 +48,7 @@ class CreateTeam extends Component {
                                 <Input type='text' name='name' id='name'
                                        value={name} onChange={this.handleChange('name')} />
                             </FormGroup>
-                            <Button>Submit</Button>
+                            <Button color="primary">Submit</Button>
                         </Form>
                     </Col>
                 </Row>

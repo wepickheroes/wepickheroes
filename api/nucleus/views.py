@@ -18,10 +18,12 @@ def logout(request):
 
 def require_email(request):
     partial_token = request.GET.get('partial_token')
-    return_url = '{protocol}://{domain}/finish-steam/{token}'.format(
+    next = request.GET.get('next')
+    return_url = '{protocol}://{domain}/finish-steam/{token}?next={next}'.format(
         protocol=SITE_PROTOCOL,
         domain=SITE_DOMAIN,
-        token=partial_token
+        token=partial_token,
+        next=next,
     )
     return redirect(return_url)
 

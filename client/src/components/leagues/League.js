@@ -89,7 +89,7 @@ class League extends Component {
         return (
             <Container>
                 <div style={{ marginBottom: '1rem '}}>
-                    <Link to='/leagues'>&larr;&nbsp;All Leagues</Link>
+                    <Link to='/leagues'><i className='fas fa-arrow-left' />&nbsp;All Leagues</Link>
                 </div>
                 {loading ? <Loading /> : (
                     league ? (

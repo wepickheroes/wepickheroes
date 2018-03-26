@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { Card, CardBody, CardTitle, CardText, Container } from 'reactstrap'
+import { LinkContainer } from 'react-router-bootstrap'
+import { Button, Card, CardBody, CardTitle, CardText, Container } from 'reactstrap'
 
 import { Loading } from '../utils'
 
@@ -24,6 +25,14 @@ class MyTeams extends Component {
                                 </CardBody>
                             </Card>
                         ))}
+                        <div className='text-center' style={{ marginTop: '1rem' }}>
+                            <LinkContainer to='/teams/create'>
+                                <Button color="primary">
+                                    <i className='fas fa-plus' />&nbsp;
+                                    Create a Team
+                                </Button>
+                            </LinkContainer>
+                        </div>
                     </Fragment>
                 )}
             </Container>

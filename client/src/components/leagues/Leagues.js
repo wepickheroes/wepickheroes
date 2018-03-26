@@ -60,7 +60,10 @@ const League = props => {
 
                 <div className='text-center'>
                     <LinkContainer to={`/leagues/${id}`}>
-                        <Button color='primary'>View Details &rarr;</Button>
+                        <Button color='primary'>
+                            View Details&nbsp;
+                            <i className='fas fa-arrow-circle-right' />
+                        </Button>
                     </LinkContainer>
                 </div>
             </CardBody>

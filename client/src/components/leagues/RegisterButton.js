@@ -55,13 +55,12 @@ class RegisterButton extends Component {
     }
 
     handleRegisterTeamClick = teamId => () => {
-        console.log('handleRegisterTeam', teamId)
         const { leagueId, mutate } = this.props
         mutate({
             variables: {
                 teamId, leagueId,
             },
-        }).then(({ data, data: { createLeagueRegistration: { ok, error, leagueRegistration } } }) => {
+        }).then(({ data: { createLeagueRegistration: { ok, error, leagueRegistration } } }) => {
             this.setState({
                 ok, error, submitted: true,
             })
