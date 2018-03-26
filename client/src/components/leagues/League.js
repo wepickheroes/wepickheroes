@@ -99,7 +99,7 @@ class League extends Component {
                             <h1>Registration: <small className='text-muted'>OPEN</small></h1>
                             <RegisterButton leagueId={league.id} />
                             <p style={{ marginTop: '1rem' }}>
-                                Note: Only captains of teams with 5 or more players are able to register for leagues.
+                                <strong>Note:</strong> Only captains of teams with 5 or more players are able to register for leagues.
                             </p>
                             <h2 style={{ marginTop: '2rem' }}>Divisions</h2>
                             <Divisions divisionSet={league.divisionSet} />
