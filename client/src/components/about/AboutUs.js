@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import {  Card, CardBody, CardTitle, Col, Container, Row } from 'reactstrap'
 import theDire from '../../img/the_dire.jpg'
@@ -19,7 +19,7 @@ const MarketingList = styled.ol`
 `
 
 const AboutUs = props => (
-    <Container fluid>
+    <Fragment>
         <Container>
           <Intro>
               <h1 className="display-4">About</h1>
@@ -71,7 +71,7 @@ const AboutUs = props => (
             </Card>
         </Container>
         <Divider />
-    </Container>
+    </Fragment>
 )
 
 export default AboutUs

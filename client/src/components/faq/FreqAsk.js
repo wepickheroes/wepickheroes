@@ -93,7 +93,7 @@ const faqs = [
 ]
 
 const FAQs = props => (
-    <Container style={{ marginTop: '2rem' }}>
+    <Container>
         <h1 className="display-4" style={{ marginBottom: '1rem' }}>Frequently Asked Questions</h1>
         <ListGroup>
             {faqs.map(({ question, answer}, i) => (

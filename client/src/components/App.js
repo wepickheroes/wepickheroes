@@ -4,6 +4,10 @@ import {
 } from 'react-router-dom'
 
 import {
+    League,
+    Leagues,
+} from './leagues'
+import {
     AcceptTeamInvite,
     CreateTeam,
     ManageTeam,
@@ -18,6 +22,7 @@ import AboutUs from './about/AboutUs'
 import FAQs from './faq/FreqAsk'
 import { Schedule } from './schedule'
 import { Footer, Navigation } from './layout'
+import { ContentContainer } from './utils'
 
 class App extends Component {
     render() {
@@ -25,16 +30,20 @@ class App extends Component {
             <Fragment>
                 <Navigation/>
                 <section className="flex-grow">
-                    <Route exact path="/" component={Homepage} />
-                    <Route exact path="/about" component={AboutUs} />
-                    <Route exact path="/faqs" component={FAQs} />
-                    <Route exact path="/schedule" component={Schedule} />
-                    <Route path="/signup-complete" component={SignupComplete} />
-                    <Route path="/finish-steam/:partial_token" component={FinishSteam} />
-                    <Route path="/teams/create" component={CreateTeam} />
-                    <Route path="/accept-invite/:id" component={AcceptTeamInvite} />
-                    <Route path="/my-teams" exact component={MyTeams} />
-                    <Route path="/my-teams/:id" component={ManageTeam} />
+                    <ContentContainer>
+                        <Route exact path="/" component={Homepage} />
+                        <Route exact path="/about" component={AboutUs} />
+                        <Route exact path="/faqs" component={FAQs} />
+                        <Route exact path="/schedule" component={Schedule} />
+                        <Route exact path="/leagues" component={Leagues} />
+                        <Route exact path="/leagues/:id" component={League} />
+                        <Route path="/signup-complete" component={SignupComplete} />
+                        <Route path="/finish-steam/:partial_token" component={FinishSteam} />
+                        <Route path="/teams/create" component={CreateTeam} />
+                        <Route path="/accept-invite/:id" component={AcceptTeamInvite} />
+                        <Route path="/my-teams" exact component={MyTeams} />
+                        <Route path="/my-teams/:id" component={ManageTeam} />
+                    </ContentContainer>
                 </section>
                 <Footer />
             </Fragment>

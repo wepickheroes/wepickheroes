@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { Button, Card, CardBody, CardTitle, Col, Container, Row } from 'reactstrap'
 import { graphql } from 'react-apollo'
@@ -8,7 +8,6 @@ import logoLarge from '../img/logos/WPHlogo5sgcolors.svg'
 import theDire from '../img/keyboard.jpg'
 import { createUrl } from '../api/utils'
 import {
-    ContentContainer,
     Divider,
     MarketingImage,
 } from './utils'
@@ -30,17 +29,16 @@ const MarketingDescription = styled.p`
 const MainLogo = styled.img`
     width: auto;
     max-height: 300px;
+    margin-bottom: 2rem;
 `
 
 const Homepage = props => {
     const { data: {loading, isAuthenticated = false } } = props
     return (
-        <ContentContainer>
+        <Fragment>
             <Container>
                 <Intro>
                     <MainLogo src={logoLarge} alt="We Pick Heroes" />
-                    {/*<h1 className="display-4">We Pick Heroes</h1>*/}
-                    <p></p>
                     <h2>Competitive Amateur Dota 2 League</h2>
                     <Description className="lead">
                         Registration is free and easy!
@@ -50,7 +48,7 @@ const Homepage = props => {
                     <div>
                         {!loading && !isAuthenticated && (
                             <Button color="success" size="lg"
-                                    href={createUrl('/login/steam/?next=/social-redirect/signup-complete')}>
+                                    href={createUrl('/login/steam/')}>
                                 <i className="fab fa-steam"/>&nbsp;Sign Up
                             </Button>
                         )}
@@ -86,7 +84,7 @@ const Homepage = props => {
                     </CardBody>
                 </Card>
             </Container>
-        </ContentContainer>
+        </Fragment>
     )
 }
 

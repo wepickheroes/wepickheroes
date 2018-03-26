@@ -3,8 +3,6 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Button, Col, Container, Form, FormGroup, Label, Input, Row } from 'reactstrap'
 
-import { ContentContainer} from '../utils'
-
 class CreateTeam extends Component {
     state = {
         formValues: {
@@ -40,23 +38,21 @@ class CreateTeam extends Component {
     render() {
         const { formValues: { name } } = this.state
         return (
-            <ContentContainer>
-                <Container>
-                    <h1>Create a Team</h1>
-                    <Row>
-                        <Col sm='12' md={{ size: '4' }} lg={{ size: '6' }}>
-                            <Form onSubmit={this.handleSubmit}>
-                                <FormGroup>
-                                    <Label for='name'>Team Name</Label>
-                                    <Input type='text' name='name' id='name'
-                                           value={name} onChange={this.handleChange('name')} />
-                                </FormGroup>
-                                <Button>Submit</Button>
-                            </Form>
-                        </Col>
-                    </Row>
-                </Container>
-            </ContentContainer>
+            <Container>
+                <h1>Create a Team</h1>
+                <Row>
+                    <Col sm='12' md={{ size: '4' }} lg={{ size: '6' }}>
+                        <Form onSubmit={this.handleSubmit}>
+                            <FormGroup>
+                                <Label for='name'>Team Name</Label>
+                                <Input type='text' name='name' id='name'
+                                       value={name} onChange={this.handleChange('name')} />
+                            </FormGroup>
+                            <Button color="primary">Submit</Button>
+                        </Form>
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }
