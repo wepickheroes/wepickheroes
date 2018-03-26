@@ -26,10 +26,11 @@ const League = props => {
         numGamesPerSeries,
         seasonSet,
         divisionSet,
+        ...otherProps,
     } = props
     const nextSeason = seasonSet.length > 0 && [...seasonSet].splice(-1)[0]
     return (
-        <Card>
+        <Card {...otherProps}>
             <CardBody>
                 <CardTitle>
                     <Link to={`/leagues/${id}`}>
@@ -83,8 +84,8 @@ class Leagues extends Component {
                 <h1>Leagues</h1>
                 <Row>
                     {loading ? <Loading /> : allLeagues.map(league => (
-                        <Col key={`league-${league.id}`} md={4}>
-                            <League {...league} />
+                        <Col key={`league-${league.id}`} lg={4} md={6} xs={12} sm={12}>
+                            <League {...league} style={{ marginTop: '2rem' }} />
                         </Col>
                     ))}
                 </Row>
