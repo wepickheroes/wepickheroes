@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { Card, CardBody, CardTitle, CardText, Container } from 'reactstrap'
+import moment from 'moment'
+import { Alert, Card, CardBody, CardTitle, Col, Container, Row } from 'reactstrap'
 
 import { Loading } from '../utils'
 
@@ -12,30 +13,54 @@ class ManageTeam extends Component {
         const { location: { host, protocol } } = window
         return (
             <Container>
-                <h1>Manage Team</h1>
+                <h1>
+                    Manage Team
+                    {team && (
+                        <Fragment>
+                            : <small className='text-muted'>{team.name}</small>
+                        </Fragment>
+                    )}
+                </h1>
                 {loading ? <Loading /> : (
                     <Fragment>
-                        <h2>{team.name}</h2>
-                        <Card>
-                            <CardBody>
-                                <CardTitle>Invite Link</CardTitle>
-                                <CardText>
-                                    Copy the link below and share with your teammates:
-                                </CardText>
-                                <pre>
-                                    <code>
-                                        {`${protocol}//${host}/accept-invite/${team.id}`}
-                                    </code>
-                                </pre>
-                            </CardBody>
-                        </Card>
-                        <Card>
-                            <CardBody>
-                                <CardTitle>
-                                    Players
-                                </CardTitle>
-                            </CardBody>
-                        </Card>
+                        <Alert color="info">
+                            <h4>Invite Link</h4>
+                            <p>
+                                Copy the link below and share with your teammates:
+                            </p>
+                            <pre>
+                                <code>
+                                    {`${protocol}//${host}/accept-invite/${team.id}`}
+                                </code>
+                            </pre>
+                        </Alert>
+                        <Row>
+                            <Col md={6} style={{ marginTop: '2rem' }}>
+                                <Card>
+                                    <CardBody>
+                                        <CardTitle>
+                                            Players
+                                        </CardTitle>
+                                        {team.players.map(player => (
+                                            <div key={`player-${player.id}`}>
+                                                {player.username}
+                                            </div>
+                                        ))}
+                                    </CardBody>
+                                </Card>
+                            </Col>
+                            <Col md={6} style={{ marginTop: '2rem' }}>
+                                <Card>
+                                    <CardBody>
+                                        <CardTitle>
+                                            Team Info
+                                        </CardTitle>
+                                        <div>Captain: {team.captain.username}</div>
+                                        <div>Created: {moment(team.created).format('L')}</div>
+                                    </CardBody>
+                                </Card>
+                            </Col>
+                        </Row>
                     </Fragment>
                 )}
             </Container>
@@ -48,6 +73,15 @@ const query = gql`
         team(id: $id) {
             id
             name
+            created
+            captain {
+                id
+                username
+            }
+            players {
+                id
+                username
+            }
         }
     }
 `

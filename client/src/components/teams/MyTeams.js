@@ -3,6 +3,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Button, Card, CardBody, CardTitle, CardText, Container } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 import { Loading } from '../utils'
 
@@ -18,7 +19,11 @@ class MyTeams extends Component {
                         {myTeams.map(team => (
                             <Card key={`team-${team.id}`} style={{ marginTop: '2rem' }}>
                                 <CardBody>
-                                    <CardTitle>{team.name}</CardTitle>
+                                    <CardTitle>
+                                        <Link to={`/my-teams/${team.id}`}>
+                                            {team.name}
+                                        </Link>
+                                    </CardTitle>
                                     <CardText>
                                         {team.players.map(p => p.username).join(', ')}
                                     </CardText>
