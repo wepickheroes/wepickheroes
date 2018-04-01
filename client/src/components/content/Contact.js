@@ -1,8 +1,8 @@
 import React from 'react'
-import {  Card, CardBody, CardTitle, Col, Container, Row } from 'reactstrap'
+import { Container } from 'reactstrap'
 
 const discordLink = (
-    <a href='https://discord.gg/xdcFpBc' style={{ whiteSpace: 'nowrap' }} target='_blank'>
+    <a href='https://discord.gg/xdcFpBc' style={{ whiteSpace: 'nowrap' }} target='_blank' rel='noopener noreferrer'>
         <i className='fab fa-discord' />&nbsp;Discord
     </a>
 )

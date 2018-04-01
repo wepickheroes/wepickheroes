@@ -21,8 +21,9 @@ import {
 import {
     About,
     Contact,
-} from './marketing'
-import FAQs from './faq/FreqAsk'
+    FAQ,
+    Rules,
+} from './content'
 import { Schedule } from './schedule'
 import { Footer, Navigation } from './layout'
 import { ContentContainer } from './utils'
@@ -37,7 +38,8 @@ class App extends Component {
                         <Route exact path="/" component={Homepage} />
                         <Route exact path="/about" component={About} />
                         <Route exact path="/contact" component={Contact} />
-                        <Route exact path="/faqs" component={FAQs} />
+                        <Route exact path="/faqs" component={FAQ} />
+                        <Route exact path="/rules" component={Rules} />
                         <Route exact path="/schedule" component={Schedule} />
                         <Route exact path="/leagues" component={Leagues} />
                         <Route exact path="/leagues/:id" component={League} />

@@ -92,7 +92,7 @@ const faqs = [
     },
 ]
 
-const FAQs = props => (
+export default props => (
     <Container>
         <h1 style={{ marginBottom: '1rem' }}>Frequently Asked Questions</h1>
         <ListGroup>
@@ -105,5 +105,3 @@ const FAQs = props => (
         </ListGroup>
     </Container>
 )
-
-export default FAQs

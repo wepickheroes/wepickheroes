@@ -5,3 +5,11 @@ body, #root {
 .flex-grow {
     flex: 1;
 }
+
+ol ol {
+    list-style-type: lower-latin;
+}
+
+ol ol ol {
+    list-style-type: lower-roman;
+}

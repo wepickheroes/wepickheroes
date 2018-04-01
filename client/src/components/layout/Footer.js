@@ -16,11 +16,11 @@ class Footer extends Component {
                                 <NavLink>About</NavLink>
                             </LinkContainer>
                         </NavItem>
-                        {/*<NavItem>*/}
-                            {/*<LinkContainer to='/blog'>*/}
-                                {/*<NavLink>Blog</NavLink>*/}
-                            {/*</LinkContainer>*/}
-                        {/*</NavItem>*/}
+                        <NavItem>
+                            <LinkContainer to='/rules'>
+                                <NavLink>Rules</NavLink>
+                            </LinkContainer>
+                        </NavItem>
                         <NavItem>
                             <LinkContainer to='/contact'>
                                 <NavLink>Contact</NavLink>
