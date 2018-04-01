@@ -8,7 +8,7 @@ import './styles/layout.css'
 
 import { client } from './api'
 import App from './components/App'
-import registerServiceWorker from './registerServiceWorker'
+import { unregister } from './registerServiceWorker'
 
 const app = (
     <ApolloProvider client={client}>
@@ -19,4 +19,4 @@ const app = (
 )
 
 ReactDOM.render(app, document.getElementById('root'))
-registerServiceWorker()
+unregister()
