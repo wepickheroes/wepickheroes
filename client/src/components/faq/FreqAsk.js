@@ -94,7 +94,7 @@ const faqs = [
 
 const FAQs = props => (
     <Container>
-        <h1 className="display-4" style={{ marginBottom: '1rem' }}>Frequently Asked Questions</h1>
+        <h1 style={{ marginBottom: '1rem' }}>Frequently Asked Questions</h1>
         <ListGroup>
             {faqs.map(({ question, answer}, i) => (
                 <ListGroupItem key={`faq-${i}`}>

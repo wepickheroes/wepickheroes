@@ -33,11 +33,11 @@ class Footer extends Component {
                                 <i className='fab fa-2x fa-twitch' />
                             </NavLink>
                         </NavItem>
-                        {/*<NavItem>*/}
-                            {/*<NavLink href='https://www.twitch.tv/wepickheroes' target='_blank'>*/}
-                                {/*<i className='fab fa-2x fa-discord' />*/}
-                            {/*</NavLink>*/}
-                        {/*</NavItem>*/}
+                        <NavItem>
+                            <NavLink href='https://discord.gg/xdcFpBc' target='_blank'>
+                                <i className='fab fa-2x fa-discord' />
+                            </NavLink>
+                        </NavItem>
                         {/*<NavItem>*/}
                             {/*<NavLink href='https://www.twitch.tv/wepickheroes' target='_blank'>*/}
                                 {/*<i className='fab fa-2x fa-facebook' />*/}

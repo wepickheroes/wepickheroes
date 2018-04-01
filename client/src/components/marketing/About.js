@@ -18,7 +18,7 @@ const MarketingList = styled.ol`
     margin-left: 2rem;
 `
 
-const AboutUs = props => (
+const About = props => (
     <Fragment>
         <Container>
           <Intro>
@@ -74,4 +74,4 @@ const AboutUs = props => (
     </Fragment>
 )
 
-export default AboutUs
+export default About

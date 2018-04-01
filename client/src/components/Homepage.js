@@ -42,7 +42,7 @@ const Homepage = props => {
                     <h2>Competitive Amateur Dota 2 League</h2>
                     <Description className="lead">
                         Registration is free and easy!
-                        To get started, sign in with your Steam account, create a team page, and invite your teammates
+                        To get started, sign in with your Steam account, create a team, and invite your teammates
                         to join!
                     </Description>
                     <div>
@@ -61,7 +61,7 @@ const Homepage = props => {
                     <CardBody>
                         <CardTitle>
                             <span id="how-it-works" className="display-4">
-                                Season 0 coming soon!
+                                Preliminary Season coming soon!
                             </span>
                         </CardTitle>
                         <Row>
@@ -71,12 +71,12 @@ const Homepage = props => {
                             <Col md="8" xs="12" className="d-flex align-items-center">
                                 <div>
                                     <MarketingDescription>
-                                        With the beta launch of our site we will soon be commencing our preliminary
-                                        Season 0 of the We Pick Heroes League!
-                                        This season will consist of 3 tiers with 8 teams in each. The season
-                                        will run for 4 weeks.
-                                        We’re starting small so we can identify any potential issues before we advance
-                                        out of beta and into full launch!
+                                        With the alpha launch of our site we will soon be starting our preliminary
+                                        season of the We Pick Heroes League! The season starts
+                                        on <strong>April 8th</strong> and will run for four weeks.
+                                        We’ll be starting with 3 tiers, with 8 teams in each.
+                                        We’re starting small so we can identify any potential issues
+                                        before we advance out of alpha and into full launch!
                                     </MarketingDescription>
                                 </div>
                             </Col>
