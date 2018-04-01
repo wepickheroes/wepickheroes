@@ -87,6 +87,7 @@ class Navigation extends Component {
                         <LinkContainer to='/'>
                             <NavbarBrand>
                                 <BrandLogo src={BrandImage} alt="We Pick Heroes" />
+                                &nbsp;<i><small>alpha</small></i>
                             </NavbarBrand>
                         </LinkContainer>
                     </NavbarTitle>
