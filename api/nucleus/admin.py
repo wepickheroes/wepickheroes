@@ -25,6 +25,36 @@ class UserSocialAuthInline(admin.StackedInline):
     extra = 0
 
 
+class SocialAuthParser:
+    def __init__(self, user):
+        self.user = user
+
+    def get_social_data(self, key):
+        social_auth = self.user.social_auth.first()
+        if social_auth:
+            return social_auth.extra_data.get(key)
+
+    def get_rank_data(self):
+        return self.get_social_data('rank_data')
+
+    def get_rank_item(self, key):
+        rank_data = self.get_rank_data()
+        if rank_data:
+            return rank_data.get(key)
+
+    @property
+    def rank_label(self):
+        return self.get_rank_item('rank')
+
+    @property
+    def rank_int(self):
+        return self.get_rank_item('rank_int')
+
+    @property
+    def rank_leaderboard(self):
+        return self.get_rank_item('rank_leaderboard')
+
+
 class CustomUserAdmin(UserAdmin):
     list_display = (
         'username',
@@ -54,33 +84,41 @@ class CustomUserAdmin(UserAdmin):
 
     actions = [update_rank]
 
-    def get_social_data(self, obj, key):
-        social_auth = obj.social_auth.first()
-        if social_auth:
-            return social_auth.extra_data.get(key)
-
-    def get_rank_data(self, obj):
-        return self.get_social_data(obj, 'rank_data')
-
-    def get_rank_item(self, obj, key):
-        rank_data = self.get_rank_data(obj)
-        if rank_data:
-            return rank_data.get(key)
-
     def rank_label(self, obj):
-        return self.get_rank_item(obj, 'rank')
+        social_auth_parser = SocialAuthParser(obj)
+        return social_auth_parser.rank_label
 
     def rank_int(self, obj):
-        return self.get_rank_item(obj, 'rank_int')
+        social_auth_parser = SocialAuthParser(obj)
+        return social_auth_parser.rank_int
 
     def rank_leaderboard(self, obj):
-        return self.get_rank_item(obj, 'rank_leaderboard')
+        social_auth_parser = SocialAuthParser(obj)
+        return social_auth_parser.rank_leaderboard
 
 
 class TeamMemberInline(admin.TabularInline):
     model = TeamMember
+    fields = ('player', 'rank_label', 'rank_int', 'rank_leaderboard', 'team', )
     raw_id_fields = ('player', 'team', )
     extra = 0
+    readonly_fields = (
+        'rank_label',
+        'rank_int',
+        'rank_leaderboard',
+    )
+
+    def rank_label(self, obj):
+        social_auth_parser = SocialAuthParser(obj.player)
+        return social_auth_parser.rank_label
+
+    def rank_int(self, obj):
+        social_auth_parser = SocialAuthParser(obj.player)
+        return social_auth_parser.rank_int
+
+    def rank_leaderboard(self, obj):
+        social_auth_parser = SocialAuthParser(obj.player)
+        return social_auth_parser.rank_leaderboard
 
 
 admin.site.unregister(User)
