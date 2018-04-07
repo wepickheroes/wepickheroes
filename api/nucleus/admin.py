@@ -15,8 +15,13 @@ class UserSocialAuthInline(admin.StackedInline):
 
 
 class CustomUserAdmin(UserAdmin):
-    list_display = UserAdmin.list_display + (
+    list_display = (
+        'username',
+        'email',
+        'is_staff',
         'rank_label',
+        'rank_int',
+        'rank_leaderboard',
     )
     inlines = UserAdmin.inlines + [
         UserSocialAuthInline,
