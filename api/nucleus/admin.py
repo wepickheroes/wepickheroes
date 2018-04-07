@@ -1,4 +1,4 @@
-from django.contrib import admin
+from django.contrib import admin, messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
@@ -12,7 +12,11 @@ User = get_user_model()
 
 def update_rank(modeladmin, request, queryset):
     for user in queryset:
-        _update_player_rank(user.pk)
+        try:
+            _update_player_rank(user.pk)
+        except Exception as e:
+            messages.add_message(request, messages.ERROR,
+                                 'Error updating rank for player {}: {}'.format(user.pk, e))
 update_rank.short_description = 'Update rank for selected users'
 
 
