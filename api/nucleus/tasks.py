@@ -36,7 +36,7 @@ def rank_tier_to_string(rank_tier, leaderboard_tier):
     return tier_name
 
 
-def _update_player_mmr(user_id):
+def _update_player_rank(user_id):
     try:
         user = User.objects.get(pk=user_id)
     except User.DoesNotExist:
@@ -68,5 +68,5 @@ def _update_player_mmr(user_id):
     social_auth.save()
 
 
-def update_player_mmr(user_id):
-    Thread(target=_update_player_mmr, args=(user_id, )).start()
+def update_player_rank(user_id):
+    Thread(target=_update_player_rank, args=(user_id, )).start()

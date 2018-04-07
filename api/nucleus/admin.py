@@ -5,8 +5,15 @@ from django.contrib.auth.admin import UserAdmin
 from social_django.models import UserSocialAuth
 
 from .models import TeamMember
+from .tasks import _update_player_rank
 
 User = get_user_model()
+
+
+def update_rank(modeladmin, request, queryset):
+    for user in queryset:
+        _update_player_rank(user.pk)
+update_rank.short_description = 'Update rank for selected users'
 
 
 class UserSocialAuthInline(admin.StackedInline):
@@ -40,6 +47,8 @@ class CustomUserAdmin(UserAdmin):
         'rank_int',
         'rank_leaderboard',
     )
+
+    actions = [update_rank]
 
     def get_social_data(self, obj, key):
         social_auth = obj.social_auth.first()
