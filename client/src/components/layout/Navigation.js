@@ -100,6 +100,11 @@ class Navigation extends Component {
                                 </LinkContainer>
                             </NavItem>
                             <NavItem>
+                                <LinkContainer to="/rules">
+                                    <NavLink><Uppercase>Rules</Uppercase></NavLink>
+                                </LinkContainer>
+                            </NavItem>
+                            <NavItem>
                                 <LinkContainer to="/about">
                                     <NavLink><Uppercase>About</Uppercase></NavLink>
                                 </LinkContainer>
