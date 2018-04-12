@@ -68,5 +68,8 @@ def _update_player_rank(user_id):
     social_auth.save()
 
 
-def update_player_rank(user_id):
-    Thread(target=_update_player_rank, args=(user_id, )).start()
+def update_player_rank(user_id, async=True):
+    if async:
+        Thread(target=_update_player_rank, args=(user_id, )).start()
+    else:
+        _update_player_rank(user_id)

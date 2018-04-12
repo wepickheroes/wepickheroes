@@ -4,8 +4,8 @@ from django.contrib.auth.admin import UserAdmin
 
 from social_django.models import UserSocialAuth
 
-from .models import TeamMember
-from .tasks import _update_player_rank
+from .models import TeamMember, TeamMemberHistory
+from .tasks import update_player_rank
 
 User = get_user_model()
 
@@ -13,7 +13,7 @@ User = get_user_model()
 def update_rank(modeladmin, request, queryset):
     for user in queryset:
         try:
-            _update_player_rank(user.pk)
+            update_player_rank(user.pk, async=False)
         except Exception as e:
             messages.add_message(request, messages.ERROR,
                                  'Error updating rank for player {}: {}'.format(user.pk, e))
