@@ -135,6 +135,24 @@ class SeriesAdmin(BaseAdmin):
         'end_date',
     )
     inlines = (SeriesMatchInline, )
+    fieldsets = (
+        (None, {
+            'fields': (
+                'division_season',
+                'start_date',
+                'end_date',
+                'created',
+                'updated',
+            ),
+        }),
+        ('Teams', {
+            'fields': (
+                ('team_a', 'team_b', ),
+                ('winner', 'loser', ),
+            ),
+        })
+    )
+    raw_id_fields = ('division_season', )
 
 
 class MatchAdmin(BaseAdmin):
