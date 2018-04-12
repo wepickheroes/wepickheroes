@@ -4,8 +4,8 @@ import gql from 'graphql-tag'
 
 import styled from 'styled-components'
 import {
-    Button, Collapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem,
-    Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink,
+    Button, Collapse, DropdownToggle, DropdownMenu, DropdownItem,
+    Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown,
 } from 'reactstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { createUrl } from '../../api/utils'
@@ -25,46 +25,41 @@ const SteamNavItem = styled(NavItem)`
 const BrandLogo = styled.img`
     height: 30px;
 `
+const UserMenu = props => (
+    <UncontrolledDropdown nav>
+        <DropdownToggle caret nav>
+            <Uppercase>Settings</Uppercase>
+        </DropdownToggle>
+        <DropdownMenu right>
+            <LinkContainer to='/teams/create'>
+                <DropdownItem>Create a Team</DropdownItem>
+            </LinkContainer>
+            <DropdownItem divider />
+            <a href={createUrl('/logout')}>
+                <DropdownItem>Logout</DropdownItem>
+            </a>
+        </DropdownMenu>
+    </UncontrolledDropdown>
+)
 
-class UserMenu extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            isOpen: false,
-        }
-    }
-
-    toggle = () => this.setState({ isOpen: !this.state.isOpen });
-
-    render() {
-        return (
-            <Dropdown nav isOpen={this.state.isOpen} toggle={this.toggle}>
-                <DropdownToggle caret nav>
-                    <Uppercase>Settings</Uppercase>
-                </DropdownToggle>
-                <DropdownMenu right>
-                    {/*<LinkContainer to='/profile'>*/}
-                        {/*<DropdownItem>Edit Profile</DropdownItem>*/}
-                    {/*</LinkContainer>*/}
-                    <LinkContainer to='/my-teams'>
-                        <DropdownItem>My Teams</DropdownItem>
-                    </LinkContainer>
-                    <LinkContainer to='/teams/create'>
-                        <DropdownItem>Create a Team</DropdownItem>
-                    </LinkContainer>
-                    {/*<LinkContainer to='/settings'>*/}
-                        {/*<DropdownItem>Settings</DropdownItem>*/}
-                    {/*</LinkContainer>*/}
-                    <DropdownItem divider />
-                    <a href={createUrl('/logout')}>
-                        <DropdownItem>Logout</DropdownItem>
-                    </a>
-                </DropdownMenu>
-            </Dropdown>
-        )
-    }
-}
+const HelpMenu = props => (
+    <UncontrolledDropdown nav>
+        <DropdownToggle caret nav>
+            <Uppercase>Resources</Uppercase>
+        </DropdownToggle>
+        <DropdownMenu right>
+            <LinkContainer to="/rules">
+                <DropdownItem>Rules</DropdownItem>
+            </LinkContainer>
+            <LinkContainer to="/about">
+                <DropdownItem>About</DropdownItem>
+            </LinkContainer>
+            <LinkContainer to="/faqs">
+                <DropdownItem>FAQ</DropdownItem>
+            </LinkContainer>
+        </DropdownMenu>
+    </UncontrolledDropdown>
+)
 
 class Navigation extends Component {
 
@@ -83,9 +78,9 @@ class Navigation extends Component {
         return (
             <div>
                 <Navbar dark color="dark" expand="md">
-                    <NavbarTitle>
+                    <NavbarTitle style={{ marginRight: '2rem' }}>
                         <LinkContainer to='/'>
-                            <NavbarBrand>
+                            <NavbarBrand >
                                 <BrandLogo src={BrandImage} alt="We Pick Heroes" />
                                 &nbsp;<i><small>alpha</small></i>
                             </NavbarBrand>
@@ -100,35 +95,12 @@ class Navigation extends Component {
                                 </LinkContainer>
                             </NavItem>
                             <NavItem>
-                                <LinkContainer to="/rules">
-                                    <NavLink><Uppercase>Rules</Uppercase></NavLink>
+                                <LinkContainer to="/my-teams">
+                                    {/* TODO: Get number of new series */}
+                                    <NavLink><Uppercase>My Teams</Uppercase></NavLink>
                                 </LinkContainer>
                             </NavItem>
-                            <NavItem>
-                                <LinkContainer to="/about">
-                                    <NavLink><Uppercase>About</Uppercase></NavLink>
-                                </LinkContainer>
-                            </NavItem>
-                            <NavItem>
-                                <LinkContainer to="/faqs">
-                                    <NavLink><Uppercase>FAQ</Uppercase></NavLink>
-                                </LinkContainer>
-                            </NavItem>
-                            {/*<NavItem>*/}
-                                {/*<LinkContainer to="/tournaments">*/}
-                                    {/*<NavLink><Uppercase>Tournaments</Uppercase></NavLink>*/}
-                                {/*</LinkContainer>*/}
-                            {/*</NavItem>*/}
-                            {/*<NavItem>*/}
-                                {/*<LinkContainer to="/leagues">*/}
-                                    {/*<NavLink><Uppercase>Leagues</Uppercase></NavLink>*/}
-                                {/*</LinkContainer>*/}
-                            {/*</NavItem>*/}
-                            {/*<NavItem>*/}
-                                {/*<LinkContainer to="/schedule">*/}
-                                    {/*<NavLink><Uppercase>Schedule</Uppercase></NavLink>*/}
-                                {/*</LinkContainer>*/}
-                            {/*</NavItem>*/}
+                            <HelpMenu />
                             {!loading && (
                                 isAuthenticated ? <UserMenu /> : (
                                 <SteamNavItem>

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Button, Card, CardBody, CardTitle, CardText, Container } from 'reactstrap'
+import { Button, Card, CardBody, CardTitle, CardText, Col, Container, Row } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 import { Loading } from '../utils'
@@ -15,21 +15,28 @@ class MyTeams extends Component {
             <Container>
                 <h1>My Teams</h1>
                 {loading ? <Loading /> : (
-                    <Fragment>
-                        {myTeams.map(team => (
-                            <Card key={`team-${team.id}`} style={{ marginTop: '2rem' }}>
-                                <CardBody>
-                                    <CardTitle>
-                                        <Link to={`/my-teams/${team.id}`}>
-                                            {team.name}
-                                        </Link>
-                                    </CardTitle>
-                                    <CardText>
-                                        {team.players.map(p => p.username).join(', ')}
-                                    </CardText>
-                                </CardBody>
-                            </Card>
-                        ))}
+                    <div>
+                        <Row>
+                            {myTeams.map((team, i) => (
+                                <Col key={`team-${team.id}`} lg={myTeams.length >= 2 ? 4 : 6} md={6} xs={12} sm={12}>
+                                    <Card style={{ marginTop: '2rem' }}>
+                                        <CardBody>
+                                            <CardTitle>
+                                                {team.name}
+                                            </CardTitle>
+                                            <CardText>
+                                                <Link to={`/my-teams/${team.id}`}>
+                                                    <i className='fas fa-cog' />&nbsp;Manage
+                                                </Link>
+                                            </CardText>
+                                            <CardText>
+                                                {team.players.map(p => p.username).join(', ')}
+                                            </CardText>
+                                        </CardBody>
+                                    </Card>
+                                </Col>
+                            ))}
+                        </Row>
                         <div className='text-center' style={{ marginTop: '1rem' }}>
                             <LinkContainer to='/teams/create'>
                                 <Button color="primary">
@@ -38,7 +45,7 @@ class MyTeams extends Component {
                                 </Button>
                             </LinkContainer>
                         </div>
-                    </Fragment>
+                    </div>
                 )}
             </Container>
         )
