@@ -72,25 +72,6 @@ class Region(Fixture):
     pass
 
 
-class PositionQuerySet(models.QuerySet):
-    def primary(self):
-        return self.filter(secondary=False)
-
-    def secondary(self):
-        return self.filter(secondary=True)
-
-
-class Position(Fixture):
-    secondary = models.BooleanField(default=False,
-                                    help_text='Designates whether this position is only useful in the context of a '
-                                              'team member, but not a Team or a Player alone (e.g. Coach or Standin).')
-    objects = PositionQuerySet.as_manager()
-
-    def __repr__(self):
-        return "<{}: {}{}>".format(type(self).__name__, self.name,
-                                   ' (secondary)' if self.secondary else '')
-
-
 class Interest(Fixture):
     pass
 
@@ -141,16 +122,24 @@ class TeamMemberHistory(AbstractBaseModel):
     ended = models.DateTimeField('Ended')
     team = models.ForeignKey('teams.Team', on_delete=models.CASCADE)
     player = models.ForeignKey(User, on_delete=models.CASCADE)
-    position = models.ForeignKey(Position, null=True, blank=True, on_delete=models.SET_NULL)
     reason = models.IntegerField('Reason', choices=REASON_CHOICES, null=True, help_text='Reason for leaving the team')
 
     objects = TeamMemberHistoryManager()
 
 
+class Role:
+    PLAYER = 1
+    SUB = 2
+    CHOICES = (
+        (PLAYER, 'Player', ),
+        (SUB, 'Sub', ),
+    )
+
+
 class TeamMember(AbstractBaseModel):
     team = models.ForeignKey('teams.Team', on_delete=models.CASCADE)
     player = models.ForeignKey(User, on_delete=models.CASCADE)
-    position = models.ForeignKey(Position, null=True, blank=True, on_delete=models.SET_NULL)
+    role = models.IntegerField(choices=Role.CHOICES, default=Role.PLAYER)
 
     class Meta:
         ordering = ('team', 'player', )
@@ -161,10 +150,10 @@ class TeamMember(AbstractBaseModel):
 
     def __repr__(self):
         return "<{}: {}, {}, {}>".format(type(self).__name__,
-                                         repr(self.team), repr(self.player), repr(self.position))
+                                         repr(self.team), repr(self.player), self.role)
 
     def __str__(self):
-        return str(self.player)
+        return "{} ({})".format(self.player, self.role)
 
 
 class EmailRecord(AbstractBaseModel):
