@@ -83,8 +83,8 @@ class Leagues extends Component {
             <Container>
                 <h1>Leagues</h1>
                 <Row>
-                    {loading ? <Loading /> : allLeagues.map(league => (
-                        <Col key={`league-${league.id}`} lg={4} md={6} xs={12} sm={12}>
+                    {loading ? <Loading /> : allLeagues.map((league, i) => (
+                        <Col key={`league-${league.id}`} lg={i >= 2 ? 4 : 6} md={6} xs={12} sm={12}>
                             <League {...league} style={{ marginTop: '2rem' }} />
                         </Col>
                     ))}
