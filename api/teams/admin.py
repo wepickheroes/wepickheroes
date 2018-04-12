@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db.models import Count
 
 from .models import Team
 from nucleus.admin import TeamMemberInline
@@ -18,11 +19,14 @@ class TeamAdmin(admin.ModelAdmin):
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
-        return queryset.prefetch_related('players')
+        return queryset.prefetch_related('players').annotate(
+            player_count=Count('players')
+        )
 
     def get_player_count(self, obj):
-        return obj.players.count()
+        return obj.player_count
     get_player_count.short_description = 'Num Players'
+    get_player_count.admin_order_field = 'player_count'
 
     def get_player_list(self, obj):
         return ', '.join([p.username for p in obj.players.all()])
