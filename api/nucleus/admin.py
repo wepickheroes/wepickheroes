@@ -99,7 +99,7 @@ class CustomUserAdmin(UserAdmin):
 
 class TeamMemberInline(admin.TabularInline):
     model = TeamMember
-    fields = ('player', 'rank_label', 'rank_int', 'rank_leaderboard', 'team', )
+    fields = ('player', 'role', 'rank_label', 'rank_int', 'rank_leaderboard', 'team', )
     raw_id_fields = ('player', 'team', )
     extra = 0
     readonly_fields = (
