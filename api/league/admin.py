@@ -91,11 +91,18 @@ class DivisionSeasonAdmin(BaseAdmin):
     model = DivisionSeason
     list_display = (
         '__str__',
+        'division',
+        'season',
         'get_num_teams',
+        'start_date',
+        'end_date',
     )
     list_filter = (
         'division',
+        'division__league',
         'season',
+        'start_date',
+        'end_date',
     )
     exclude = ('teams', )
     inlines = (DivisionSeasonTeamInline, )
@@ -116,10 +123,10 @@ class SeriesAdmin(BaseAdmin):
     list_display = (
         '__str__',
         'division_season',
-        'start_date',
-        'end_date',
         'winner',
         'loser',
+        'start_date',
+        'end_date',
     )
     list_filter = (
         'division_season__division',

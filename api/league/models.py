@@ -72,6 +72,8 @@ class DivisionSeason(AbstractBaseModel):
     season = models.ForeignKey('league.Season', on_delete=models.CASCADE)
     teams = models.ManyToManyField('teams.Team',
                                    related_name='division_seasons')
+    start_date = models.DateField()
+    end_date = models.DateField()
 
     class Meta:
         ordering = ('division__number', 'season__number', )
@@ -84,6 +86,7 @@ class Series(AbstractBaseModel):
     division_season = models.ForeignKey('league.DivisionSeason', on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()
+
     team_a = models.ForeignKey('teams.Team',
                                on_delete=models.CASCADE,
                                related_name='series_as_team_a')
