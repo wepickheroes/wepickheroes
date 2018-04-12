@@ -13,6 +13,7 @@ class TeamAdmin(admin.ModelAdmin):
         'name',
         'get_player_count',
         'get_sub_count',
+        'captain',
         'get_player_list',
         'created',
         'updated',
@@ -21,7 +22,7 @@ class TeamAdmin(admin.ModelAdmin):
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
-        return queryset.prefetch_related('players').annotate(
+        return queryset.select_related('captain').prefetch_related('players').annotate(
             player_count=Count('teammember', filter=Q(teammember__role=Role.PLAYER)),
             sub_count=Count('teammember', filter=Q(teammember__role=Role.SUB)),
         )
