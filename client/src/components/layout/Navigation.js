@@ -8,6 +8,9 @@ import {
     Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown,
 } from 'reactstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { faSteam } from '@fortawesome/fontawesome-free-brands'
+
 import { createUrl } from '../../api/utils'
 import BrandImage from '../../img/logos/WPHlogo2sgcolors.svg'
 
@@ -56,6 +59,9 @@ const HelpMenu = props => (
             </LinkContainer>
             <LinkContainer to="/faqs">
                 <DropdownItem>FAQ</DropdownItem>
+            </LinkContainer>
+            <LinkContainer to="/contact">
+                <DropdownItem>Contact</DropdownItem>
             </LinkContainer>
         </DropdownMenu>
     </UncontrolledDropdown>
@@ -106,7 +112,8 @@ class Navigation extends Component {
                                 <SteamNavItem>
                                     <Button color="success" className="text-uppercase"
                                             href={createUrl('/login/steam/')}>
-                                        <i className="fab fa-steam" />&nbsp;Sign In With Steam
+                                        <FontAwesomeIcon icon={faSteam} />
+                                        &nbsp;Sign In With Steam
                                     </Button>
                                 </SteamNavItem>
                             ))}

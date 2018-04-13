@@ -1,9 +1,14 @@
 import React from 'react'
 import { Container } from 'reactstrap'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { faDiscord } from '@fortawesome/fontawesome-free-brands'
 
 const discordLink = (
-    <a href='https://discord.gg/xdcFpBc' style={{ whiteSpace: 'nowrap' }} target='_blank' rel='noopener noreferrer'>
-        <i className='fab fa-discord' />&nbsp;Discord
+    <a href='https://discord.gg/xdcFpBc'
+       style={{ whiteSpace: 'nowrap' }}
+       target='_blank'
+       rel='noopener noreferrer'>
+        <FontAwesomeIcon icon={faDiscord} />&nbsp;Discord
     </a>
 )
 export default () => (

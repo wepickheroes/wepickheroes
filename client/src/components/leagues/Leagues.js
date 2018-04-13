@@ -14,7 +14,10 @@ import {
     Container,
     Row,
 } from 'reactstrap'
-
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import {
+    faChevronCircleRight,
+} from '@fortawesome/fontawesome-free-solid'
 import { Loading } from '../utils'
 
 const League = props => {
@@ -63,7 +66,7 @@ const League = props => {
                     <LinkContainer to={`/leagues/${id}`}>
                         <Button color='primary'>
                             View Details&nbsp;
-                            <i className='fas fa-arrow-circle-right' />
+                            <FontAwesomeIcon icon={faChevronCircleRight} />
                         </Button>
                     </LinkContainer>
                 </div>

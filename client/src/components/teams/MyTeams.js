@@ -4,6 +4,8 @@ import gql from 'graphql-tag'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Button, Card, CardBody, CardTitle, CardText, Col, Container, Row } from 'reactstrap'
 import { Link } from 'react-router-dom'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { faCog, faPlus } from '@fortawesome/fontawesome-free-solid'
 
 import { Loading } from '../utils'
 
@@ -26,7 +28,7 @@ class MyTeams extends Component {
                                             </CardTitle>
                                             <CardText>
                                                 <Link to={`/my-teams/${team.id}`}>
-                                                    <i className='fas fa-cog' />&nbsp;Manage
+                                                    <FontAwesomeIcon icon={faCog} />&nbsp;Manage
                                                 </Link>
                                             </CardText>
                                             <CardText>
@@ -40,7 +42,7 @@ class MyTeams extends Component {
                         <div className='text-center' style={{ marginTop: '1rem' }}>
                             <LinkContainer to='/teams/create'>
                                 <Button color="primary">
-                                    <i className='fas fa-plus' />&nbsp;
+                                    <FontAwesomeIcon icon={faPlus} />&nbsp;
                                     Create a Team
                                 </Button>
                             </LinkContainer>

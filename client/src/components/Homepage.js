@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { Button, Card, CardBody, CardTitle, Col, Container, Row } from 'reactstrap'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { faSteam } from '@fortawesome/fontawesome-free-brands'
 
 import logoLarge from '../img/logos/WPHlogo5sgcolors.svg'
 import theDire from '../img/keyboard.jpg'
@@ -49,7 +51,7 @@ const Homepage = props => {
                         {!loading && !isAuthenticated && (
                             <Button color="success" size="lg"
                                     href={createUrl('/login/steam/')}>
-                                <i className="fab fa-steam"/>&nbsp;Sign Up
+                                <FontAwesomeIcon icon={faSteam} />&nbsp;Sign Up
                             </Button>
                         )}
                     </div>

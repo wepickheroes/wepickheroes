@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react'
 import { graphql, compose } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Alert, Button, Container } from 'reactstrap'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { faSteam } from '@fortawesome/fontawesome-free-brands'
 
 import { Loading } from '../utils'
 import { createUrl } from "../../api/utils";
@@ -63,7 +65,7 @@ class AcceptTeamInvite extends Component {
                                             href={!isAuthenticated ? createUrl(`/login/steam/?next=/social-redirect${url}`) : null}>
                                         {!isAuthenticated && (
                                             <Fragment>
-                                                <i className="fab fa-steam"/>&nbsp;
+                                                <FontAwesomeIcon icon={faSteam} />&nbsp;
                                             </Fragment>
                                         )}
                                         Accept Invite

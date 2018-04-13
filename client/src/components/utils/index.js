@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { faCog } from '@fortawesome/fontawesome-free-solid'
 
 export const ContentContainer = styled.div`
     margin: 2rem 0;
@@ -16,7 +18,7 @@ export const BrandImage = styled.img`
 
 export const Loading = ({ size = 2 }) => (
     <div className='text-center'>
-        <i className={`fa fa-cog fa-spin fa-${size}x`} />
+        <FontAwesomeIcon icon={faCog} size={`${size}x`} spin />
         <span style={{ fontSize: '20px' }}>&nbsp;Loading...</span>
     </div>
 )

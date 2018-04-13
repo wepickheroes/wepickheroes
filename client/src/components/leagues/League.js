@@ -5,9 +5,17 @@ import moment from 'moment'
 import { Link } from 'react-router-dom'
 import styled  from 'styled-components'
 import {
+    Button,
     Container,
+    Fade,
     Table,
 } from 'reactstrap'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import {
+    faArrowLeft,
+    faChevronCircleRight,
+    faChevronCircleDown,
+} from '@fortawesome/fontawesome-free-solid'
 
 import { RegisterButton } from '.'
 import { Loading } from '../utils'
@@ -47,28 +55,77 @@ const Divisions = props => {
     )
 }
 
-const Seasons = props => {
-    const { seasonSet } = props
-    return (
-        <Table responsive>
-            <thead>
+class Season extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            collapse: false
+        }
+    }
+
+    toggle = () => {
+        this.setState({ collapse: !this.state.collapse })
+    }
+
+    render() {
+        const { season } = this.props
+        const { collapse } = this.state
+        return (
+            <Fragment>
+                <tr>
+                    <th scope="row">Season {season.number}</th>
+                    <td>{moment(season.startDate).format('L')}</td>
+                    <td>{moment(season.endDate).format('L')}</td>
+                    <td>
+                        <Button onClick={this.toggle} color="primary">
+                            <FontAwesomeIcon icon={collapse ? faChevronCircleDown : faChevronCircleRight}/>
+                            &nbsp;Divisions
+                        </Button>
+                    </td>
+                </tr>
+                <Fade in={collapse} tag='tr'>
+                    <td />
+                    <td colSpan='3'>
+                        <Table>
+                            <tbody>
+                                {season.divisions.map(division => (
+                                    <tr key={`season=${season.id}-division-${division.id}`}>
+                                        <th/>
+                                        <td colSpan='2'>
+                                            {division.name}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </Table>
+                    </td>
+                </Fade>
+            </Fragment>
+        )
+    }
+}
+
+class Seasons extends Component {
+
+    render() {
+        const { seasonSet } = this.props
+        return (
+            <Table responsive>
+                <thead>
                 <tr>
                     <th>#</th>
                     <th>Start Date</th>
                     <th>End Date</th>
+                    <th />
                 </tr>
-            </thead>
-            <tbody>
-                {seasonSet.map(season => (
-                    <tr key={`season-${season.id}`}>
-                        <th scope="row">{season.number}</th>
-                        <td>{moment(season.startDate).format('L')}</td>
-                        <td>{moment(season.endDate).format('L')}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </Table>
-    )
+                </thead>
+                <tbody>
+                    {seasonSet.map(season => <Season key={`season-${season.id}`} season={season} />)}
+                </tbody>
+            </Table>
+        )
+    }
 }
 
 const LeagueDetailRow = ({ label, children }) => (
@@ -89,7 +146,9 @@ class League extends Component {
         return (
             <Container>
                 <div style={{ marginBottom: '1rem '}}>
-                    <Link to='/leagues'><i className='fas fa-arrow-left' />&nbsp;All Leagues</Link>
+                    <Link to='/leagues'>
+                        <FontAwesomeIcon icon={faArrowLeft} />&nbsp;All Leagues
+                    </Link>
                 </div>
                 {loading ? <Loading /> : (
                     league ? (
@@ -118,25 +177,48 @@ class League extends Component {
 }
 
 const query = gql`
-query q1($id: UUID!) {
-    league(id: $id) {
+query ($id: UUID!) {
+  league(id: $id) {
+    id
+    name
+    description
+    numGamesPerSeries
+    numSeriesPerSeason
+    seasonSet {
+      id
+      number
+      startDate
+      endDate
+      divisions {
         id
+        number
         name
-        description
-        numGamesPerSeries
-        numSeriesPerSeason
-        seasonSet {
+        divisionseasonSet {
+          id
+          startDate
+          endDate
+          seriesSet {
             id
-            number
             startDate
             endDate
+            teamA {
+              id
+              name
+            }
+            teamB {
+              id
+              name
+            }
+          }
         }
-        divisionSet {
-            id
-            number
-            name
-        }
+      }
     }
+    divisionSet {
+      id
+      number
+      name
+    }
+  }
 }
 `
 

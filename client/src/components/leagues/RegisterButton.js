@@ -14,6 +14,8 @@ import {
     ModalFooter,
     UncontrolledButtonDropdown,
 } from 'reactstrap'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { faSteam } from '@fortawesome/fontawesome-free-brands'
 
 import { createUrl } from '../../api/utils'
 
@@ -98,7 +100,7 @@ class RegisterButton extends Component {
             return (
                 <Button {...baseButtonProps}
                         href={createUrl('/login/steam/?next=/social-redirect/signup-complete')}>
-                    <i className="fab fa-steam"/>&nbsp;Sign In to Register
+                    <FontAwesomeIcon icon={faSteam} />&nbsp;Sign In to Register
                 </Button>
             )
         }
