@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.db.models import F, Q
 
 from nucleus.models import AbstractBaseModel
 
@@ -103,7 +104,7 @@ class Series(AbstractBaseModel):
                                            null=True)
     team_a = models.ForeignKey('teams.Team',
                                on_delete=models.CASCADE,
-                               related_name='series_as_team_a')
+                               related_name='series_as_team_a',)
     team_b = models.ForeignKey('teams.Team',
                                on_delete=models.CASCADE,
                                related_name='series_as_team_b')

@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.forms.models import BaseInlineFormSet, ModelForm
 
 from .models import (
     Season,
@@ -10,6 +11,7 @@ from .models import (
     SeriesTimeWindow,
     Match,
 )
+from teams.models import Team
 
 
 class BaseAdmin(admin.ModelAdmin):
@@ -123,10 +125,29 @@ class DivisionSeasonAdmin(BaseAdmin):
     get_num_teams.short_description = 'Number of teams'
 
 
+class SeriesInlineFormSet(BaseInlineFormSet):
+    def __init__(self, data=None, files=None, instance=None,
+                 save_as_new=False, prefix=None, queryset=None, **kwargs):
+        self.participating_teams = Team.objects.filter(
+            division_seasons=instance.division_season
+        )
+        if self.form.base_fields:
+            self.limit_team_field_queryset('team_a')
+            self.limit_team_field_queryset('team_b')
+            self.limit_team_field_queryset('winner')
+            self.limit_team_field_queryset('loser')
+        super(SeriesInlineFormSet, self).__init__(data, files, instance, save_as_new, prefix, queryset, **kwargs)
+
+    def limit_team_field_queryset(self, field):
+        if self.form.base_fields.get(field):
+            self.form.base_fields[field].queryset = self.participating_teams
+
+
 class SeriesInline(admin.TabularInline):
     model = Series
     extra = 0
     show_change_link = True
+    formset = SeriesInlineFormSet
 
 
 class SeriesTimeWindowAdmin(admin.ModelAdmin):
@@ -152,8 +173,27 @@ class SeriesMatchInline(admin.TabularInline):
     show_change_link = True
 
 
+class SeriesForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        instance = self.instance
+        self.participating_teams = Team.objects.filter(
+            division_seasons=instance.series_time_window.division_season
+        )
+        if instance:
+            self.limit_team_field_queryset('team_a')
+            self.limit_team_field_queryset('team_b')
+            self.limit_team_field_queryset('winner')
+            self.limit_team_field_queryset('loser')
+
+    def limit_team_field_queryset(self, field):
+        if self.fields.get(field):
+            self.fields[field].queryset = self.participating_teams
+
+
 class SeriesAdmin(BaseAdmin):
     model = Series
+    form = SeriesForm
     list_display = (
         '__str__',
         'series_time_window',
