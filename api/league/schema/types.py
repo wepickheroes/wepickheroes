@@ -7,6 +7,7 @@ from league.models import (
     Division,
     DivisionSeason,
     Series,
+    SeriesTimeWindow,
     Match,
 )
 
@@ -34,6 +35,11 @@ class DivisionType(DjangoObjectType):
 class DivisionSeasonType(DjangoObjectType):
     class Meta:
         model = DivisionSeason
+
+
+class SeriesTimeWindowType(DjangoObjectType):
+    class Meta:
+        model = SeriesTimeWindow
 
 
 class SeriesType(DjangoObjectType):

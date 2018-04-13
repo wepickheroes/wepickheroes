@@ -8,6 +8,7 @@ from league.models import (
     Division,
     DivisionSeason,
     Series,
+    SeriesTimeWindow,
     Match,
 )
 

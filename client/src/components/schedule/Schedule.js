@@ -1,41 +1,16 @@
 import React, { Component, Fragment } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { Container, Table } from 'reactstrap'
+import { Container } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 import { ContentContainer, Loading } from '../utils'
 import moment from "moment/moment"
 
-// const SeriesTable = props => {
-//     const { seasonSeries } = props
-//     return (
-//         <Table>
-//             <thead>
-//                 <tr>
-//                     <th>Team A</th>
-//                     <th>Team B</th>
-//                     <th>Start Date</th>
-//                     <th>End Date</th>
-//                     <th># Games</th>
-//                     <th>Results</th>
-//                 </tr>
-//             </thead>
-//             <tbody>
-//                 {seasonSeries.map(series => (
-//                     <tr key={`series-row-${series.id}`}>
-//                         <td>{series.teamA.name}</td>
-//                         <td>{series.teamB.name}</td>
-//                         <td>{series.startDate}</td>
-//                         <td>{series.endDate}</td>
-//                         <td>{series.numGames}</td>
-//                         <td>TDB</td>
-//                     </tr>
-//                 ))}
-//             </tbody>
-//         </Table>
-//     )
-// }
+const TeamName = ({ team, winner }) => {
+    const Component = winner && team.id === winner.id ? 'strong' : 'span'
+    return <Component>{team.name}</Component>
+}
 
 const DivisionSeason = props => {
     const {
@@ -47,7 +22,7 @@ const DivisionSeason = props => {
         season: {
             league,
         },
-        seriesSet,
+        seriestimewindowSet,
     } = props
 
     return (
@@ -71,6 +46,27 @@ const DivisionSeason = props => {
                 ))}
             </ul>
             <h2>Matchups</h2>
+            {seriestimewindowSet.map((seriesTimeWindow, i) => (
+                <Fragment key={`series-time-window-${seriesTimeWindow.id}`}>
+                    <h3>
+                        Week {i + 1}{' '}
+                        <small className='text-muted'>
+                            ({moment(seriesTimeWindow.startDate).format('L')}
+                            {' '}&mdash;{' '}
+                            {moment(seriesTimeWindow.endDate).format('L')})
+                        </small>
+                    </h3>
+                    <ul>
+                        {seriesTimeWindow.seriesSet.map(series => (
+                            <li key={`series-${series.id}`}>
+                                <TeamName team={series.teamA} winner={series.winner} />
+                                {' '}vs.{' '}
+                                <TeamName team={series.teamB} winner={series.winner} />
+                            </li>
+                        ))}
+                    </ul>
+                </Fragment>
+            ))}
         </Fragment>
     )
 }
@@ -98,7 +94,7 @@ class Schedule extends Component {
 
 const query = gql`
 query ($id: UUID!) {
-  divisionSeason(id:$id){
+  divisionSeason(id: $id) {
     id
     startDate
     endDate
@@ -119,17 +115,23 @@ query ($id: UUID!) {
         name
       }
     }
-    seriesSet {
+    seriestimewindowSet {
       id
       startDate
       endDate
-      teamA{
+      seriesSet {
         id
-        name
-      }
-      teamB{
-        id
-        name
+        teamA {
+          id
+          name
+        }
+        teamB {
+          id
+          name
+        }
+        winner {
+          id
+        }
       }
     }
   }
