@@ -82,11 +82,25 @@ class DivisionSeason(AbstractBaseModel):
         return "Division {} - {}".format(self.division.number, str(self.season))
 
 
-class Series(AbstractBaseModel):
+class SeriesTimeWindow(AbstractBaseModel):
     division_season = models.ForeignKey('league.DivisionSeason', on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()
 
+    class Meta:
+        ordering = (
+            'division_season__division__number',
+            'division_season__season__number',
+            'start_date',
+        )
+
+    def __str__(self):
+        return "Series Time Window: {} - {}".format(self.start_date, self.end_date)
+
+
+class Series(AbstractBaseModel):
+    series_time_window = models.ForeignKey('league.SeriesTimeWindow', on_delete=models.CASCADE,
+                                           null=True)
     team_a = models.ForeignKey('teams.Team',
                                on_delete=models.CASCADE,
                                related_name='series_as_team_a')
@@ -104,11 +118,6 @@ class Series(AbstractBaseModel):
 
     class Meta:
         verbose_name_plural = 'Series'
-        ordering = (
-            'division_season__division__number',
-            'division_season__season__number',
-            'start_date',
-        )
 
     def __str__(self):
         return "Series: {} vs. {}".format(str(self.team_a), str(self.team_b))

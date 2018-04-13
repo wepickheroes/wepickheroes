@@ -3,11 +3,13 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
+import { LinkContainer } from 'react-router-bootstrap'
+import { withRouter } from 'react-router'
 import styled  from 'styled-components'
 import {
     Button,
     Container,
-    Fade,
+    Collapse,
     Table,
 } from 'reactstrap'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
@@ -43,7 +45,7 @@ const LeagueDetails = ({ league }) => (
 )
 
 const Divisions = props => {
-    const { divisionSet } = props
+    const { divisionSet, location } = props
     return (
         <ul>
             {divisionSet.map(division => (
@@ -52,6 +54,28 @@ const Divisions = props => {
                 </li>
             ))}
         </ul>
+    )
+}
+
+
+const DivisionSeason = props => {
+    const { divisionSeason: { id, division } } = props
+    return (
+        <Fragment>
+            <tr>
+                <td>
+                    Divison {division.number}: {division.name}
+                </td>
+                <td>
+                    <LinkContainer to={`/division-seasons/${id}`}>
+                        <Button color="primary">
+                            View Schedule&nbsp;
+                            <FontAwesomeIcon icon={faChevronCircleRight}/>
+                        </Button>
+                    </LinkContainer>
+                </td>
+            </tr>
+        </Fragment>
     )
 }
 
@@ -84,23 +108,19 @@ class Season extends Component {
                         </Button>
                     </td>
                 </tr>
-                <Fade in={collapse} tag='tr'>
+                <Collapse isOpen={collapse} tag='tr'>
                     <td />
                     <td colSpan='3'>
                         <Table>
                             <tbody>
-                                {season.divisions.map(division => (
-                                    <tr key={`season=${season.id}-division-${division.id}`}>
-                                        <th/>
-                                        <td colSpan='2'>
-                                            {division.name}
-                                        </td>
-                                    </tr>
+                                {season.divisionseasonSet.map(divisionSeason => (
+                                    <DivisionSeason key={`seasondivision-season-${divisionSeason.id}`}
+                                                    divisionSeason={divisionSeason} />
                                 ))}
                             </tbody>
                         </Table>
                     </td>
-                </Fade>
+                </Collapse>
             </Fragment>
         )
     }
@@ -189,26 +209,26 @@ query ($id: UUID!) {
       number
       startDate
       endDate
-      divisions {
+      divisionseasonSet {
         id
-        number
-        name
-        divisionseasonSet {
+        startDate
+        endDate
+        division {
+          id
+          name
+          number
+        }
+        seriesSet {
           id
           startDate
           endDate
-          seriesSet {
+          teamA {
             id
-            startDate
-            endDate
-            teamA {
-              id
-              name
-            }
-            teamB {
-              id
-              name
-            }
+            name
+          }
+          teamB {
+            id
+            name
           }
         }
       }
@@ -220,6 +240,7 @@ query ($id: UUID!) {
     }
   }
 }
+
 `
 
 League = graphql(query, {

@@ -50,9 +50,16 @@ class DivisionQuery:
 
 class DivisionSeasonQuery:
     all_division_seasons = graphene.List(types.DivisionSeasonType)
+    division_season = graphene.Field(types.DivisionSeasonType, id=graphene.UUID())
 
     def resolve_all_division_seasons(self, info, **kwargs):
         return DivisionSeason.objects.all()
+
+    def resolve_division_season(self, info, **kwargs):
+        id = kwargs.get('id')
+        if id is not None:
+            return DivisionSeason.objects.get(pk=id)
+        return None
 
 
 class SeriesQuery:

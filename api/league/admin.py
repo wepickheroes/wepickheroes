@@ -7,6 +7,7 @@ from .models import (
     Division,
     DivisionSeason,
     Series,
+    SeriesTimeWindow,
     Match,
 )
 
@@ -59,6 +60,13 @@ class DivisionSeasonInline(admin.TabularInline):
     fields = ('season', )
 
 
+class SeriesTimeWindowInline(admin.TabularInline):
+    model = SeriesTimeWindow
+    extra = 0
+    show_change_link = True
+    fields = ('start_date', 'end_date', )
+
+
 class DivisionAdmin(BaseAdmin):
     model = Division
     list_display = (
@@ -105,11 +113,37 @@ class DivisionSeasonAdmin(BaseAdmin):
         'end_date',
     )
     exclude = ('teams', )
-    inlines = (DivisionSeasonTeamInline, )
+    inlines = (
+        SeriesTimeWindowInline,
+        DivisionSeasonTeamInline,
+    )
 
     def get_num_teams(self, obj):
         return obj.teams.count()
     get_num_teams.short_description = 'Number of teams'
+
+
+class SeriesInline(admin.TabularInline):
+    model = Series
+    extra = 0
+    show_change_link = True
+
+
+class SeriesTimeWindowAdmin(admin.ModelAdmin):
+    model = SeriesTimeWindow
+    list_display = (
+        'division_season',
+        'start_date',
+        'end_date',
+    )
+    list_filter = (
+        'start_date',
+        'end_date',
+        'division_season__division',
+        'division_season__season',
+    )
+    raw_id_fields = ('division_season', )
+    inlines = (SeriesInline, )
 
 
 class SeriesMatchInline(admin.TabularInline):
@@ -122,25 +156,21 @@ class SeriesAdmin(BaseAdmin):
     model = Series
     list_display = (
         '__str__',
-        'division_season',
+        'series_time_window',
         'winner',
         'loser',
-        'start_date',
-        'end_date',
     )
     list_filter = (
-        'division_season__division',
-        'division_season__season',
-        'start_date',
-        'end_date',
+        'series_time_window__start_date',
+        'series_time_window__end_date',
+        'series_time_window__division_season__division',
+        'series_time_window__division_season__season',
     )
     inlines = (SeriesMatchInline, )
     fieldsets = (
         (None, {
             'fields': (
-                'division_season',
-                'start_date',
-                'end_date',
+                'series_time_window',
                 'created',
                 'updated',
             ),
@@ -152,7 +182,10 @@ class SeriesAdmin(BaseAdmin):
             ),
         })
     )
-    raw_id_fields = ('division_season', )
+    raw_id_fields = ('series_time_window', )
+
+    # def get_division(self, obj):
+    #     pass
 
 
 class MatchAdmin(BaseAdmin):
@@ -165,8 +198,8 @@ class MatchAdmin(BaseAdmin):
         'loser',
     )
     list_filter = (
-        'series__division_season__division',
-        'series__division_season__season',
+        'series__series_time_window__division_season__division',
+        'series__series_time_window__division_season__season',
         'date',
     )
 
@@ -176,5 +209,6 @@ admin.site.register(Season, SeasonAdmin)
 admin.site.register(Division, DivisionAdmin)
 admin.site.register(LeagueRegistration, LeagueRegistrationAdmin)
 admin.site.register(DivisionSeason, DivisionSeasonAdmin)
+admin.site.register(SeriesTimeWindow, SeriesTimeWindowAdmin)
 admin.site.register(Series, SeriesAdmin)
 admin.site.register(Match, MatchAdmin)
