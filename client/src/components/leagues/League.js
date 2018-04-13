@@ -218,19 +218,6 @@ query ($id: UUID!) {
           name
           number
         }
-        seriesSet {
-          id
-          startDate
-          endDate
-          teamA {
-            id
-            name
-          }
-          teamB {
-            id
-            name
-          }
-        }
       }
     }
     divisionSet {
