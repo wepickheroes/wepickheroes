@@ -177,10 +177,10 @@ class SeriesForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         instance = self.instance
-        self.participating_teams = Team.objects.filter(
-            division_seasons=instance.series_time_window.division_season
-        )
-        if instance:
+        if instance and instance.series_time_window:
+            self.participating_teams = Team.objects.filter(
+                division_seasons=instance.series_time_window.division_season
+            )
             self.limit_team_field_queryset('team_a')
             self.limit_team_field_queryset('team_b')
             self.limit_team_field_queryset('winner')
