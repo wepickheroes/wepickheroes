@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { graphql } from 'react-apollo'
+import { compose, graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import moment from 'moment'
 import { Alert, Card, CardBody, CardTitle, Col, Container, Row } from 'reactstrap'
@@ -9,7 +9,7 @@ import { Loading } from '../utils'
 class ManageTeam extends Component {
 
     render() {
-        const { data: { loading, team } } = this.props
+        const { data: { loading, team, self } } = this.props
         const { location: { host, protocol } } = window
         return (
             <Container>
@@ -61,6 +61,20 @@ class ManageTeam extends Component {
                                 </Card>
                             </Col>
                         </Row>
+
+                        <Row>
+                            <Col md={6} style={{ marginTop: '2rem' }}>
+                                <Card>
+                                    <CardBody>
+                                        <CardTitle>
+                                            Actions
+                                        </CardTitle>
+                                        {self.username}
+                                    </CardBody>
+                                </Card>
+                            </Col>
+                        </Row>
+
                     </Fragment>
                 )}
             </Container>
@@ -83,11 +97,27 @@ const query = gql`
                 username
             }
         }
+        self {
+            username
+        }
+    }
+`
+const mutationChangeCaptain = gql`
+    mutation ($teamId: UUID!, $playerId: UUID!) {
+        changeCaptain(teamId: $teamId, playerId: $playerId) {
+            ok
+            error
+        }
     }
 `
 
-ManageTeam = graphql(query, {
-    options: ({ match: { params: { id }}}) => ({ variables: { id }})
-})(ManageTeam)
+
+ManageTeam = compose(
+    graphql(query, {
+        options: ({ match: { params: { id }}}) => ({ variables: { id }})
+    }),
+    graphql(mutationChangeCaptain),
+)(ManageTeam)
+
 
 export default ManageTeam
