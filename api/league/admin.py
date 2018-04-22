@@ -128,14 +128,15 @@ class DivisionSeasonAdmin(BaseAdmin):
 class SeriesInlineFormSet(BaseInlineFormSet):
     def __init__(self, data=None, files=None, instance=None,
                  save_as_new=False, prefix=None, queryset=None, **kwargs):
-        self.participating_teams = Team.objects.filter(
-            division_seasons=instance.division_season
-        )
-        if self.form.base_fields:
-            self.limit_team_field_queryset('team_a')
-            self.limit_team_field_queryset('team_b')
-            self.limit_team_field_queryset('winner')
-            self.limit_team_field_queryset('loser')
+        if instance and hasattr(instance, 'division_season'):
+            self.participating_teams = Team.objects.filter(
+                division_seasons=instance.division_season
+            )
+            if self.form.base_fields:
+                self.limit_team_field_queryset('team_a')
+                self.limit_team_field_queryset('team_b')
+                self.limit_team_field_queryset('winner')
+                self.limit_team_field_queryset('loser')
         super(SeriesInlineFormSet, self).__init__(data, files, instance, save_as_new, prefix, queryset, **kwargs)
 
     def limit_team_field_queryset(self, field):
