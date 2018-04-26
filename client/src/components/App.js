@@ -24,6 +24,7 @@ import {
     Contact,
     FAQ,
     Rules,
+    TwitchStream,
 } from './content'
 import { Schedule } from './schedule'
 import { Footer, Navigation } from './layout'
@@ -46,6 +47,7 @@ class App extends Component {
                             <Route exact path="/leagues" component={Leagues} />
                             <Route exact path="/leagues/:id" component={League} />
                             <Route exact path="/division-seasons/:id" component={Schedule} />
+                            <Route exact path="/twitch-stream" component={TwitchStream} />
                             <Route path="/signup-complete" component={SignupComplete} />
                             <Route path="/finish-steam/:partial_token" component={FinishSteam} />
                             <Route path="/teams/create" component={CreateTeam} />
