@@ -62,7 +62,7 @@ class RegisterButton extends Component {
             variables: {
                 teamId, leagueId,
             },
-        }).then(({ data: { createLeagueRegistration: { ok, error, leagueRegistration } } }) => {
+        }).then(({ data: { createLeagueRegistration: { ok, error } } }) => {
             this.setState({
                 ok, error, submitted: true,
             })

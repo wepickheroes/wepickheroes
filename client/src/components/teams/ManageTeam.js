@@ -2,15 +2,57 @@ import React, { Component, Fragment } from 'react'
 import { compose, graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import moment from 'moment'
-import { Alert, Card, CardBody, CardTitle, Col, Container, Row } from 'reactstrap'
+import {
+    Alert,
+    Card,
+    CardBody,
+    CardTitle,
+    Col,
+    Container,
+    Row,
+    UncontrolledButtonDropdown,
+    DropdownToggle,
+    DropdownItem,
+    DropdownMenu
+} from 'reactstrap'
 
 import { Loading } from '../utils'
 
 class ManageTeam extends Component {
 
+    handleChangeCaptainClick(teamId, newCaptainId) {
+        const { mutate } = this.props
+        mutate({
+            variables: {
+                teamId, newCaptainId,
+            },
+        }).then(({ data: { changeCaptain: { ok, error, leagueRegistration } } }) => {
+            this.setState({
+                ok, error, submitted: true,
+            })
+        }).catch(error => {
+            console.error('error', error)
+            this.setState({
+                ok: false,
+                error,
+                submitted: true,
+            })
+        })
+    }
+
     render() {
+
+        const baseButtonProps = {
+            size: 'lg',
+            color: 'success',
+            children: 'Change Captain',
+        }
+
         const { data: { loading, team, self } } = this.props
         const { location: { host, protocol } } = window
+
+
+
         return (
             <Container>
                 <h1>
@@ -69,7 +111,26 @@ class ManageTeam extends Component {
                                         <CardTitle>
                                             Actions
                                         </CardTitle>
-                                        {self.username}
+                                        <UncontrolledButtonDropdown>
+                                        <DropdownToggle {...baseButtonProps} caret />
+                                        <DropdownMenu>
+                                            <DropdownItem header>Select a player :</DropdownItem>
+                                            {team.players.map(player => {
+                                                return (
+                                                    <DropdownItem
+                                                        key={`change-captain-${player}`}
+                                                        onClick={this.handleChangeCaptainClick(team.id)}
+                                                    >
+                                    {player.username}
+                                </DropdownItem>
+                                                )
+
+                                            })}
+
+                                        </DropdownMenu>
+
+                                        </UncontrolledButtonDropdown>
+
                                     </CardBody>
                                 </Card>
                             </Col>
@@ -102,7 +163,7 @@ const query = gql`
         }
     }
 `
-const mutationChangeCaptain = gql`
+const changeCaptain = gql`
     mutation ($teamId: UUID!, $playerId: UUID!) {
         changeCaptain(teamId: $teamId, playerId: $playerId) {
             ok
@@ -116,7 +177,7 @@ ManageTeam = compose(
     graphql(query, {
         options: ({ match: { params: { id }}}) => ({ variables: { id }})
     }),
-    graphql(mutationChangeCaptain),
+    graphql(changeCaptain),
 )(ManageTeam)
 
 
