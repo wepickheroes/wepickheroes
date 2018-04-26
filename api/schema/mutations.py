@@ -142,7 +142,7 @@ class ChangeCaptain(graphene.Mutation):
     team = graphene.Field(types.TeamType)
 
     def mutate(self, info, team_id, new_captain_id):
-        request = info.context
+        request = info.context.user
         user = request.user
 
         try:

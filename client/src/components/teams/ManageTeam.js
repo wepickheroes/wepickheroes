@@ -20,13 +20,13 @@ import { Loading } from '../utils'
 
 class ManageTeam extends Component {
 
-    handleChangeCaptainClick(teamId, newCaptainId) {
+    handleChangeCaptainClick = (teamId, newCaptainId) => () => {
         const { mutate } = this.props
         mutate({
             variables: {
                 teamId, newCaptainId,
             },
-        }).then(({ data: { changeCaptain: { ok, error, leagueRegistration } } }) => {
+        }).then(({ data: { changeCaptain: { ok, error } } }) => {
             this.setState({
                 ok, error, submitted: true,
             })
@@ -118,8 +118,8 @@ class ManageTeam extends Component {
                                             {team.players.map(player => {
                                                 return (
                                                     <DropdownItem
-                                                        key={`change-captain-${player}`}
-                                                        onClick={this.handleChangeCaptainClick(team.id)}
+                                                        key={`change-captain-${player.id}`}
+                                                        onClick={this.handleChangeCaptainClick(team.id, player.id)}
                                                     >
                                     {player.username}
                                 </DropdownItem>
@@ -164,8 +164,8 @@ const query = gql`
     }
 `
 const changeCaptain = gql`
-    mutation ($teamId: UUID!, $playerId: UUID!) {
-        changeCaptain(teamId: $teamId, playerId: $playerId) {
+    mutation changeCaptainMutation($teamId: UUID!, $newCaptainId: UUID!) {
+        changeCaptain(teamId: $teamId, newCaptainId: $newCaptainId) {
             ok
             error
         }
