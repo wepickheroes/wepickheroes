@@ -155,9 +155,8 @@ class ChangeCaptain(graphene.Mutation):
         if user.id != team.captain.id:
             return ChangeCaptain(team=None, ok=False, error='Only the team captain can change the captain.')
         else:
-            user = User.objects.filter(id=new_captain_id)[0]
-            team.captain = user
-            user.save()
+            team.captain = User.objects.filter(id=new_captain_id)[0]
+            team.save()
             ok = True
             error = None
 
