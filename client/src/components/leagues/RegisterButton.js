@@ -209,7 +209,7 @@ RegisterButton = compose(
     graphql(query),
     graphql(mutation, {
         options: {
-            refetchQueries: [{ query: mutationUpdate }],
+            refetchQueries: ['query'],
         }
     }),
 )(RegisterButton)
