@@ -21,6 +21,7 @@ import { Loading } from '../utils'
 class ManageTeam extends Component {
 
     handleChangeCaptainClick = (teamId, newCaptainId) => () => {
+        console.log(teamId, newCaptainId)
         const { mutate } = this.props
         mutate({
             variables: {
@@ -164,13 +165,13 @@ const query = gql`
     }
 `
 const changeCaptain = gql`
-    mutation changeCaptainMutation($teamId: UUID!, $newCaptainId: UUID!) {
-        changeCaptain(teamId: $teamId, newCaptainId: $newCaptainId) {
-            ok
-            error
-        }
+mutation ($teamId: UUID!, $newCaptainId: Int!) {
+    changeCaptain(newCaptainId: $newCaptainId, teamId: $teamId) {
+        ok
+        error
     }
-`
+}`
+
 
 
 ManageTeam = compose(
