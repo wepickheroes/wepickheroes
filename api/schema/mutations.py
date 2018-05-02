@@ -162,10 +162,41 @@ class ChangeCaptain(graphene.Mutation):
 
         return ChangeCaptain(team=team, ok=ok, error=error)
 
+class DeleteTeamMember(graphene.Mutation):
+    class Arguments:
+        team_id = graphene.UUID(required=True)
+        player_id = graphene.Int(required=True)
+
+    ok = graphene.Boolean()
+    error = graphene.String()
+    team = graphene.Field(types.TeamType)
+
+    def mutate(self, info, team_id, player_id):
+        user = info.context.user
+
+        # TeamMember.objects.filter(team_id=id, player_id=3).delete()
+
+        try:
+            team = Team.objects.get(pk=team_id)
+            team_member = TeamMember.objects.filter(team_id=team_id, player_id=player_id)
+        except TeamMember.DoesNotExist:
+            return DeleteTeamMember(team=None, ok=False, error='Team member not found.')
+
+        if user.id != team.captain.id:
+            return DeleteTeamMember(team=None, ok=False, error='Only the team captain can delete team members.')
+
+        else:
+            team_member.delete()
+            ok = True
+            error = None
+
+        return DeleteTeamMember(team=team, ok=ok, error=error)
+
 
 class Mutations(graphene.ObjectType):
     create_team = CreateTeam.Field()
     create_league_registration = CreateLeagueRegistration.Field()
     create_team_member = CreateTeamMember.Field()
     change_captain = ChangeCaptain.Field()
+    delete_team_member = DeleteTeamMember.Field()
 
