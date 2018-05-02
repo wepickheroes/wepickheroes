@@ -75,6 +75,8 @@ class ManageTeam extends Component {
         const { data: { loading, team, self }, match: { params: { id }} } = this.props
         const { location: { host, protocol } } = window
 
+        const v = true;
+
         return (
             <Container>
                 <Mutation mutation={changeCaptain}
@@ -126,38 +128,34 @@ class ManageTeam extends Component {
                                                         Team Info
                                                     </CardTitle>
                                                     <div>Captain: {team.captain.username}</div>
+                                                        {self.username == team.captain.username ?
+                                                            //
+                                                            <div>
+                                                            <div>{data && data.changeCaptain && this.renderChangeCaptainErrors(data.changeCaptain)}</div>
+                                                            <UncontrolledButtonDropdown size="sm">
+
+                                                                <DropdownToggle {...baseButtonProps} caret />
+                                                                <DropdownMenu>
+                                                                    <DropdownItem header>Select a player :</DropdownItem>
+                                                                    {team.players.map(player => {
+                                                                        return (
+                                                                            <DropdownItem
+                                                                                key={`change-captain-${player.id}`}
+                                                                                onClick={this.handleChangeCaptainClick(
+                                                                                    team.id, player.id, changeCaptain
+                                                                                )}>
+                                                                                {player.username}
+                                                                            </DropdownItem>
+                                                                        )
+                                                                    })}
+                                                                </DropdownMenu>
+                                                            </UncontrolledButtonDropdown>
+                                                            </div>
+                                                            : <div></div>
+                                                        }
+
+
                                                     <div>Created: {moment(team.created).format('L')}</div>
-                                                </CardBody>
-                                            </Card>
-                                        </Col>
-                                    </Row>
-
-                                    <Row>
-                                        <Col md={6} style={{ marginTop: '2rem' }}>
-                                            <Card>
-                                                <CardBody>
-                                                    <CardTitle>
-                                                        Actions
-                                                    </CardTitle>
-                                                    {data && data.changeCaptain && this.renderChangeCaptainErrors(data.changeCaptain)}
-                                                    <UncontrolledButtonDropdown>
-                                                        <DropdownToggle {...baseButtonProps} caret />
-                                                        <DropdownMenu>
-                                                            <DropdownItem header>Select a player :</DropdownItem>
-                                                            {team.players.map(player => {
-                                                                return (
-                                                                    <DropdownItem
-                                                                        key={`change-captain-${player.id}`}
-                                                                        onClick={this.handleChangeCaptainClick(
-                                                                            team.id, player.id, changeCaptain
-                                                                        )}>
-                                                                        {player.username}
-                                                                    </DropdownItem>
-                                                                )
-                                                            })}
-                                                        </DropdownMenu>
-                                                    </UncontrolledButtonDropdown>
-
                                                 </CardBody>
                                             </Card>
                                         </Col>
