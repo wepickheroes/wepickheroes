@@ -13,3 +13,12 @@ ol ol {
 ol ol ol {
     list-style-type: lower-roman;
 }
+
+.action-btn {
+  margin-left: 1em;
+  display: inline-block;
+}
+
+.players {
+  line-height: 2.4em;
+}

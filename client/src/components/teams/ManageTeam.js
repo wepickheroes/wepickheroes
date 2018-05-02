@@ -131,20 +131,22 @@ class ManageTeam extends Component {
                                                         </CardTitle>
                                                         <div>{data && data.deleteTeamMember && this.renderChangeCaptainErrors(data.deleteTeamMember)}</div>
                                                         {team.players.map(player => (
-                                                            <div key={`player-${player.id}`}>
+                                                            <div class="players" key={`player-remove`}>
                                                                 {player.username}
-                                                                <UncontrolledButtonDropdown>
-                                                                    <DropdownToggle {...baseButtonProps} children="Actions" caret />
-                                                                    <DropdownMenu>
-                                                                        <DropdownItem
-                                                                            key={`remove-player`}
-                                                                            onClick={this.handleDeletePlayerClick(
-                                                                                team.id, player.id, deleteTeamMember
-                                                                            )}>
-                                                                            Remove from team
-                                                                        </DropdownItem>
-                                                                    </DropdownMenu>
-                                                                </UncontrolledButtonDropdown>
+                                                                <div class="action-btn">
+                                                                    <UncontrolledButtonDropdown>
+                                                                        <DropdownToggle {...baseButtonProps} children="Actions" caret />
+                                                                        <DropdownMenu>
+                                                                            <DropdownItem
+                                                                                key={`remove-player`}
+                                                                                onClick={this.handleDeletePlayerClick(
+                                                                                    team.id, player.id, deleteTeamMember
+                                                                                )}>
+                                                                                Remove from team
+                                                                            </DropdownItem>
+                                                                        </DropdownMenu>
+                                                                    </UncontrolledButtonDropdown>
+                                                                </div>
                                                             </div>
                                                         ))}
                                                     </CardBody>
