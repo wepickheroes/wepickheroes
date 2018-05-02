@@ -3,6 +3,8 @@ from graphene_django.types import DjangoObjectType
 
 from teams.models import Team
 
+from nucleus.models import TeamMember
+
 
 User = get_user_model()
 
@@ -15,3 +17,8 @@ class TeamType(DjangoObjectType):
 class UserType(DjangoObjectType):
     class Meta:
         model = User
+
+
+class TeamMemberType(DjangoObjectType):
+    class Meta:
+        model = TeamMember

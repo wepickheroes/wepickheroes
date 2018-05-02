@@ -9,10 +9,11 @@ import { faCog, faPlus } from '@fortawesome/fontawesome-free-solid'
 
 import { Loading } from '../utils'
 
+
 class MyTeams extends Component {
 
     render() {
-        const { data: { loading, myTeams } } = this.props
+        const { data: { loading, myTeams, allTeammembers } } = this.props
         return (
             <Container>
                 <h1>My Teams</h1>
@@ -32,7 +33,17 @@ class MyTeams extends Component {
                                                 </Link>
                                             </CardText>
                                             <CardText>
-                                                {team.players.map(p => p.username).join(', ')}
+                                                {allTeammembers.map(t =>
+                                                    {
+                                                        if (t.team.name == team.name && t.role == 'A_1') {
+                                                            return t.player.username.concat(' ', '(', 'Player',')', '\n')
+                                                        }
+
+                                                        if (t.team.name == team.name && t.role == 'A_2') {
+                                                            return t.player.username.concat(' ', '(', 'Sub',')', '\n')
+                                                        }
+                                                    }
+                                                )}
                                             </CardText>
                                         </CardBody>
                                     </Card>
@@ -68,8 +79,18 @@ const query = gql`
                 username
             }
         }
+        allTeammembers {
+            role
+            team {
+                name
+            }
+            player {
+                username
+            }
+        }
     }
 `
+
 
 MyTeams = graphql(query)(MyTeams)
 
