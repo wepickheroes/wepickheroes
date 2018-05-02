@@ -101,6 +101,11 @@ class Navigation extends Component {
                                 </LinkContainer>
                             </NavItem>
                             <NavItem>
+                                <LinkContainer to="/twitch-stream">
+                                    <NavLink><Uppercase>Watch</Uppercase></NavLink>
+                                </LinkContainer>
+                            </NavItem>
+                            <NavItem>
                                 <LinkContainer to="/my-teams">
                                     {/* TODO: Get number of new series */}
                                     <NavLink><Uppercase>My Teams</Uppercase></NavLink>
