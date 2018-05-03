@@ -140,7 +140,7 @@ class ChangeCaptain(graphene.Mutation):
 
     ok = graphene.Boolean()
     error = graphene.String()
-    team = graphene.Field(types.UserType)
+    team = graphene.Field(types.TeamType)
 
     def mutate(self, info, team_id, new_captain_id):
         user = info.context.user
