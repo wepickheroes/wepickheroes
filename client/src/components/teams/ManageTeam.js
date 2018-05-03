@@ -6,11 +6,20 @@ import { Alert, Card, CardBody, CardTitle, Col, Container, Row } from 'reactstra
 
 import { Loading } from '../utils'
 
+import { isRole } from './utils'
+
 class ManageTeam extends Component {
 
     render() {
-        const { data: { loading, team } } = this.props
+        const { data: { loading, team, allTeammembers } } = this.props
         const { location: { host, protocol } } = window
+
+        const allTeammembersSorted = loading ? [] : (
+                allTeammembers.filter(isRole('A_1')).concat(
+                    allTeammembers.filter(isRole('A_2'))
+                )
+            )
+
         return (
             <Container>
                 <h1>
@@ -41,11 +50,15 @@ class ManageTeam extends Component {
                                         <CardTitle>
                                             Players
                                         </CardTitle>
-                                        {team.players.map(player => (
-                                            <div key={`player-${player.id}`}>
-                                                {player.username}
-                                            </div>
-                                        ))}
+                                            {allTeammembersSorted.map(t => {
+                                                if (t.team.id == team.id) {
+                                                    return (
+                                                        <div>
+                                                            {`${t.player.username} ${t.role === 'A_2' ? ' (Sub)' : ''}`}
+                                                        </div>
+                                                    )
+                                                }
+                                            })}
                                     </CardBody>
                                 </Card>
                             </Col>
@@ -80,6 +93,15 @@ const query = gql`
             }
             players {
                 id
+                username
+            }
+        }
+        allTeammembers {
+            role
+            team {
+                id
+            }
+            player {
                 username
             }
         }
