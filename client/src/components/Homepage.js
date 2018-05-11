@@ -80,7 +80,7 @@ const Homepage = props => {
                                     <MarketingDescription>
                                         Sign-ups are now open for our new double-elimination bracket league!
                                         We will be hosting a weekend tournament between <strong>June 2nd</strong> and <strong>June 17th</strong>,
-                                        with open qualifiers on <strong>June 26th</strong>.
+                                        with open qualifiers on <strong>May 26th</strong>.
                                         We will have 8 teams competing for a <strong>$175</strong> prize pool.
                                         For more information on the format, rules, and FAQ,
                                         please check out the Resources tab - <strong><em>register now</em></strong>!
