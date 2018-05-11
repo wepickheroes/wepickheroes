@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Container } from 'reactstrap'
+import {
+    Divider,
+} from './../utils'
 
 const RulesList = styled.ol`
     > li {
@@ -24,7 +27,9 @@ export default () => (
             <li>Teams</li>
             <ol>
                 <li>Teams will consist of 5 primary players and up to 2 substitute players (7 total)</li>
-                <li>Rosters will be locked at the start of a season.</li>
+                <ol>
+                <li>Teams are allowed to bring additional stand-ins excluding the semi-final and finals series for Upper and Lower Bracket</li>
+              </ol>
             </ol>
             <li>Players</li>
             <ol>
@@ -40,39 +45,30 @@ export default () => (
             <li>Subs</li>
             <ol>
                 <li>Should a main roster player be unable to attend a match, a registered sub may take their place.</li>
-                <li>The opposing team must be notified of the substitution before the series begins.</li>
                 <li>Should a team be down a player and unable to find a substitute, they will be forced to
                     forfeit the series. </li>
             </ol>
-            <li>Match Scheduling</li>
+            <li>Attendence</li>
             <ol>
-                <li>Teams will be assigned 2 series every Saturday at 12:00am PT, to be completed by the following
-                    Saturday at 12:00am PT.</li>
-                <li>Teams are responsible for scheduling matches between themselves.</li>
-                <li>Teams must check-in with Discord by posting in the "Check-In" channel.</li>
-                <ol>
-                    <li>Should a team fail to show up, the other team will receive an auto-win for both matches.</li>
-                    <li>Should both teams fail to show, both teams will receive auto-losses.</li>
+                <li>All players are expected to be in lobby 5 minutes before game starting time. Lobby will always be up 30 minutes prior to starting time.</li>
+                <li>Teams that are tardy and show up past game start time will be subject to the following penalties:</li>
+                <ol>Divider
+                    <li>5 minutes after start time: Level 1 draft penalty.</li>
+                    <li>10 minutes after start time: Level 2 draft penalty.</li>
+                    <li>15 minutes after start time: 1 game deficit.</li>
                 </ol>
-                <li>Teams that are tardy ("tardy" defined as not having all 5 players ready in the lobby) and show
-                    up past the agreed-upon start time will be subject to the following penalties:</li>
-                <ol>
-                    <li>5 minutes after start time: Level 1 draft penalty</li>
-                    <li>10 minutes after start time: Level 2 draft penalty</li>
-                    <li>15 minutes after start time: 1 game deficit</li>
-                </ol>
-                <li>Should a team fail to show up past 20 minutes, their opponent will receive an auto-win for both matches.</li>
             </ol>
             <li>Coin Flip</li>
             <ol>
-                <li>When both captains are in lobby, the captain of the team that first checked in will ask the
-                    other team's captain to call heads or tails. Winner has first choice of pick or side.</li>
+                <li>When both captains are in lobby, admin will ask either side to call heads or tails
+                  (first come, first serve). Winner has choice of pick or side.</li>
                 <li>The coin flip loser will get first choice for Game 2.</li>
+                <li>Should there be a Game 3, coin flip winner gets choice.</li>
             </ol>
             <li>Pausing</li>
             <ol>
-                <li>Teams are allowed up to 10 minutes of pause time for technical issues per series.</li>
-                <li>No limit on the number of pauses.</li>
+                <li>Teams are allowed up to a combined total of 15 minutes of pause time for technical issues per series.</li>
+                <li>There is a limit of 5 pauses for each team.</li>
                 <li>The pausing team will not resume a game until agreement is clearly stated by both teams in game
                     chat.</li>
                 <ol>
@@ -90,17 +86,17 @@ export default () => (
                     <li>If an admin deems that a player and/or team's conduct during a game is inappropriate, the
                         admin will determine the final call in penalizing said team.</li>
                 </ol>
-                <li>If an admin deems that a player and/or team's conduct during a game is inappropriate, the admin
-                    will determine the final call in penalizing said team.</li>
+                <li>Should a player be found breaking the above, the player and their team will be subject to penalties
+                  up to and including disqualification from the tournament.</li>
             </ol>
             <li>Broadcasting</li>
             <ol>
                 <li>No lobby spectators are allowed outside of league administrators or broadcasters.</li>
-                <li>Players can broadcast their matches.</li>
+                <li>Players can broadcast Open Qualifier matches.</li>
                 <ol>
                     <li>If a player decides to broadcast their match, then they accept all potential risks associated
                         with streaming.</li>
-                    <li>League organizers will not enforce any reports of stream sniping.</li>
+                    <li>Tournament organizers will not enforce any reports of stream sniping.</li>
                 </ol>
                 <li>Players cannot broadcast promotional series matches.</li>
             </ol>
@@ -110,6 +106,8 @@ export default () => (
                 <li>The We Pick Heroes organization and tournament organizers are not responsible for any
                     mishandling of prize winnings within teams.</li>
             </ol>
+          <Divider />
+            <p><em>The We Pick Heroes organization reserves the right to amend, alter, or clarify these rules at any time.</em></p>
         </RulesList>
     </Container>
 )
