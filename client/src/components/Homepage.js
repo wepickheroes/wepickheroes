@@ -105,11 +105,11 @@ const Homepage = props => {
                               </Col>
                               <Col sm="8">
                                   <MarketingList>
-                                      <li>Assemble a team</li>
-                                      <li>Sign up for a league</li>
-                                      <li>Get matched against teams with a similar skill level</li>
-                                      <li>Play a round-robin tournament match once per week</li>
-                                      <li>Compete to move up to the next bracket, or for cash prizes!</li>
+                                      <li>Sign up to the site</li>
+                                      <li>Create a team (via <em>"My Teams"</em> tab)</li>
+                                      <li>Send the invite code to your players</li>
+                                      <li>register your team to the open league you wish to participate in (via <em>"Leagues"</em> tab)</li>
+                                      <li>Join us on Discord for updates and more information!</li>
                                   </MarketingList>
                               </Col>
                         </Row>

@@ -16,7 +16,7 @@ const faqs = [
         question: 'Is there a Rank Cap?',
         answer: <Fragment>
             Right now the main cap we have is a restriction on <strong>Divine 5</strong> players
-            that are rank 1500 or higher. Our current tournament league follows this rule
+            that are rank 500 or higher. Our current tournament league follows this rule
             - other formats may have tighter restrictions,
             which will be displayed within the league’s registration page.
         </Fragment>,
