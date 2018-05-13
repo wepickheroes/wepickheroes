@@ -48,7 +48,7 @@ const UserMenu = props => (
 const HelpMenu = props => (
     <UncontrolledDropdown nav>
         <DropdownToggle caret nav>
-            <Uppercase>Resources</Uppercase>
+            Resources
         </DropdownToggle>
         <DropdownMenu right>
             <LinkContainer to="/rules">
@@ -97,28 +97,28 @@ class Navigation extends Component {
                         <Nav className="ml-auto" navbar>
                             <NavItem>
                                 <LinkContainer to="/leagues">
-                                    <NavLink><Uppercase>Leagues</Uppercase></NavLink>
+                                    <NavLink>Leagues</NavLink>
                                 </LinkContainer>
                             </NavItem>
                             <NavItem>
                                 <LinkContainer to="/twitch-stream">
-                                    <NavLink><Uppercase>Watch</Uppercase></NavLink>
+                                    <NavLink>Watch</NavLink>
                                 </LinkContainer>
                             </NavItem>
                             <NavItem>
                                 <LinkContainer to="/my-teams">
                                     {/* TODO: Get number of new series */}
-                                    <NavLink><Uppercase>My Teams</Uppercase></NavLink>
+                                    <NavLink>My Teams</NavLink>
                                 </LinkContainer>
                             </NavItem>
                             <HelpMenu />
                             {!loading && (
                                 isAuthenticated ? <UserMenu /> : (
                                 <SteamNavItem>
-                                    <Button color="success" className="text-uppercase"
+                                    <Button color="success"
                                             href={createUrl('/login/steam/')}>
                                         <FontAwesomeIcon icon={faSteam} />
-                                        &nbsp;Sign In With Steam
+                                        &nbsp;Sign in via Steam
                                     </Button>
                                 </SteamNavItem>
                             ))}
