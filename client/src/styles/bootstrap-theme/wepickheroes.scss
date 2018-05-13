@@ -1,18 +1,20 @@
+@import "https://fonts.googleapis.com/css?family=Play|Raleway";
+
 $body-color: #395155;
 $dark: #062736;
 $success: #799905;
 $primary: #062736;
 
 @font-face {
-  font-family: 'Radiance';
-  src: local('Radiance'), url(../../fonts/wph-fonts/DotaFonts/radiance.ttf) format('truetype');
+  font-family: 'Play';
+  /* src: local('Radiance'), url(../../fonts/wph-fonts/DotaFonts/radiance.ttf) format('truetype'); */
 }
 @font-face {
-  font-family: 'Goudy Trajan';
-  src: local('Goudy Trajan'), url(../../fonts/wph-fonts/DotaFonts/goudytrajan-bold-pro-webfont.ttf) format('truetype');
+  font-family: 'Raleway';
+  /* src: local('Goudy Trajan'), url(../../fonts/wph-fonts/DotaFonts/goudytrajan-bold-pro-webfont.ttf) format('truetype'); */
 }
 
-$font-family-base: 'Radiance', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-family-base: 'Play', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 $headings-font-family: 'Goudy Trajan', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 
 @import "node_modules/bootstrap/scss/bootstrap";

@@ -1,10 +1,11 @@
+@import "https://fonts.googleapis.com/css?family=Play|Raleway";
 @font-face {
-  font-family: 'Radiance';
-  src: local("Radiance"), url(../../fonts/wph-fonts/DotaFonts/radiance.ttf) format("truetype"); }
+  font-family: 'Play';
+  /* src: local('Radiance'), url(../../fonts/wph-fonts/DotaFonts/radiance.ttf) format('truetype'); */ }
 
 @font-face {
-  font-family: 'Goudy Trajan';
-  src: local("Goudy Trajan"), url(../../fonts/wph-fonts/DotaFonts/goudytrajan-bold-pro-webfont.ttf) format("truetype"); }
+  font-family: 'Raleway';
+  /* src: local('Goudy Trajan'), url(../../fonts/wph-fonts/DotaFonts/goudytrajan-bold-pro-webfont.ttf) format('truetype'); */ }
 
 /*!
  * Bootstrap v4.0.0-beta.2 (https://getbootstrap.com)
@@ -106,7 +107,7 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 
 body {
   margin: 0;
-  font-family: "Radiance", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Play", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -3644,7 +3645,7 @@ button.close {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Radiance", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Play", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -3725,7 +3726,7 @@ button.close {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Radiance", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Play", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
