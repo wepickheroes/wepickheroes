@@ -22,9 +22,10 @@ $headings-font-family: 'Raleway', -apple-system, BlinkMacSystemFont, "Segoe UI",
 body {
   background-color: #FAFAFA;
 }
-h1.huLURa {
+
+/*h1.huLURa {
   margin-right: 0 !important;
-}
+}*/
 
 h2 {
   font-weight: 700;
@@ -55,11 +56,9 @@ h2 {
   background-image: linear-gradient(to bottom, #799905, #536904);
 }
 
-.ePkqnh {
-  margin-right: 1rem;
-  margin-top: auto;
-  margin-bottom: auto;
-  line-height: 1;
+.btn.btn-success:hover {
+  color: #FFF;
+  background-image: linear-gradient(to bottom, #536904, #536904) !important;
 }
 
 .dropdown-toggle::after {
@@ -68,18 +67,6 @@ h2 {
 
 p.lead {
   font-size: 1.5rem;
-}
-
-div.iOLRmJ {
-  margin: 1.875rem 0;
-}
-
-div.jnCFTs {
-  margin: 0;
-}
-
-div.cDTeZF {
-  margin: 0;
 }
 
 div.container {
@@ -136,9 +123,8 @@ div.card div.card-body div.row p, div.card div.card-body div.row li {
     font-size: 1.25rem;
   }
 
-  .ePkqnh .btn {
-    padding-left: 2rem;
-    padding-right: 2rem;
+  .nav-item .btn {
+    padding: .375rem 2rem;
   }
 
   .nav-item .nav-link {
@@ -159,9 +145,8 @@ div.card div.card-body div.row p, div.card div.card-body div.row li {
     font-size: 1rem;
   }
 
-  .ePkqnh .btn {
-    padding-left: .5rem;
-    padding-right: .5rem;
+  .nav-item .btn {
+    padding: .375rem .5rem;
   }
 
   .nav-item .nav-link {

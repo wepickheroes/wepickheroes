@@ -23,6 +23,9 @@ const Uppercase = styled.span`
 `
 const SteamNavItem = styled(NavItem)`
     margin-left: 1rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 1;
 `
 
 const BrandLogo = styled.img`
@@ -84,7 +87,7 @@ class Navigation extends Component {
         return (
             <div>
                 <Navbar dark color="dark" expand="md">
-                    <NavbarTitle style={{ marginRight: '2rem' }}>
+                    <NavbarTitle style={{ marginRight: '0' }}>
                         <LinkContainer to='/'>
                             <NavbarBrand >
                                 <BrandLogo src={BrandImage} alt="We Pick Heroes" />
@@ -115,7 +118,8 @@ class Navigation extends Component {
                             {!loading && (
                                 isAuthenticated ? <UserMenu /> : (
                                 <SteamNavItem>
-                                    <Button color="success"
+                                    <Button style={{ padding: '.375rem 2rem' }}
+                                            color="success"
                                             href={createUrl('/login/steam/')}>
                                         <FontAwesomeIcon icon={faSteam} />
                                         &nbsp;Sign in via Steam
