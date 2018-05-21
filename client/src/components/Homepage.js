@@ -42,9 +42,9 @@ const MarketingList = styled.ol`
 const Homepage = props => {
     const { data: {loading, isAuthenticated = false } } = props
     return (
-        <Fragment>
+        <Fragment style={{ margin: '1.875rem 0' }}>
             <Container>
-                <Intro>
+                <Intro style={{ margin: '0' }}>
                     <MainLogo src={logoLarge} alt="We Pick Heroes" />
                     <h2>Competitive Amateur Dota 2 League</h2>
                     <Description className="lead">
@@ -55,14 +55,14 @@ const Homepage = props => {
                     <div>
                         {!loading && !isAuthenticated && (
                             <Button color="success" size="lg"
-                                    href={createUrl('/login/steam/')}>
+                                href={createUrl('/login/steam/')}>
                                 <FontAwesomeIcon icon={faSteam} />&nbsp;Sign Up
                             </Button>
                         )}
                     </div>
                 </Intro>
             </Container>
-            <Divider/>
+            <Divider style={{ margin: '0' }}/>
             <Container>
                 <Card>
                     <CardBody>

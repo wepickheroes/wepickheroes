@@ -23,6 +23,9 @@ const Uppercase = styled.span`
 `
 const SteamNavItem = styled(NavItem)`
     margin-left: 1rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 1;
 `
 
 const BrandLogo = styled.img`
@@ -48,7 +51,7 @@ const UserMenu = props => (
 const HelpMenu = props => (
     <UncontrolledDropdown nav>
         <DropdownToggle caret nav>
-            <Uppercase>Resources</Uppercase>
+            Resources
         </DropdownToggle>
         <DropdownMenu right>
             <LinkContainer to="/rules">
@@ -84,7 +87,7 @@ class Navigation extends Component {
         return (
             <div>
                 <Navbar dark color="dark" expand="md">
-                    <NavbarTitle style={{ marginRight: '2rem' }}>
+                    <NavbarTitle style={{ marginRight: '0' }}>
                         <LinkContainer to='/'>
                             <NavbarBrand >
                                 <BrandLogo src={BrandImage} alt="We Pick Heroes" />
@@ -97,28 +100,29 @@ class Navigation extends Component {
                         <Nav className="ml-auto" navbar>
                             <NavItem>
                                 <LinkContainer to="/leagues">
-                                    <NavLink><Uppercase>Leagues</Uppercase></NavLink>
+                                    <NavLink>Leagues</NavLink>
                                 </LinkContainer>
                             </NavItem>
                             <NavItem>
                                 <LinkContainer to="/twitch-stream">
-                                    <NavLink><Uppercase>Watch</Uppercase></NavLink>
+                                    <NavLink>Watch</NavLink>
                                 </LinkContainer>
                             </NavItem>
                             <NavItem>
                                 <LinkContainer to="/my-teams">
                                     {/* TODO: Get number of new series */}
-                                    <NavLink><Uppercase>My Teams</Uppercase></NavLink>
+                                    <NavLink>My Teams</NavLink>
                                 </LinkContainer>
                             </NavItem>
                             <HelpMenu />
                             {!loading && (
                                 isAuthenticated ? <UserMenu /> : (
                                 <SteamNavItem>
-                                    <Button color="success" className="text-uppercase"
+                                    <Button style={{ padding: '.375rem 2rem' }}
+                                            color="success"
                                             href={createUrl('/login/steam/')}>
                                         <FontAwesomeIcon icon={faSteam} />
-                                        &nbsp;Sign In With Steam
+                                        &nbsp;Sign in via Steam
                                     </Button>
                                 </SteamNavItem>
                             ))}
