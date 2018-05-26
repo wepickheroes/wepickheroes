@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
-import { Button, Card, CardBody, CardTitle, Col, Container, Row } from 'reactstrap'
+import { Button, Card, CardBody, CardTitle, Col, Container, Row, CardImg } from 'reactstrap'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
@@ -8,6 +8,7 @@ import { faSteam } from '@fortawesome/fontawesome-free-brands'
 
 import logoLarge from '../img/logos/WPHlogo5sgcolors.svg'
 import keyboardImg from '../img/gaming_stock.jpg'
+import openQualImg from '../img/Open_Qualifiersv1.png'
 import theDire from '../img/the_dire.jpg'
 import { createUrl } from '../api/utils'
 import {
@@ -23,7 +24,6 @@ const Description = styled.p`
     max-width: 400px;
     margin: 0 auto 30px auto;
 `
-
 const MarketingDescription = styled.p`
     margin-left: 2rem;
     color: #062736;
@@ -37,14 +37,12 @@ const MainLogo = styled.img`
 const MarketingList = styled.ol`
     margin-left: 2rem;
 `
-
-
 const Homepage = props => {
     const { data: {loading, isAuthenticated = false } } = props
     return (
-        <Fragment style={{ margin: '1.875rem 0' }}>
+        <Fragment>
             <Container>
-                <Intro style={{ margin: '0' }}>
+                <Intro>
                     <MainLogo src={logoLarge} alt="We Pick Heroes" />
                     <h2>Competitive Amateur Dota 2 League</h2>
                     <Description className="lead">
@@ -55,14 +53,26 @@ const Homepage = props => {
                     <div>
                         {!loading && !isAuthenticated && (
                             <Button color="success" size="lg"
-                                href={createUrl('/login/steam/')}>
+                                    href={createUrl('/login/steam/')}>
                                 <FontAwesomeIcon icon={faSteam} />&nbsp;Sign Up
                             </Button>
                         )}
                     </div>
                 </Intro>
             </Container>
-            <Divider style={{ margin: '0' }}/>
+            <Divider/>
+            <Container>
+                <Card>
+                    <CardBody>
+                        <CardTitle>
+                            <span id="how-it-works" className="display-4">
+                                Open Qualifier Bracket
+                            </span>
+                        </CardTitle>
+                                <CardImg className='img-fluid' src={openQualImg}/>
+                    </CardBody>
+                </Card>
+            </Container>
             <Container>
                 <Card>
                     <CardBody>
@@ -78,12 +88,18 @@ const Homepage = props => {
                             <Col md="8" xs="12" className="d-flex align-items-center">
                                 <div>
                                     <MarketingDescription>
-                                        Sign-ups are now open for our new double-elimination bracket league!
                                         We will be hosting a weekend tournament between <strong>June 2nd</strong> and <strong>June 17th</strong>,
                                         with open qualifiers on <strong>May 26th</strong>.
-                                        We will have 8 teams competing for a <strong>$175</strong> prize pool.
+                                        We will have 8 teams competing.
+                                    </MarketingDescription>
+                                    <MarketingList>
+                                        <li><strong>$100</strong> for First Place</li>
+                                        <li><strong>$50</strong> for Second Place</li>
+                                        <li><strong>$25</strong> for Third Place</li>
+                                    </MarketingList>
+                                    <MarketingDescription>
                                         For more information on the format, rules, and FAQ,
-                                        please check out the Resources tab - <strong><em>register now</em></strong>!
+                                        please check out the Resources tab.
                                     </MarketingDescription>
                                 </div>
                             </Col>
