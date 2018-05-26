@@ -24,7 +24,6 @@ const Description = styled.p`
     max-width: 400px;
     margin: 0 auto 30px auto;
 `
-
 const MarketingDescription = styled.p`
     margin-left: 2rem;
     color: #062736;
@@ -92,9 +91,13 @@ const Homepage = props => {
                                         We will be hosting a weekend tournament between <strong>June 2nd</strong> and <strong>June 17th</strong>,
                                         with open qualifiers on <strong>May 26th</strong>.
                                         We will have 8 teams competing.
-                                        <ol><strong>$100</strong> for First Place</ol>
-                                        <ol><strong>$50</strong> for Second Place</ol>
-                                        <ol><strong>$25</strong> for Third Place</ol>
+                                    </MarketingDescription>
+                                    <MarketingList>
+                                        <li><strong>$100</strong> for First Place</li>
+                                        <li><strong>$50</strong> for Second Place</li>
+                                        <li><strong>$25</strong> for Third Place</li>
+                                    </MarketingList>
+                                    <MarketingDescription>
                                         For more information on the format, rules, and FAQ,
                                         please check out the Resources tab.
                                     </MarketingDescription>
