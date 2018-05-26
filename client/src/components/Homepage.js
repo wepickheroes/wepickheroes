@@ -79,6 +79,36 @@ const Homepage = props => {
                     <CardBody>
                         <CardTitle>
                             <span id="how-it-works" className="display-4">
+                                New Tournament League!
+                            </span>
+                        </CardTitle>
+                        <Row>
+                            <Col md="4" xs="12">
+                                <MarketingImage className='img-fluid' src={keyboardImg}/>
+                            </Col>
+                            <Col md="8" xs="12" className="d-flex align-items-center">
+                                <div>
+                                    <MarketingDescription>
+                                        We will be hosting a weekend tournament between <strong>June 2nd</strong> and <strong>June 17th</strong>,
+                                        with open qualifiers on <strong>May 26th</strong>.
+                                        We will have 8 teams competing.
+                                        <ol><strong>$100</strong> for First Place</ol>
+                                        <ol><strong>$50</strong> for Second Place</ol>
+                                        <ol><strong>$25</strong> for Third Place</ol>
+                                        For more information on the format, rules, and FAQ,
+                                        please check out the Resources tab.
+                                    </MarketingDescription>
+                                </div>
+                            </Col>
+                        </Row>
+                    </CardBody>
+                </Card>
+            </Container>
+            <Container>
+                <Card>
+                    <CardBody>
+                        <CardTitle>
+                            <span id="how-it-works" className="display-4">
                                 How it works
                             </span>
                         </CardTitle>
