@@ -31,7 +31,7 @@ const MarketingDescription = styled.p`
 
 const MainLogo = styled.img`
     width: auto;
-    max-height: 300px;
+    max-height: 250px;
     margin-bottom: 2rem;
 `
 const MarketingList = styled.ol`
@@ -60,7 +60,6 @@ const Homepage = props => {
                     </div>
                 </Intro>
             </Container>
-            <Divider/>
             <Container>
                 <Card>
                     <CardBody>
@@ -69,7 +68,7 @@ const Homepage = props => {
                                 Open Qualifier Bracket
                             </span>
                         </CardTitle>
-                                <CardImg className='img-fluid' src={openQualImg}/>
+                                <CardImg style={{ maxWidth: '80%', marginLeft: '10%', marginRight: '10%', marginBottom: '1.875rem' }} className='img-fluid' src={openQualImg}/>
                     </CardBody>
                 </Card>
             </Container>

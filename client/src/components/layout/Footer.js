@@ -17,7 +17,7 @@ class Footer extends Component {
     render() {
         return (
             <div style={{ marginTop: "2rem" }}>
-                <Navbar dark color="dark" expand="md">
+                <Navbar style={{ padding: '.1875rem 1rem' }} dark color="dark" expand="md">
                     <Nav navbar style={{ marginRight: '2rem' }}>
                         <NavItem>
                             <LinkContainer to='/about'>

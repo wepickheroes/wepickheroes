@@ -28,6 +28,7 @@ body {
 }*/
 
 h2 {
+  font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: .1rem;
 }
@@ -66,7 +67,7 @@ h2 {
 }
 
 p.lead {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 div.container {
@@ -88,7 +89,7 @@ div.card h4.card-title {
 }
 
 div.card h4.card-title span {
-  font-size: 2.25rem;
+  font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: .125rem;
 }
@@ -101,13 +102,13 @@ div.card img.img-fluid {
 }
 
 div.card div.card-body div.row p, div.card div.card-body div.row li {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #555;
   line-height: 1.25;
 }
 
 .fa-2x {
-  font-size: 1.875rem;
+  font-size: 1.75rem;
 }
 
 @media screen and (min-width: 1280px) {
@@ -116,11 +117,11 @@ div.card div.card-body div.row p, div.card div.card-body div.row li {
   }
 
   .nav-link, .nav-item, .btn {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
   .btn {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 
   .nav-item .btn {

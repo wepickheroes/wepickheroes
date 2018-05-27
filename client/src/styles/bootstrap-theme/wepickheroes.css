@@ -5881,6 +5881,7 @@ body {
   margin-right: 0 !important;
 }*/
 h2 {
+  font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: .1rem; }
 
@@ -5912,7 +5913,7 @@ h2 {
   margin-bottom: -.15em; }
 
 p.lead {
-  font-size: 1.5rem; }
+  font-size: 1.25rem; }
 
 div.container {
   padding: 1.875rem; }
@@ -5928,7 +5929,7 @@ div.card h4.card-title {
   margin-bottom: 1.875rem; }
 
 div.card h4.card-title span {
-  font-size: 2.25rem;
+  font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: .125rem; }
 
@@ -5939,20 +5940,20 @@ div.card img.img-fluid {
   height: 12.625rem;*/ }
 
 div.card div.card-body div.row p, div.card div.card-body div.row li {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #555;
   line-height: 1.25; }
 
 .fa-2x {
-  font-size: 1.875rem; }
+  font-size: 1.75rem; }
 
 @media screen and (min-width: 1280px) {
   .navbar {
     padding: .3125rem 1rem; }
   .nav-link, .nav-item, .btn {
-    font-size: 1.5rem; }
-  .btn {
     font-size: 1.25rem; }
+  .btn {
+    font-size: 1rem; }
   .nav-item .btn {
     padding: .375rem 2rem; }
   .nav-item .nav-link {
