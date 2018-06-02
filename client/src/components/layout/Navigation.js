@@ -34,7 +34,7 @@ const BrandLogo = styled.img`
 const UserMenu = props => (
     <UncontrolledDropdown nav>
         <DropdownToggle caret nav>
-            <Uppercase>Settings</Uppercase>
+            Settings
         </DropdownToggle>
         <DropdownMenu right>
             <LinkContainer to='/teams/create'>
@@ -86,7 +86,7 @@ class Navigation extends Component {
         const { data: { loading, isAuthenticated = false } } = this.props
         return (
             <div>
-                <Navbar dark color="dark" expand="md">
+                <Navbar style={{ padding: '.1875rem 1rem' }} dark color="dark" expand="md">
                     <NavbarTitle style={{ marginRight: '0' }}>
                         <LinkContainer to='/'>
                             <NavbarBrand >
