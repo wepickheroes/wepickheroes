@@ -8,7 +8,7 @@ import { faSteam } from '@fortawesome/fontawesome-free-brands'
 
 import logoLarge from '../img/logos/WPHlogo5sgcolors.svg'
 import keyboardImg from '../img/gaming_stock.jpg'
-import openQualImg from '../img/Open_Qualifiersv1.png'
+import bracket01 from '../img/June_Bracket_01.png'
 import theDire from '../img/the_dire.jpg'
 import { createUrl } from '../api/utils'
 import {
@@ -65,10 +65,10 @@ const Homepage = props => {
                     <CardBody>
                         <CardTitle>
                             <span id="how-it-works" className="display-4">
-                                Open Qualifier Bracket
+                                Tournament Bracket
                             </span>
                         </CardTitle>
-                                <CardImg style={{ maxWidth: '80%', marginLeft: '10%', marginRight: '10%', marginBottom: '1.875rem' }} className='img-fluid' src={openQualImg}/>
+                                <CardImg style={{ maxWidth: '90%', marginLeft: '5%', marginRight: '5%', marginBottom: '1.875rem' }} className='img-fluid' src={bracket01}/>
                     </CardBody>
                 </Card>
             </Container>
