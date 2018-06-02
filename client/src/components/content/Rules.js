@@ -52,7 +52,7 @@ export default () => (
             <ol>
                 <li>All players are expected to be in lobby 5 minutes before game starting time. Lobby will always be up 30 minutes prior to starting time.</li>
                 <li>Teams that are tardy and show up past game start time will be subject to the following penalties:</li>
-                <ol>Divider
+                <ol>
                     <li>5 minutes after start time: Level 1 draft penalty.</li>
                     <li>10 minutes after start time: Level 2 draft penalty.</li>
                     <li>15 minutes after start time: 1 game deficit.</li>
