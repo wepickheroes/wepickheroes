@@ -8,7 +8,7 @@ import { faSteam } from '@fortawesome/fontawesome-free-brands'
 
 import logoLarge from '../img/logos/WPHlogo5sgcolors.svg'
 import keyboardImg from '../img/gaming_stock.jpg'
-import bracket01 from '../img/June_Bracket_01.png'
+import sasquatchLogo from '../img/sasqquats.jpg'
 import theDire from '../img/the_dire.jpg'
 import { createUrl } from '../api/utils'
 import {
@@ -65,11 +65,35 @@ const Homepage = props => {
                     <CardBody>
                         <CardTitle>
                             <span id="how-it-works" className="display-4">
-                                Tournament Bracket
+                                Congratulations to the We Pick Heroes Season 1 Winners: Sasquatch's Gym
                             </span>
                         </CardTitle>
-                                <CardImg style={{ maxWidth: '90%', marginLeft: '5%', marginRight: '5%', marginBottom: '1.875rem' }} className='img-fluid' src={bracket01}/>
-                    </CardBody>
+                        <Row>
+                            <Col md="4" xs="12">
+                                <MarketingImage className='img-fluid' src={sasquatchLogo}/>
+                            </Col>
+                            <Col md="8" xs="12" className="d-flex align-items-center">
+                                <div>
+                                    <MarketingDescription>
+                                        Thank everyone for participating in our first Tournament!
+                                    </MarketingDescription>
+                                    <MarketingList>
+                                        <li><em>First Place:</em> <strong>Sasquatch's Gym</strong></li>
+                                        <li><em>Second Place:</em> <strong>Mode Inside: Derpydots</strong></li>
+                                        <li><em>Third Place:</em> <strong>CCCC</strong></li>
+                                    </MarketingList>
+                                    <MarketingDescription>
+                                        Also, a big Thanks to our Amazing Casters:
+                                    </MarketingDescription>
+                                    <MarketingList>
+                                        <ul><strong><a href="https://twitter.com/Pure_Crasheroni">@Crasheroni</a></strong></ul>
+                                        <ul><strong><a href="https://twitter.com/ShaggyDOTA">@Shaggydooskernoodle</a></strong></ul>
+                                        <ul><strong><a href="https://twitter.com/Pocketsocks_ ">@PocketSocks</a></strong></ul>
+                                    </MarketingList>
+                                </div>
+                            </Col>
+                        </Row>
+                      </CardBody>
                 </Card>
             </Container>
             <Container>
