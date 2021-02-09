@@ -10,6 +10,7 @@ from league.schema.types import (
 from nucleus.models import TeamMember
 from teams.models import Team
 from schema import types
+from league.models import User
 
 
 class CreateTeam(graphene.Mutation):
@@ -132,7 +133,39 @@ class CreateTeamMember(graphene.Mutation):
         return CreateTeamMember(team=team, ok=ok, error=error)
 
 
+class ChangeCaptain(graphene.Mutation):
+    class Arguments:
+        team_id = graphene.UUID(required=True)
+        new_captain_id = graphene.Int(required=True)
+
+    ok = graphene.Boolean()
+    error = graphene.String()
+    team = graphene.Field(types.TeamType)
+
+    def mutate(self, info, team_id, new_captain_id):
+        user = info.context.user
+
+        try:
+            team = Team.objects.get(pk=team_id)
+        except Team.DoesNotExist:
+            return ChangeCaptain(team=None, ok=False, error='Team not found.')
+
+        if user.id == new_captain_id:
+            return ChangeCaptain(team=None, ok=False, error='Cannot change captain to current captain.')
+        if user.id != team.captain.id:
+            return ChangeCaptain(team=None, ok=False, error='Only the team captain can change the captain.')
+        else:
+            team.captain = User.objects.filter(id=new_captain_id)[0]
+            team.save()
+            ok = True
+            error = None
+
+        return ChangeCaptain(team=team, ok=ok, error=error)
+
+
 class Mutations(graphene.ObjectType):
     create_team = CreateTeam.Field()
     create_league_registration = CreateLeagueRegistration.Field()
     create_team_member = CreateTeamMember.Field()
+    change_captain = ChangeCaptain.Field()
+

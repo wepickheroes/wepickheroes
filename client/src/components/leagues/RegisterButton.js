@@ -62,7 +62,7 @@ class RegisterButton extends Component {
             variables: {
                 teamId, leagueId,
             },
-        }).then(({ data: { createLeagueRegistration: { ok, error, leagueRegistration } } }) => {
+        }).then(({ data: { createLeagueRegistration: { ok, error } } }) => {
             this.setState({
                 ok, error, submitted: true,
             })
@@ -209,7 +209,7 @@ RegisterButton = compose(
     graphql(query),
     graphql(mutation, {
         options: {
-            refetchQueries: [{ query: mutationUpdate }],
+            refetchQueries: ['query'],
         }
     }),
 )(RegisterButton)
