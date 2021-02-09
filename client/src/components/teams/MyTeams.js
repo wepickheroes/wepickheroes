@@ -9,10 +9,19 @@ import { faCog, faPlus } from '@fortawesome/fontawesome-free-solid'
 
 import { Loading } from '../utils'
 
+import { isRole } from './utils'
+
 class MyTeams extends Component {
 
     render() {
-        const { data: { loading, myTeams } } = this.props
+        const { data: { loading, myTeams, allTeammembers } } = this.props
+
+        const allTeammembersSorted = loading ? [] : (
+                allTeammembers.filter(isRole('A_1')).concat(
+                    allTeammembers.filter(isRole('A_2'))
+                )
+            )
+
         return (
             <Container>
                 <h1>My Teams</h1>
@@ -26,13 +35,22 @@ class MyTeams extends Component {
                                             <CardTitle>
                                                 {team.name}
                                             </CardTitle>
+                                                <CardText>
+                                                    <Link to={`/my-teams/${team.id}`}>
+                                                        <FontAwesomeIcon icon={faCog} />&nbsp;Manage
+                                                    </Link>
+                                                </CardText>
                                             <CardText>
-                                                <Link to={`/my-teams/${team.id}`}>
-                                                    <FontAwesomeIcon icon={faCog} />&nbsp;Manage
-                                                </Link>
-                                            </CardText>
-                                            <CardText>
-                                                {team.players.map(p => p.username).join(', ')}
+                                                {allTeammembersSorted.map(t => {
+                                                        if (t.team.id == team.id) {
+                                                            return (
+                                                                <div>
+                                                                    {`${t.player.username} ${t.role === 'A_2' ? ' (Sub)' : ''}`}
+                                                                </div>
+                                                            )
+                                                        }
+                                                    }
+                                                )}
                                             </CardText>
                                         </CardBody>
                                     </Card>
@@ -68,8 +86,18 @@ const query = gql`
                 username
             }
         }
+        allTeammembers {
+            role
+            team {
+                id
+            }
+            player {
+                username
+            }
+        }
     }
 `
+
 
 MyTeams = graphql(query)(MyTeams)
 

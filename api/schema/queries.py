@@ -2,7 +2,11 @@ import graphene
 
 from django.contrib.auth import get_user_model
 
+# from graphene_django.filter import DjangoFilterConnectionField
+
+
 from teams.models import Team
+from nucleus.models import TeamMember
 from django.contrib.auth import get_user_model
 from league.schema.queries import (
     SeasonQuery,
@@ -41,6 +45,12 @@ class TeamsQuery:
             return Team.objects.filter(teammember__player=user).distinct()
         return Team.objects.none()
 
+class TeamMemberQuery:
+    all_teammembers = graphene.List(types.TeamMemberType)
+
+    def resolve_all_teammembers(self, info, **kwargs):
+        return TeamMember.objects.all()
+
 
 class UserQuery:
     all_users = graphene.List(types.UserType)
@@ -66,6 +76,7 @@ class Query(TeamQuery,
             TeamsQuery,
             UserQuery,
             SeasonQuery,
+            TeamMemberQuery,
             LeagueQuery,
             LeagueRegistrationQuery,
             DivisionQuery,
