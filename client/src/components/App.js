@@ -30,6 +30,10 @@ import { Schedule } from './schedule'
 import { Footer, Navigation } from './layout'
 import { ContentContainer } from './utils'
 
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-118590222-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
+
 class App extends Component {
     render() {
         return (
