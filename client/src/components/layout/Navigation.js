@@ -134,5 +134,7 @@ class Navigation extends Component {
     }
 }
 
+const new_query = gql`query { username }`
+
 const query = gql`query { isAuthenticated }`
 export default graphql(query)(props => <Navigation {...props} />)
